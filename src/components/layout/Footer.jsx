@@ -24,7 +24,7 @@ const companyLinks = [
   { href: "/plan", label: "Plan Your Trip" },
   { href: "/reviews", label: "Traveler Reviews" },
   { href: "/contact", label: "Contact Us" },
-  { href: "#", label: "About WildVentures" },
+  { href: "/about", label: "About WildVentures" },
   { href: "#", label: "Sustainability" },
 ];
 
