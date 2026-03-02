@@ -3,6 +3,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Search } from "lucide-react";
 
+const DESTINATIONS = ["Kenya", "Tanzania", "Rwanda", "Uganda"];
+const STYLES = ["Luxury", "Mid-Range", "Family", "Honeymoon"];
+
 export default function SearchBar() {
   const router = useRouter();
   const [dest, setDest] = useState("");
@@ -27,13 +30,11 @@ export default function SearchBar() {
     "border-none outline-none font-sans text-[0.95rem] text-charcoal bg-transparent cursor-pointer w-full";
 
   return (
-    /* No negative translate — sits naturally below the hero */
     <div className="bg-green px-[5%] py-8">
       <div
         className="flex items-stretch max-w-[940px] mx-auto
                       shadow-[0_12px_40px_rgba(0,0,0,0.18)] rounded-sm overflow-hidden"
       >
-        {/* Destination */}
         <div className={fieldClass}>
           <label className={labelClass}>Destination</label>
           <select
@@ -42,14 +43,7 @@ export default function SearchBar() {
             onChange={(e) => setDest(e.target.value)}
           >
             <option value="">All Destinations</option>
-            {[
-              "Kenya",
-              "Tanzania",
-              "Rwanda",
-              "Uganda",
-              "Botswana",
-              "Namibia",
-            ].map((d) => (
+            {DESTINATIONS.map((d) => (
               <option key={d} value={d.toLowerCase()}>
                 {d}
               </option>
@@ -57,7 +51,6 @@ export default function SearchBar() {
           </select>
         </div>
 
-        {/* Duration */}
         <div className={fieldClass}>
           <label className={labelClass}>Duration</label>
           <select
@@ -69,11 +62,9 @@ export default function SearchBar() {
             <option value="short">3–5 Days</option>
             <option value="medium">6–8 Days</option>
             <option value="long">9–14 Days</option>
-            <option value="extended">15+ Days</option>
           </select>
         </div>
 
-        {/* Travel Style */}
         <div className={`${fieldClass} border-r-0`}>
           <label className={labelClass}>Travel Style</label>
           <select
@@ -82,7 +73,7 @@ export default function SearchBar() {
             onChange={(e) => setStyle(e.target.value)}
           >
             <option value="">Any Style</option>
-            {["Luxury", "Mid-Range", "Family", "Honeymoon"].map((s) => (
+            {STYLES.map((s) => (
               <option key={s} value={s.toLowerCase()}>
                 {s}
               </option>
@@ -90,7 +81,6 @@ export default function SearchBar() {
           </select>
         </div>
 
-        {/* Search button */}
         <button
           onClick={handleSearch}
           className="bg-orange text-white px-8 font-medium text-[0.85rem] tracking-[0.07em]
