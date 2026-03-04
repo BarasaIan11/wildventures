@@ -154,6 +154,10 @@ export default function Footer() {
         <p className="text-[0.78rem] text-white/30">
           © {new Date().getFullYear()} WildVentures. All rights reserved.
         </p>
+
+        <p className="text-[0.78rem] text-white/30">
+          Designed by{" Innovition Solutions"}
+        </p>
         <div className="flex gap-5 text-[0.78rem]">
           {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((l) => (
             <a
