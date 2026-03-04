@@ -3,26 +3,36 @@ import DestinationCard from "@/components/destinations/DestinationCard";
 import BookingCTA from "@/components/home/BookingCTA";
 import { destinations } from "@/data/destinations";
 
-export const metadata = { title: "Destinations" };
+export const metadata = { title: "Destinations | WildVentures" };
 
 export default function DestinationsPage() {
   const [first, ...rest] = destinations;
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
+      {/* HERO SECTION */}
+      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
-          src="/images/hero/hero-main.png"
+          src="/images/hero/destinations-hero.png"
           alt="African destinations"
           fill
-          className="object-cover brightness-50"
           priority
+          className="object-cover animate-hero-zoom"
         />
-        <div className="relative z-10 px-[5%] pb-10 pt-24">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
           <p className="section-label light">Explore Africa</p>
-          <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white">
-            Where Would You Like to <em className="italic">Go?</em>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-3xl">
+            Discover Legendary <br />
+            <em className="italic text-beige">Destinations</em>
           </h1>
+
+          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
+            From the endless plains of the Serengeti to the mist-covered peaks
+            of Rwanda. Discover the soul of East Africa.
+          </p>
         </div>
       </div>
 

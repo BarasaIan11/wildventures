@@ -38,19 +38,29 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
+      {/* HERO SECTION */}
+      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/contact-hero.png"
-          alt="Contact WildVentures"
+          alt="African elephants in the wild"
           fill
-          className="object-cover brightness-50"
+          priority
+          className="object-cover animate-hero-zoom"
         />
-        <div className="relative z-10 px-[5%] pb-10 pt-24">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
           <p className="section-label light">Get In Touch</p>
-          <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white">
-            Let's Plan Your <em className="italic">Safari</em>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1]">
+            Let's Plan Your <br />
+            <em className="italic text-beige">Safari</em>
           </h1>
+          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
+            Our experts are on hand to help you craft an unforgettable journey
+            through East Africa. Reach out and let's start the conversation.
+          </p>
         </div>
       </div>
 
@@ -120,7 +130,7 @@ export default function ContactPage() {
           {/* Right: Form */}
           <div>
             {submitted ? (
-              <div className="bg-green rounded-sm p-10 text-center">
+              <div className="bg-green rounded-sm p-10 text-center shadow-card">
                 <div className="text-5xl mb-4">✅</div>
                 <h3 className="font-serif text-2xl text-white mb-3">
                   Message Sent!

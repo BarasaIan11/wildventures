@@ -59,23 +59,29 @@ export default async function ToursPage({ searchParams }) {
   const { destination, style, duration } = params;
   return (
     <>
-      <div className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
+      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/tours-hero.png"
           alt="Safari tours"
           fill
-          className="object-cover brightness-50"
+          priority
+          className="object-cover animate-hero-zoom"
         />
-        <div className="relative z-10 px-[5%] pt-20 pb-10">
+
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/20 to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
           <p className="section-label light">Our Safari Collection</p>
-          <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white leading-tight">
-            Find Your Perfect <em className="italic">Safari</em>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1]">
+            Find Your Perfect <em className="italic text-beige">Safari</em>
           </h1>
-          <p className="text-white/70 mt-3 text-[0.95rem] max-w-md">
-            From the Great Migration to gorilla trekking.
+          <p className="text-white/80 mt-4 text-[1rem] max-w-md leading-relaxed">
+            From the Great Migration to gorilla trekking. Explore our handpicked
+            expeditions across East Africa.
           </p>
         </div>
       </div>
+
       <div className="section-pad">
         <ToursContent
           destination={destination}

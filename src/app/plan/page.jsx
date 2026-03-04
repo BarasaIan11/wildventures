@@ -44,26 +44,36 @@ export default function PlanPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
+      {/* HERO SECTION */}
+      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
-          src="/images/hero/about-hero.png"
+          src="/images/hero/plan-hero.png"
           alt="Plan your safari"
           fill
-          className="object-cover brightness-50"
+          priority
+          className="object-cover animate-hero-zoom"
         />
-        <div className="relative z-10 px-[5%] pb-10 pt-24">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
           <p className="section-label light">Custom Safari Planner</p>
-          <h1 className="font-serif text-[clamp(2rem,5vw,3.5rem)] font-light text-white">
-            Tell Us Your <em className="italic">Dream Safari</em>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-2xl">
+            Tell Us Your <br />
+            <em className="italic text-beige">Dream Safari</em>
           </h1>
+          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
+            Your journey should be as unique as you are. Share your vision with
+            us, and we'll bring the magic of Africa to life.
+          </p>
         </div>
       </div>
 
       <section className="section-pad">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-sm shadow-card p-8 md:p-12">
-            <p className="text-gray-500 text-[0.95rem] leading-relaxed mb-10">
+          <div className="bg-white rounded-sm shadow-card p-8 md:p-12 -mt-20 relative z-20">
+            <p className="text-gray-500 text-[0.95rem] leading-relaxed mb-10 border-l-2 border-orange/30 pl-6">
               Fill in the form below and our safari specialists will design a
               completely personalised itinerary just for you — no obligation, no
               pressure.

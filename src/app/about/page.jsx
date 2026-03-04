@@ -4,7 +4,7 @@ import RevealWrapper from "@/components/shared/RevealWrapper";
 import BookingCTA from "@/components/home/BookingCTA";
 
 export const metadata = {
-  title: "About Us — Our Story, Mission & Values",
+  title: "About Us — Our Story, Mission & Values | WildVentures",
   description:
     "WildVentures was born from a deep love of East Africa. Learn our story, our people, and our commitment to conservation.",
 };
@@ -124,38 +124,46 @@ const partners = [
 export default function AboutPage() {
   return (
     <>
-      {/* ── HERO */}
-      <div className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
+      {/* HERO */}
+      <div className="relative h-[70vh] min-h-[520px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/about-hero.png"
           alt="WildVentures safari guide in the bush"
           fill
           priority
-          className="object-cover brightness-[0.45]"
+          className="object-cover scale-105 animate-hero-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
-        <div className="relative z-10 px-[5%] pb-14 pt-24 max-w-4xl">
-          <RevealWrapper>
-            <p className="section-label light">Our Story</p>
-          </RevealWrapper>
-          <RevealWrapper delay={0.1}>
-            <h1 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-light text-white leading-[1.05] mb-5">
-              We Live for the
-              <br />
-              <em className="italic text-beige">Moment of Encounter</em>
-            </h1>
-          </RevealWrapper>
-          <RevealWrapper delay={0.2}>
-            <p className="text-white/70 text-[1rem] leading-relaxed max-w-xl">
-              WildVentures was not built in a boardroom. It was built around
-              campfires, beneath acacia trees, on the edge of the Mara River —
-              by people who believe East Africa is the greatest place on earth.
-            </p>
-          </RevealWrapper>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
+          <div className="max-w-4xl">
+            <RevealWrapper>
+              <p className="section-label light">Our Story</p>
+            </RevealWrapper>
+            <RevealWrapper delay={0.1}>
+              <h1 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-[1.05] mb-6">
+                We Live for the
+                <br />
+                <span className="italic font-normal text-beige">
+                  Moment of Encounter
+                </span>
+              </h1>
+            </RevealWrapper>
+            <RevealWrapper delay={0.2}>
+              <p className="text-white/80 text-[1.1rem] leading-relaxed max-w-xl font-light">
+                WildVentures was not built in a boardroom. It was built around
+                campfires, beneath acacia trees, on the edge of the Mara River —
+                by people who believe East Africa is the greatest place on
+                earth.
+              </p>
+            </RevealWrapper>
+          </div>
         </div>
       </div>
 
-      {/* ── FOUNDING STORY */}
+      {/* FOUNDING STORY*/}
       <section className="section-pad bg-ivory">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <RevealWrapper className="relative h-[500px]">
@@ -164,7 +172,7 @@ export default function AboutPage() {
               alt="East African safari landscape"
               width={560}
               height={400}
-              className="absolute top-0 right-0 w-[82%] h-[75%] object-cover rounded-sm"
+              className="absolute top-0 right-0 w-[82%] h-[75%] object-cover rounded-sm shadow-card"
             />
             <Image
               src="/images/about/story-accent.png"
@@ -226,7 +234,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── MISSION */}
-      <section className="bg-green py-20 px-[5%] text-center relative overflow-hidden">
+      <section className="bg-green py-24 px-[5%] text-center relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -236,15 +244,14 @@ export default function AboutPage() {
         />
         <RevealWrapper className="relative z-10 max-w-3xl mx-auto">
           <p className="section-label light justify-center">Our Mission</p>
-          <h2 className="font-serif text-[clamp(1.6rem,4vw,2.8rem)] font-light text-white leading-[1.3] mb-6">
+          <h2 className="font-serif text-[clamp(1.8rem,4vw,3.2rem)] font-light text-white leading-[1.3] mb-8">
             "To connect people with the wild heart of East Africa — and in doing
             so, inspire a generation of conservationists."
           </h2>
-          <p className="text-white/60 text-[0.95rem] leading-relaxed max-w-xl mx-auto">
+          <p className="text-white/60 text-[1rem] leading-relaxed max-w-xl mx-auto font-light">
             Every safari we run is built on three pillars: an extraordinary
             experience for the guest, a fair livelihood for the local community,
-            and a measurable contribution to wildlife conservation. If we cannot
-            deliver all three, we do not run the trip.
+            and a measurable contribution to wildlife conservation.
           </p>
         </RevealWrapper>
       </section>
@@ -280,10 +287,10 @@ export default function AboutPage() {
                       >
                         {m.year}
                       </span>
-                      <h3 className="font-serif text-[1.3rem] text-charcoal mb-2">
+                      <h3 className="font-serif text-[1.4rem] text-charcoal mb-2">
                         {m.title}
                       </h3>
-                      <p className="text-[0.9rem] text-gray-500 leading-relaxed">
+                      <p className="text-[0.95rem] text-gray-500 leading-relaxed font-light">
                         {m.desc}
                       </p>
                     </div>
@@ -300,8 +307,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── VALUES */}
-      <section className="section-pad bg-beige/50">
-        <RevealWrapper className="text-center mb-14">
+      <section className="section-pad bg-beige/30">
+        <RevealWrapper className="text-center mb-16">
           <p className="section-label justify-center">What We Stand For</p>
           <h2 className="section-title">
             Our Values Are Not
@@ -314,20 +321,20 @@ export default function AboutPage() {
             bush.
           </p>
         </RevealWrapper>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {values.map((v, i) => (
             <RevealWrapper key={v.title} delay={(i % 3) * 0.1}>
               <div
-                className="bg-white rounded-sm p-7 h-full hover:-translate-y-1
+                className="bg-white rounded-sm p-8 h-full hover:-translate-y-1.5
                               hover:shadow-card-hover transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-sm bg-beige flex items-center justify-center text-xl mb-5">
+                <div className="w-12 h-12 rounded-sm bg-beige/50 flex items-center justify-center text-2xl mb-6">
                   {v.icon}
                 </div>
-                <h3 className="font-serif text-[1.15rem] text-charcoal mb-3">
+                <h3 className="font-serif text-[1.25rem] text-charcoal mb-4">
                   {v.title}
                 </h3>
-                <p className="text-[0.88rem] text-gray-500 leading-[1.75]">
+                <p className="text-[0.9rem] text-gray-500 leading-[1.8] font-light">
                   {v.desc}
                 </p>
               </div>
@@ -343,9 +350,12 @@ export default function AboutPage() {
             src="/images/about/conservation.png"
             alt="Conservation"
             fill
-            className="object-cover opacity-10"
+            className="object-cover opacity-40"
           />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/80 to-transparent" />
         </div>
+
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <RevealWrapper>
@@ -353,9 +363,9 @@ export default function AboutPage() {
               <h2 className="section-title white">
                 Every Booking
                 <br />
-                <em>Protects the Wild</em>
+                <em className="text-green-light">Protects the Wild</em>
               </h2>
-              <div className="space-y-4 text-[0.93rem] text-white/60 leading-[1.85] mb-8">
+              <div className="space-y-4 text-[0.93rem] text-white/70 leading-[1.85] mb-8">
                 <p>
                   We established the WildVentures Conservation Fund in 2017 with
                   a simple, non-negotiable pledge: 3% of every booking goes
@@ -377,13 +387,14 @@ export default function AboutPage() {
                 Read Our Impact Report
               </a>
             </RevealWrapper>
+
             <RevealWrapper delay={0.15}>
               <div className="grid grid-cols-2 gap-4">
                 {conservation.map(({ num, label }) => (
                   <div
                     key={label}
                     className="bg-white/5 border border-white/10 rounded-sm p-6
-                                             hover:bg-white/10 transition-colors duration-300"
+                                       hover:bg-white/10 transition-colors duration-300"
                   >
                     <p className="font-serif text-[2.4rem] text-orange font-light leading-none mb-2">
                       {num}
@@ -416,145 +427,49 @@ export default function AboutPage() {
 
       {/* ── TEAM */}
       <section className="section-pad bg-ivory">
-        <RevealWrapper className="text-center mb-14">
+        <RevealWrapper className="text-center mb-16">
           <p className="section-label justify-center">The People Behind It</p>
           <h2 className="section-title">
             Meet the
             <br />
             <em>WildVentures Team</em>
           </h2>
-          <p className="section-sub mx-auto text-center mt-2">
-            Born and raised across East Africa, our team brings together decades
-            of bush experience, deep cultural knowledge, and an infectious love
-            for this land.
-          </p>
         </RevealWrapper>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {team.map((member, i) => (
             <RevealWrapper key={member.name} delay={i * 0.1}>
               <div
                 className="group bg-white rounded-sm overflow-hidden shadow-card
-                              hover:-translate-y-1.5 hover:shadow-card-hover transition-all duration-300"
+                              hover:-translate-y-2 hover:shadow-card-hover transition-all duration-300"
               >
-                {/* Avatar — initials placeholder until real photos added */}
                 <div
                   className={`aspect-[3/4] ${member.color} flex items-center justify-center
                                   relative overflow-hidden`}
                 >
-                  <span className="font-serif text-[4rem] text-white/30 select-none">
+                  <span className="font-serif text-[5rem] text-white/20 select-none">
                     {member.initials}
                   </span>
-                  {/* subtle pattern overlay */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at 30% 30%, white 1px, transparent 1px)",
-                      backgroundSize: "24px 24px",
-                    }}
-                  />
-                  {/* country flag bottom */}
-                  <div className="absolute bottom-4 left-0 right-0 text-center">
-                    <span className="text-white/60 text-[0.72rem] tracking-widest uppercase">
+                  <div className="absolute bottom-6 left-0 right-0 text-center">
+                    <span className="text-white/40 text-[0.7rem] tracking-[0.2em] uppercase font-medium">
                       {member.tag}
                     </span>
                   </div>
                 </div>
-                {/* Info */}
-                <div className="p-5">
-                  <h3 className="font-serif text-[1.1rem] text-charcoal mb-0.5">
+                <div className="p-6">
+                  <h3 className="font-serif text-[1.2rem] text-charcoal mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-[0.75rem] text-green font-medium tracking-wide mb-3">
+                  <p className="text-[0.75rem] text-orange font-semibold tracking-wider uppercase mb-4">
                     {member.role}
                   </p>
-                  <p className="text-[0.83rem] text-gray-400 leading-[1.7]">
+                  <p className="text-[0.88rem] text-gray-500 leading-[1.7] font-light">
                     {member.bio}
-                  </p>
-                  {/* Photo placeholder note */}
-                  <p className="text-[0.7rem] text-orange/60 mt-3 italic">
-                    Photo coming soon
                   </p>
                 </div>
               </div>
             </RevealWrapper>
           ))}
-        </div>
-      </section>
-
-      {/* ── CREDENTIALS */}
-      <section className="section-pad bg-beige/40">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <RevealWrapper>
-            <p className="section-label">Why Trust WildVentures</p>
-            <h2 className="section-title">
-              A Company Built on
-              <br />
-              <em>Reputation</em>
-            </h2>
-            <p className="section-sub mb-8">
-              We have never spent a shilling on advertising. Every guest we have
-              ever had came through a recommendation, a review, or a return
-              visit. That is the only metric that matters to us.
-            </p>
-            <div className="space-y-4">
-              {[
-                {
-                  icon: "🏆",
-                  text: "Rated #1 Safari Operator in East Africa — TripAdvisor 2023",
-                },
-                {
-                  icon: "✅",
-                  text: "Fully licensed by Kenya Tourism Board & Tanzania Tourist Board",
-                },
-                {
-                  icon: "🌍",
-                  text: "Member — African Safari Operators Association",
-                },
-                {
-                  icon: "💚",
-                  text: "Certified Eco-Tourism operator — ESOK (Ecotourism Society of Kenya)",
-                },
-                {
-                  icon: "⭐",
-                  text: "4.9 / 5 average rating across 347 verified reviews",
-                },
-              ].map(({ icon, text }) => (
-                <div key={text} className="flex items-start gap-3">
-                  <span className="text-lg flex-shrink-0 mt-0.5">{icon}</span>
-                  <p className="text-[0.9rem] text-gray-600 leading-relaxed">
-                    {text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </RevealWrapper>
-
-          <RevealWrapper delay={0.15}>
-            <div className="relative">
-              <Image
-                src="/images/about/trust.png"
-                alt="Safari in East Africa"
-                width={600}
-                height={440}
-                className="w-full object-cover rounded-sm shadow-card-hover"
-              />
-              <div
-                className="absolute -bottom-6 -left-6 bg-green text-white p-7
-                              max-w-[280px] rounded-sm shadow-[0_16px_48px_rgba(0,0,0,0.2)]
-                              hidden md:block"
-              >
-                <p className="font-serif text-[0.95rem] italic leading-relaxed text-beige mb-4">
-                  "We don't sell holidays. We deliver moments people carry for
-                  the rest of their lives."
-                </p>
-                <p className="text-[0.75rem] text-white/60">
-                  — James Mwangi, Founder
-                </p>
-              </div>
-            </div>
-          </RevealWrapper>
         </div>
       </section>
 
