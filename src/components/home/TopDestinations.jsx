@@ -71,19 +71,24 @@ export default function TopDestinations() {
 }
 
 function DestCard({ dest, tall = false }) {
+  // Use a relative wrapper so the Image can fill and maintain cover
+  // Remove explicit width/height to avoid Next.js's intrinsic size
+  // which was causing the grey gap when the container grew larger than
+  // the calculated aspect ratio. Instead we control the aspect ratio
+  // with Tailwind's `aspect-` utilities and let the image `fill`.
   return (
     <Link
       href={`/destinations/${dest.slug}`}
       className="group block relative rounded-sm overflow-hidden h-full"
     >
-      <Image
-        src={dest.image}
-        alt={dest.name}
-        width={tall ? 800 : 600}
-        height={tall ? 520 : 280}
-        className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]
-                    ${tall ? "min-h-[280px] md:min-h-[360px]" : "min-h-[200px] md:min-h-[230px]"}`}
-      />
+      {/* container for aspect ratio */}
+      <div
+        className={`relative w-full h-full transition-transform duration-700 group-hover:scale-[1.05]
+            ${tall ? "aspect-[800/520] min-h-[280px] md:min-h-[360px]" : "aspect-[600/280] min-h-[200px] md:min-h-[230px]"}`}
+      >
+        <Image src={dest.image} alt={dest.name} fill className="object-cover" />
+      </div>
+
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent

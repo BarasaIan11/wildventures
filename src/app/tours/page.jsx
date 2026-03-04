@@ -1,84 +1,89 @@
-import { Suspense } from 'react'
-import Image from 'next/image'
-import TourCard from '@/components/tours/TourCard'
-import TourFilters from '@/components/tours/TourFilters'
-import BookingCTA from '@/components/home/BookingCTA'
-import { tours } from '@/data/tours'
+import { Suspense } from "react";
+import Image from "next/image";
+import TourCard from "@/components/tours/TourCard";
+import TourFilters from "@/components/tours/TourFilters";
+import BookingCTA from "@/components/home/BookingCTA";
+import { tours } from "@/data/tours";
 
-export const metadata = { title: 'Safari Tours' }
+export const metadata = { title: "Safari Tours" };
 
-function ToursContent({ searchParams }) {
-  const { destination, style, duration } = searchParams
-
-  let filtered = [...tours]
-  if (destination) filtered = filtered.filter(t => t.destinationSlugs.includes(destination))
-  if (style)       filtered = filtered.filter(t => t.style.toLowerCase() === style)
+function ToursContent({ destination, style, duration }) {
+  let filtered = [...tours];
+  if (destination)
+    filtered = filtered.filter((t) => t.destinationSlugs.includes(destination));
+  if (style) filtered = filtered.filter((t) => t.style.toLowerCase() === style);
   if (duration) {
-    const map = { short:[3,5], medium:[6,8], long:[9,14] }
-    const [min,max] = map[duration] || [0,99]
-    filtered = filtered.filter(t => {
-      const days = parseInt(t.duration)
-      return days >= min && days <= max
-    })
+    const map = { short: [3, 5], medium: [6, 8], long: [9, 14] };
+    const [min, max] = map[duration] || [0, 99];
+    filtered = filtered.filter((t) => {
+      const days = parseInt(t.duration);
+      return days >= min && days <= max;
+    });
   }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
-      {/* Filters sidebar */}
-      <Suspense>
+      <Suspense fallback={<div />}>
         <TourFilters />
       </Suspense>
-
-      {/* Tours grid */}
       <div>
         <div className="flex justify-between items-center mb-6">
           <p className="text-[0.88rem] text-gray-500">
-            <span className="font-medium text-charcoal">{filtered.length}</span> safaris found
+            <span className="font-medium text-charcoal">{filtered.length}</span>{" "}
+            safaris found
           </p>
         </div>
-
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filtered.map(tour => <TourCard key={tour.id} tour={tour} />)}
+            {filtered.map((tour) => (
+              <TourCard key={tour.id} tour={tour} />
+            ))}
           </div>
         ) : (
           <div className="text-center py-20 bg-white rounded-sm">
-            <p className="font-serif text-2xl text-charcoal mb-3">No safaris match your filters</p>
-            <p className="text-gray-400 text-sm">Try adjusting your search criteria</p>
+            <p className="font-serif text-2xl text-charcoal mb-3">
+              No safaris match your filters
+            </p>
+            <p className="text-gray-400 text-sm">
+              Try adjusting your search criteria
+            </p>
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default function ToursPage({ searchParams }) {
+export default async function ToursPage({ searchParams }) {
+  const params = await searchParams;
+  const { destination, style, duration } = params;
   return (
     <>
-      {/* Page Hero */}
-      <div className="relative h-[45vh] min-h-[320px] flex items-center overflow-hidden">
+      <div className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1800&q=80"
+          src="/images/hero/tours-hero.png"
           alt="Safari tours"
-          fill className="object-cover brightness-50"
+          fill
+          className="object-cover brightness-50"
         />
-        <div className="relative z-10 px-[5%] pt-20">
+        <div className="relative z-10 px-[5%] pt-20 pb-10">
           <p className="section-label light">Our Safari Collection</p>
           <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white leading-tight">
             Find Your Perfect <em className="italic">Safari</em>
           </h1>
           <p className="text-white/70 mt-3 text-[0.95rem] max-w-md">
-            From the Great Migration to gorilla trekking — every journey crafted with care.
+            From the Great Migration to gorilla trekking.
           </p>
         </div>
       </div>
-
-      {/* Content */}
       <div className="section-pad">
-        <ToursContent searchParams={searchParams} />
+        <ToursContent
+          destination={destination}
+          style={style}
+          duration={duration}
+        />
       </div>
-
       <BookingCTA />
     </>
-  )
+  );
 }

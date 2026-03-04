@@ -151,7 +151,7 @@ export default function TourDetailPage({ params }) {
             {/* Included / Excluded */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <p className="section-label">What&apos;s Included</p>
+                <p className="section-label">What's Included</p>
                 <ul className="space-y-2">
                   {tour.included.map((item) => (
                     <li
@@ -191,13 +191,18 @@ export default function TourDetailPage({ params }) {
                       className="bg-white shadow-card rounded-sm p-6"
                     >
                       <div className="flex items-center gap-3 mb-3">
-                        <Image
-                          src={r.avatar}
-                          alt={r.name}
-                          width={40}
-                          height={40}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-beige"
+                          style={{ backgroundColor: r.color || "#2F4F3E" }}
+                        >
+                          <span className="text-white font-medium text-[0.75rem]">
+                            {r.initials ||
+                              r.name
+                                ?.split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                          </span>
+                        </div>
                         <div>
                           <p className="font-medium text-[0.9rem]">{r.name}</p>
                           <p className="text-orange text-[0.8rem]">
@@ -206,7 +211,7 @@ export default function TourDetailPage({ params }) {
                         </div>
                       </div>
                       <p className="font-serif italic text-[0.95rem] text-gray-600 leading-relaxed">
-                        &quot;{r.comment}&quot;
+                        "{r.comment}"
                       </p>
                     </div>
                   ))}

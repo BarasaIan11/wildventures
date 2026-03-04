@@ -11,15 +11,13 @@ export const tours = [
     maxGroup: 8,
     price: 3850,
     style: "Luxury",
-    image:
-      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1800&q=80",
+    image: "/images/tours/migration.png",
+    heroImage: "/images/tours/migration.png",
     gallery: [
-      "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80",
-      "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?w=800&q=80",
-      "https://images.unsplash.com/photo-1518715308788-3005759c61c3?w=800&q=80",
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80",
+      "/images/hero/hero-main.png",
+      "/images/hero/about-hero.png",
+      "/images/gallery/gallery-2.png",
+      "/images/tours/family-safari.png",
     ],
     summary:
       "Witness one of nature's greatest spectacles as millions of wildebeest thunder across the Serengeti plains into Kenya's Masai Mara. An experience that will stay with you forever.",
@@ -120,8 +118,8 @@ export const tours = [
         name: "Sarah Mitchell",
         location: "London, UK",
         rating: 5,
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+        initials: "SM",
+        color: "#2F4F3E",
         comment:
           "Witnessing the crossing was surreal. WildVentures positioned us perfectly — we were the only vehicle there. Pure magic.",
       },
@@ -129,8 +127,8 @@ export const tours = [
         name: "David Osei",
         location: "Accra, Ghana",
         rating: 5,
-        avatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+        initials: "DO",
+        color: "#1E1E1E",
         comment:
           "The guides are extraordinary naturalists. Every detail was handled flawlessly. Worth every penny.",
       },
@@ -148,13 +146,9 @@ export const tours = [
     maxGroup: 6,
     price: 4200,
     style: "Luxury",
-    image:
-      "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80",
-    ],
+    image: "/images/tours/ngorongoro.png",
+    heroImage: "/images/tours/ngorongoro.png",
+    gallery: ["/images/destinations/tanzania.png"],
     summary:
       "Tanzania's crown jewels in one journey — descend into the ancient Ngorongoro Crater and roam the endless Serengeti plains in total luxury.",
     highlights: [
@@ -246,13 +240,9 @@ export const tours = [
     maxGroup: 10,
     price: 1950,
     style: "Mid-Range",
-    image:
-      "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=1800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80",
-    ],
+    image: "/images/hero/contact-hero.png",
+    heroImage: "/images/hero/contact-hero.png",
+    gallery: ["/images/tours/family-safari.png"],
     summary:
       "Kenya's two crown jewels in one trip — elephants beneath Kilimanjaro in Amboseli, then the big cat paradise of the Masai Mara.",
     highlights: [
@@ -331,13 +321,9 @@ export const tours = [
     maxGroup: 6,
     price: 2200,
     style: "Luxury",
-    image:
-      "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=800&q=80",
-    ],
+    image: "/images/tours/gorilla.png",
+    heroImage: "/images/tours/gorilla.png",
+    gallery: ["/images/destinations/rwanda.png"],
     summary:
       "Come face to face with endangered mountain gorillas in the misty bamboo forests of Rwanda's Volcanoes National Park. A life-changing encounter.",
     highlights: [
@@ -405,8 +391,8 @@ export const tours = [
         name: "Aisha Kamara",
         location: "Dubai, UAE",
         rating: 5,
-        avatar:
-          "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80",
+        initials: "AK",
+        color: "#C47A2C",
         comment:
           "Looking into the eyes of a gorilla from a few feet away... there are no words. The most profound experience of my life.",
       },
@@ -424,13 +410,9 @@ export const tours = [
     maxGroup: 8,
     price: 2650,
     style: "Luxury",
-    image:
-      "https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=1800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80",
-    ],
+    image: "/images/tours/uganda-primates.png",
+    heroImage: "/images/tours/uganda-primates.png",
+    gallery: ["/images/destinations/uganda.png"],
     summary:
       "Track chimpanzees in Kibale Forest and gorillas in Bwindi — a primate paradise in Africa's greenest, most dramatic landscape.",
     highlights: [
@@ -513,10 +495,8 @@ export const tours = [
     maxGroup: 12,
     price: 2800,
     style: "Family",
-    image:
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=1800&q=80",
+    image: "/images/tours/family-safari.png",
+    heroImage: "/images/tours/family-safari.png",
     gallery: [],
     summary:
       "A kid-friendly Kenya safari designed for wonder — game drives, junior ranger programs, Masai cultural experiences, and stories around the campfire.",
@@ -612,10 +592,8 @@ export const tours = [
     maxGroup: 8,
     price: 5800,
     style: "Luxury",
-    image:
-      "https://images.unsplash.com/photo-1571988840298-3b5301d5109b?w=700&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1571988840298-3b5301d5109b?w=1800&q=80",
+    image: "/images/tours/grand-loop.png",
+    heroImage: "/images/tours/grand-loop.png",
     gallery: [],
     summary:
       "The ultimate East African journey — the Great Migration, Ngorongoro Crater, and mountain gorilla trekking all in one extraordinary two-week adventure.",

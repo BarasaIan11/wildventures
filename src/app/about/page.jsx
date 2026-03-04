@@ -9,13 +9,11 @@ export const metadata = {
     "WildVentures was born from a deep love of East Africa. Learn our story, our people, and our commitment to conservation.",
 };
 
-/* ─── Data ─────────────────────────────────────── */
-
 const milestones = [
   {
     year: "2009",
     title: "The Beginning",
-    desc: "Ian Barasa leads his first private safari out of Nairobi with a single Land Cruiser and an unshakeable belief that travel done right can change people — and protect wildlife.",
+    desc: "James Mwangi leads his first private safari out of Nairobi with a single Land Cruiser and an unshakeable belief that travel done right can change people — and protect wildlife.",
   },
   {
     year: "2013",
@@ -74,36 +72,36 @@ const values = [
 
 const team = [
   {
-    name: "Ian Barasa",
+    name: "James Mwangi",
     role: "Founder & Lead Naturalist",
-    bio: "Born in the shadow of Mount Kenya, Ian has spent 20 years guiding across East Africa. His encyclopaedic knowledge of animal behaviour has made him one of the region's most respected naturalists.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80",
     tag: "🇰🇪 Nairobi, Kenya",
+    initials: "JM",
+    color: "bg-green",
+    bio: "Born in the shadow of Mount Kenya, James has spent 20 years guiding across East Africa. His encyclopaedic knowledge of animal behaviour has made him one of the region's most respected naturalists.",
   },
   {
-    name: "Michelle Ndegwa",
+    name: "Amina Hassan",
     role: "Head of Safari Operations",
-    bio: 'Michelle has orchestrated thousands of seamless safaris across Tanzania and Kenya. Her obsessive attention to detail is why guests say every WildVentures trip "just works".',
-    image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=500&q=80",
     tag: "🇹🇿 Arusha, Tanzania",
+    initials: "AH",
+    color: "bg-orange",
+    bio: 'Amina has orchestrated thousands of seamless safaris across Tanzania and Kenya. Her obsessive attention to detail is why guests say every WildVentures trip "just works".',
   },
   {
-    name: "Vincent Kyalo",
+    name: "Emmanuel Kagabo",
     role: "Rwanda & Uganda Specialist",
-    bio: "Vincent grew up near Volcanoes National Park and tracked his first gorilla family at 14. Today he leads our primate experiences with unmatched intimacy and expertise.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80",
     tag: "🇷🇼 Kigali, Rwanda",
+    initials: "EK",
+    color: "bg-charcoal",
+    bio: "Emmanuel grew up near Volcanoes National Park and tracked his first gorilla family at 14. Today he leads our primate experiences with unmatched intimacy and expertise.",
   },
   {
-    name: "Caroline Waiyego",
+    name: "Grace Nakimuli",
     role: "Guest Experience Manager",
-    bio: "Caroline ensures every guest feels personally looked after — from the first enquiry email to the farewell transfer. Her warmth is the soul of the WildVentures experience.",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
     tag: "🇺🇬 Kampala, Uganda",
+    initials: "GN",
+    color: "bg-green-dark",
+    bio: "Grace ensures every guest feels personally looked after — from the first enquiry email to the farewell transfer. Her warmth is the soul of the WildVentures experience.",
   },
 ];
 
@@ -123,23 +121,19 @@ const partners = [
   "Big Life Foundation",
 ];
 
-/* ─── Page ─────────────────────────────────────── */
-
 export default function AboutPage() {
   return (
     <>
-      {/* ══ HERO ══════════════════════════════════════════════════ */}
+      {/* ── HERO */}
       <div className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?w=1800&q=80"
+          src="/images/hero/about-hero.png"
           alt="WildVentures safari guide in the bush"
           fill
           priority
           className="object-cover brightness-[0.45]"
         />
-        {/* top gradient for navbar */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
-
         <div className="relative z-10 px-[5%] pb-14 pt-24 max-w-4xl">
           <RevealWrapper>
             <p className="section-label light">Our Story</p>
@@ -161,27 +155,25 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ══ FOUNDING STORY ════════════════════════════════════════ */}
+      {/* ── FOUNDING STORY */}
       <section className="section-pad bg-ivory">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          {/* Image stack */}
           <RevealWrapper className="relative h-[500px]">
             <Image
-              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80"
-              alt="East African sunset"
+              src="/images/about/story-main.png"
+              alt="East African safari landscape"
               width={560}
               height={400}
               className="absolute top-0 right-0 w-[82%] h-[75%] object-cover rounded-sm"
             />
             <Image
-              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=80"
+              src="/images/about/story-accent.png"
               alt="Wildebeest migration"
               width={340}
               height={280}
               className="absolute bottom-0 left-0 w-[55%] h-[48%] object-cover rounded-sm
                          border-[6px] border-ivory shadow-card-hover"
             />
-            {/* floating stat */}
             <div
               className="absolute bottom-[44%] right-[-10px] lg:right-[-30px]
                             bg-orange text-white px-5 py-4 text-center rounded-sm
@@ -198,7 +190,6 @@ export default function AboutPage() {
             </div>
           </RevealWrapper>
 
-          {/* Text */}
           <RevealWrapper delay={0.15}>
             <p className="section-label">How It All Started</p>
             <h2 className="section-title">
@@ -208,23 +199,23 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-[0.95rem] text-gray-500 leading-[1.85]">
               <p>
-                In 2009, Ian Barasa — a young guide from Nyeri, Kenya — packed
+                In 2009, James Mwangi — a young guide from Nyeri, Kenya — packed
                 everything he owned into a second-hand Land Cruiser and drove to
                 the Masai Mara with one guest: a retired schoolteacher from
                 Edinburgh who had dreamed of Africa her whole life.
               </p>
               <p>
-                She cried at her first river crossing. Ian knew, watching her,
+                She cried at her first river crossing. James knew, watching her,
                 that this was not just a job. This was the most important thing
                 he would ever do.
               </p>
               <p>
                 Fifteen years later, WildVentures has taken over 3,200 people
                 from 60 countries into East Africa's greatest wild places. The
-                Land Cruiser has been replaced by a fleet. The team has grown to
-                40. But every safari still begins the same way — with a guide
-                who genuinely loves the land, and a guest about to have their
-                life changed.
+                Land Cruiser has been replaced by a fleet. The team has grown.
+                But every safari still begins the same way — with a guide who
+                genuinely loves the land, and a guest about to have their life
+                changed.
               </p>
             </div>
             <Link href="/tours" className="btn btn-primary mt-8 inline-block">
@@ -234,9 +225,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ MISSION STATEMENT ═════════════════════════════════════ */}
+      {/* ── MISSION */}
       <section className="bg-green py-20 px-[5%] text-center relative overflow-hidden">
-        {/* decorative radial */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -259,7 +249,7 @@ export default function AboutPage() {
         </RevealWrapper>
       </section>
 
-      {/* ══ TIMELINE / STORY ══════════════════════════════════════ */}
+      {/* ── TIMELINE */}
       <section className="section-pad bg-ivory">
         <div className="max-w-4xl mx-auto">
           <RevealWrapper className="text-center mb-16">
@@ -270,33 +260,23 @@ export default function AboutPage() {
               <em>Making</em>
             </h2>
           </RevealWrapper>
-
           <div className="relative">
-            {/* vertical line */}
             <div
               className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-beige-dark
                             md:-translate-x-px hidden sm:block"
             />
-
             <div className="space-y-10">
               {milestones.map((m, i) => (
                 <RevealWrapper key={m.year} delay={i * 0.1}>
                   <div
-                    className={`flex gap-6 md:gap-0 items-start
-                    ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                    className={`flex gap-6 md:gap-0 items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                   >
-                    {/* Text side */}
                     <div
-                      className={`flex-1 ${
-                        i % 2 === 0
-                          ? "md:pr-12 md:text-right"
-                          : "md:pl-12 md:text-left"
-                      }`}
+                      className={`flex-1 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
                     >
                       <span
-                        className="inline-block bg-beige text-green text-[0.7rem]
-                                       tracking-[0.15em] uppercase font-medium px-3 py-1
-                                       rounded-sm mb-3"
+                        className="inline-block bg-beige text-green text-[0.7rem] tracking-[0.15em]
+                                       uppercase font-medium px-3 py-1 rounded-sm mb-3"
                       >
                         {m.year}
                       </span>
@@ -307,16 +287,9 @@ export default function AboutPage() {
                         {m.desc}
                       </p>
                     </div>
-
-                    {/* Centre dot */}
                     <div className="hidden md:flex w-14 flex-shrink-0 justify-center items-start pt-1">
-                      <div
-                        className="w-4 h-4 rounded-full bg-orange border-4 border-ivory
-                                      shadow-[0_0_0_2px_#C47A2C]"
-                      />
+                      <div className="w-4 h-4 rounded-full bg-orange border-4 border-ivory shadow-[0_0_0_2px_#C47A2C]" />
                     </div>
-
-                    {/* Empty side */}
                     <div className="flex-1 hidden md:block" />
                   </div>
                 </RevealWrapper>
@@ -326,7 +299,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ VALUES ════════════════════════════════════════════════ */}
+      {/* ── VALUES */}
       <section className="section-pad bg-beige/50">
         <RevealWrapper className="text-center mb-14">
           <p className="section-label justify-center">What We Stand For</p>
@@ -341,7 +314,6 @@ export default function AboutPage() {
             bush.
           </p>
         </RevealWrapper>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {values.map((v, i) => (
             <RevealWrapper key={v.title} delay={(i % 3) * 0.1}>
@@ -349,10 +321,7 @@ export default function AboutPage() {
                 className="bg-white rounded-sm p-7 h-full hover:-translate-y-1
                               hover:shadow-card-hover transition-all duration-300"
               >
-                <div
-                  className="w-12 h-12 rounded-sm bg-beige flex items-center justify-center
-                                text-xl mb-5"
-                >
+                <div className="w-12 h-12 rounded-sm bg-beige flex items-center justify-center text-xl mb-5">
                   {v.icon}
                 </div>
                 <h3 className="font-serif text-[1.15rem] text-charcoal mb-3">
@@ -367,12 +336,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ CONSERVATION ══════════════════════════════════════════ */}
+      {/* ── CONSERVATION */}
       <section className="section-pad bg-charcoal relative overflow-hidden">
-        {/* background image faint */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=1400&q=60"
+            src="/images/about/conservation.png"
             alt="Conservation"
             fill
             className="object-cover opacity-10"
@@ -409,15 +377,13 @@ export default function AboutPage() {
                 Read Our Impact Report
               </a>
             </RevealWrapper>
-
-            {/* Stats */}
             <RevealWrapper delay={0.15}>
               <div className="grid grid-cols-2 gap-4">
                 {conservation.map(({ num, label }) => (
                   <div
                     key={label}
                     className="bg-white/5 border border-white/10 rounded-sm p-6
-                               hover:bg-white/10 transition-colors duration-300"
+                                             hover:bg-white/10 transition-colors duration-300"
                   >
                     <p className="font-serif text-[2.4rem] text-orange font-light leading-none mb-2">
                       {num}
@@ -428,8 +394,6 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-
-              {/* Partners */}
               <div className="mt-8 pt-8 border-t border-white/10">
                 <p className="text-[0.7rem] tracking-[0.15em] uppercase text-white/35 mb-4">
                   Conservation Partners
@@ -438,8 +402,7 @@ export default function AboutPage() {
                   {partners.map((p) => (
                     <span
                       key={p}
-                      className="text-[0.78rem] text-white/50 bg-white/5 border border-white/10
-                                 px-3 py-1.5 rounded-sm"
+                      className="text-[0.78rem] text-white/50 bg-white/5 border border-white/10 px-3 py-1.5 rounded-sm"
                     >
                       {p}
                     </span>
@@ -451,7 +414,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ TEAM ══════════════════════════════════════════════════ */}
+      {/* ── TEAM */}
       <section className="section-pad bg-ivory">
         <RevealWrapper className="text-center mb-14">
           <p className="section-label justify-center">The People Behind It</p>
@@ -474,26 +437,32 @@ export default function AboutPage() {
                 className="group bg-white rounded-sm overflow-hidden shadow-card
                               hover:-translate-y-1.5 hover:shadow-card-hover transition-all duration-300"
               >
-                {/* Photo */}
-                <div className="overflow-hidden aspect-[3/4] relative">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-700
-                               group-hover:scale-[1.04]"
-                  />
-                  {/* green overlay on hover */}
+                {/* Avatar — initials placeholder until real photos added */}
+                <div
+                  className={`aspect-[3/4] ${member.color} flex items-center justify-center
+                                  relative overflow-hidden`}
+                >
+                  <span className="font-serif text-[4rem] text-white/30 select-none">
+                    {member.initials}
+                  </span>
+                  {/* subtle pattern overlay */}
                   <div
-                    className="absolute inset-0 bg-green/0 group-hover:bg-green/20
-                                  transition-all duration-500"
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle at 30% 30%, white 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
                   />
+                  {/* country flag bottom */}
+                  <div className="absolute bottom-4 left-0 right-0 text-center">
+                    <span className="text-white/60 text-[0.72rem] tracking-widest uppercase">
+                      {member.tag}
+                    </span>
+                  </div>
                 </div>
                 {/* Info */}
                 <div className="p-5">
-                  <p className="text-[0.7rem] text-orange tracking-[0.1em] uppercase mb-1">
-                    {member.tag}
-                  </p>
                   <h3 className="font-serif text-[1.1rem] text-charcoal mb-0.5">
                     {member.name}
                   </h3>
@@ -503,6 +472,10 @@ export default function AboutPage() {
                   <p className="text-[0.83rem] text-gray-400 leading-[1.7]">
                     {member.bio}
                   </p>
+                  {/* Photo placeholder note */}
+                  <p className="text-[0.7rem] text-orange/60 mt-3 italic">
+                    Photo coming soon
+                  </p>
                 </div>
               </div>
             </RevealWrapper>
@@ -510,7 +483,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ WHY TRUST US / CREDENTIALS ════════════════════════════ */}
+      {/* ── CREDENTIALS */}
       <section className="section-pad bg-beige/40">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <RevealWrapper>
@@ -525,7 +498,6 @@ export default function AboutPage() {
               ever had came through a recommendation, a review, or a return
               visit. That is the only metric that matters to us.
             </p>
-
             <div className="space-y-4">
               {[
                 {
@@ -559,17 +531,15 @@ export default function AboutPage() {
             </div>
           </RevealWrapper>
 
-          {/* Quote / pull-out */}
           <RevealWrapper delay={0.15}>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=700&q=80"
+                src="/images/about/trust.png"
                 alt="Safari in East Africa"
                 width={600}
                 height={440}
                 className="w-full object-cover rounded-sm shadow-card-hover"
               />
-              {/* floating quote */}
               <div
                 className="absolute -bottom-6 -left-6 bg-green text-white p-7
                               max-w-[280px] rounded-sm shadow-[0_16px_48px_rgba(0,0,0,0.2)]
@@ -580,7 +550,7 @@ export default function AboutPage() {
                   the rest of their lives."
                 </p>
                 <p className="text-[0.75rem] text-white/60">
-                  — Ian Barasa, Founder
+                  — James Mwangi, Founder
                 </p>
               </div>
             </div>
@@ -588,7 +558,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ FINAL CTA ═════════════════════════════════════════════ */}
       <BookingCTA />
     </>
   );

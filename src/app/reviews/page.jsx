@@ -4,6 +4,19 @@ import { testimonials } from "@/data/testimonials";
 
 export const metadata = { title: "Traveler Reviews" };
 
+function Avatar({ initials, color, size = 44 }) {
+  return (
+    <div
+      className="rounded-full flex items-center justify-center flex-shrink-0 border-2 border-beige"
+      style={{ width: size, height: size, backgroundColor: color }}
+    >
+      <span className="text-white font-medium text-[0.75rem] tracking-wide select-none">
+        {initials}
+      </span>
+    </div>
+  );
+}
+
 function StarRating({ n = 5, size = "normal" }) {
   return (
     <p
@@ -15,15 +28,11 @@ function StarRating({ n = 5, size = "normal" }) {
 }
 
 export default function ReviewsPage() {
-  const totalReviews = 347;
-  const avgRating = 4.9;
-
   return (
     <>
-      {/* Hero */}
       <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1521651201144-634f700b36ef?w=1800&q=80"
+          src="/images/hero/reviews-hero.png"
           alt="Happy travelers"
           fill
           className="object-cover brightness-50"
@@ -42,17 +51,14 @@ export default function ReviewsPage() {
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             <div className="md:border-r border-white/20 md:pr-10 flex-shrink-0">
               <p className="font-serif text-[4rem] text-white font-light leading-none">
-                {avgRating}
+                4.9
               </p>
               <StarRating n={5} size="large" />
               <p className="text-white/60 text-[0.8rem] mt-1">out of 5 stars</p>
             </div>
             <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
               {[
-                {
-                  num: totalReviews.toLocaleString(),
-                  label: "Verified Reviews",
-                },
+                { num: "347", label: "Verified Reviews" },
                 { num: "98%", label: "Would Recommend" },
                 { num: "15+", label: "Years of Excellence" },
               ].map(({ num, label }) => (
@@ -79,7 +85,7 @@ export default function ReviewsPage() {
               <p
                 className={`font-serif text-[3.5rem] leading-[0.7] mb-4 ${t.featured ? "text-white/20" : "text-beige"}`}
               >
-                &quot;
+                "
               </p>
               <p
                 className={`font-serif italic text-[1rem] leading-[1.8] mb-5 ${t.featured ? "text-beige" : "text-charcoal"}`}
@@ -88,13 +94,7 @@ export default function ReviewsPage() {
               </p>
               <StarRating n={t.rating} />
               <div className="flex items-center gap-3 mt-3">
-                <Image
-                  src={t.avatar}
-                  alt={t.name}
-                  width={44}
-                  height={44}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-beige"
-                />
+                <Avatar initials={t.initials} color={t.color} />
                 <div>
                   <p
                     className={`font-medium text-[0.9rem] ${t.featured ? "text-white" : "text-charcoal"}`}

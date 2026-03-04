@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 bg-[#1a2e22]">
         <Image
-          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80"
+          src="/images/hero/hero-main.png"
           alt="African elephants at golden hour"
           fill
           priority
@@ -37,7 +37,7 @@ export default function HeroSection() {
         >
           <span className="block w-8 h-px bg-orange flex-shrink-0" />
           <p className="text-beige/90 text-[0.72rem] tracking-[0.2em] uppercase whitespace-nowrap">
-            East Africa&apos;s Premier Safari Company
+            East Africa's Premier Safari Company
           </p>
           <span className="block w-8 h-px bg-orange flex-shrink-0" />
         </div>
@@ -47,7 +47,7 @@ export default function HeroSection() {
           className="font-serif text-[clamp(2.8rem,7.5vw,6rem)] font-light text-white leading-[1.05] tracking-tight mb-6"
           style={{ animation: "fadeUp 0.8s 0.4s both" }}
         >
-          Experience Africa&apos;s
+          Experience Africa's
           <br />
           <em className="italic text-beige">Wild Beauty</em>
         </h1>

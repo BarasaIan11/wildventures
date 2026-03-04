@@ -41,7 +41,7 @@ export default function ContactPage() {
       {/* Hero */}
       <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=1800&q=80"
+          src="/images/hero/contact-hero.png"
           alt="Contact WildVentures"
           fill
           className="object-cover brightness-50"
@@ -49,7 +49,7 @@ export default function ContactPage() {
         <div className="relative z-10 px-[5%] pb-10 pt-24">
           <p className="section-label light">Get In Touch</p>
           <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white">
-            Let&apos;s Plan Your <em className="italic">Safari</em>
+            Let's Plan Your <em className="italic">Safari</em>
           </h1>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
           <div>
             <p className="section-label">Contact Information</p>
             <h2 className="section-title">
-              We&apos;re Here to <em>Help</em>
+              We're Here to <em>Help</em>
             </h2>
             <p className="section-sub mb-10">
               Whether you have a question about a tour, want to customise an
@@ -126,8 +126,7 @@ export default function ContactPage() {
                   Message Sent!
                 </h3>
                 <p className="text-white/70 leading-relaxed">
-                  Thank you for reaching out. We&apos;ll be in touch within 24
-                  hours.
+                  Thank you for reaching out. We'll be in touch within 24 hours.
                 </p>
               </div>
             ) : (

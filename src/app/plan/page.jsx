@@ -47,7 +47,7 @@ export default function PlanPage() {
       {/* Hero */}
       <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?w=1800&q=80"
+          src="/images/hero/about-hero.png"
           alt="Plan your safari"
           fill
           className="object-cover brightness-50"
@@ -199,9 +199,7 @@ export default function PlanPage() {
                     "Tanzania",
                     "Rwanda",
                     "Uganda",
-                    "Botswana",
-                    "Namibia",
-                    "Zanzibar",
+                    "Zanzibar (Beach Extension)",
                     "Open to Suggestions",
                   ].map((d) => (
                     <label
@@ -278,7 +276,7 @@ export default function PlanPage() {
               </button>
 
               <p className="text-center text-[0.78rem] text-gray-400">
-                We&apos;ll respond within 24 hours · No commitment required
+                We'll respond within 24 hours · No commitment required
               </p>
             </form>
           </div>
