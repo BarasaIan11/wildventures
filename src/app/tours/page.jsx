@@ -61,7 +61,7 @@ export default async function ToursPage({ searchParams }) {
     <>
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
-          src="/images/hero/tours-hero.png"
+          src="/images/hero/lions.png"
           alt="Safari tours"
           fill
           priority

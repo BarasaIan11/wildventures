@@ -1,74 +1,114 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { MapPin, Clock, Users } from 'lucide-react'
-import clsx from 'clsx'
+import Image from "next/image";
+import Link from "next/link";
+import { MapPin, Clock, Users } from "lucide-react";
 
-export default function TourCard({ tour, featured = false }) {
-  const { slug, badge, badgeStyle, title, destination, duration, maxGroup, price, image, summary } = tour
+export default function TourCard({ tour }) {
+  const {
+    slug,
+    badge,
+    badgeStyle,
+    title,
+    destination,
+    duration,
+    maxGroup,
+    price,
+    image,
+    summary,
+  } = tour;
 
   return (
-    <Link href={`/tours/${slug}`} className={clsx('card group block', featured && 'md:col-span-2')}>
-      {/* Image */}
-      <div className="overflow-hidden relative">
+    <Link
+      href={`/tours/${slug}`}
+      className="group block bg-white rounded-sm overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 border border-gray-100/50"
+    >
+      {/* 
+          IMAGE FIX: 
+          Standardized to aspect-[4/3]. This ensures that your 
+          Serengeti landscapes and Gorilla portraits both look great.
+      */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-charcoal">
         <Image
           src={image}
           alt={title}
-          width={featured ? 900 : 700}
-          height={featured ? 480 : 380}
-          className={clsx(
-            'w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]',
-            featured ? 'aspect-[16/9]' : 'aspect-[4/3]'
-          )}
+          fill
+          className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {/* Badge */}
+
+        {/* Glassmorphism Badge */}
         {badge && (
-          <span className={clsx(
-            'absolute top-3.5 left-3.5 badge',
-            badgeStyle === 'green' ? 'badge-green' : 'badge-orange'
-          )}>
-            {badge}
-          </span>
+          <div className="absolute top-4 left-4 z-10">
+            <span
+              className={`px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.15em] backdrop-blur-md border border-white/20 text-white rounded-sm shadow-sm ${
+                badgeStyle === "green" ? "bg-green/80" : "bg-orange/80"
+              }`}
+            >
+              {badge}
+            </span>
+          </div>
         )}
+
+        {/* Subtle Bottom Gradient for the Image alone */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
       </div>
 
-      {/* Body */}
-      <div className="p-6">
-        {/* Meta */}
-        <div className="flex flex-wrap gap-4 mb-2.5">
-          <span className="flex items-center gap-1 text-[0.75rem] text-gray-400">
-            <MapPin className="w-3 h-3" /> {destination}
+      {/* Body Content */}
+      <div className="p-7">
+        {/* Meta Info with refined spacing */}
+        <div className="flex items-center gap-4 mb-4 text-[0.7rem] uppercase tracking-widest text-gray-400 font-medium">
+          <span className="flex items-center gap-1.5">
+            <MapPin className="w-3 h-3 text-orange" /> {destination}
           </span>
-          <span className="flex items-center gap-1 text-[0.75rem] text-gray-400">
-            <Clock className="w-3 h-3" /> {duration}
-          </span>
-          <span className="flex items-center gap-1 text-[0.75rem] text-gray-400">
-            <Users className="w-3 h-3" /> Max {maxGroup}
+          <span className="w-1 h-1 rounded-full bg-gray-200" />
+          <span className="flex items-center gap-1.5">
+            <Clock className="w-3 h-3 text-orange" /> {duration}
           </span>
         </div>
 
-        {/* Title */}
-        <h3 className={clsx(
-          'font-serif font-light text-charcoal leading-[1.25] mb-2',
-          featured ? 'text-[1.65rem]' : 'text-[1.35rem]'
-        )}>
+        {/* Title - Clean Serif */}
+        <h3 className="font-serif text-[1.45rem] text-charcoal leading-tight mb-3 group-hover:text-green transition-colors duration-300">
           {title}
         </h3>
 
-        {/* Description */}
-        <p className="text-[0.87rem] text-gray-500 leading-[1.65] mb-5 line-clamp-2">{summary}</p>
+        {/* Summary - Better line-height for luxury feel */}
+        <p className="text-[0.9rem] text-gray-500 leading-relaxed line-clamp-2 mb-6 font-light">
+          {summary}
+        </p>
 
         {/* Footer */}
-        <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+        <div className="flex justify-between items-end pt-5 border-t border-gray-50">
           <div>
-            <span className="font-serif text-[1.2rem] text-green">${price.toLocaleString()}</span>
-            <span className="text-[0.75rem] text-gray-400 ml-1">/ per person</span>
+            <p className="text-[0.65rem] text-gray-400 uppercase tracking-widest mb-0.5">
+              Price from
+            </p>
+            <p className="font-serif text-[1.3rem] text-charcoal leading-none">
+              ${price.toLocaleString()}
+              <span className="text-[0.75rem] font-sans text-gray-400 ml-1 font-normal">
+                /pp
+              </span>
+            </p>
           </div>
-          <span className="text-[0.77rem] tracking-[0.08em] uppercase text-orange font-medium
-                           flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
-            View Itinerary <span>→</span>
-          </span>
+
+          <div className="flex items-center gap-2 text-[0.75rem] font-bold uppercase tracking-widest text-orange">
+            <span className="group-hover:mr-1 transition-all">Details</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 20 20"
+              fill="none"
+              className="group-hover:translate-x-1 transition-transform"
+            >
+              <path
+                d="M4 10h12M16 10l-5-5M16 10l-5 5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </Link>
-  )
+  );
 }

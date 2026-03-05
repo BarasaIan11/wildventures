@@ -1,7 +1,8 @@
+// src/components/home/SearchBar.jsx
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Search, MapPin, Calendar, Compass, ChevronDown } from "lucide-react";
 
 const DESTINATIONS = ["Kenya", "Tanzania", "Rwanda", "Uganda"];
 const STYLES = ["Luxury", "Mid-Range", "Family", "Honeymoon"];
@@ -20,76 +21,84 @@ export default function SearchBar() {
     router.push(`/tours?${params.toString()}`);
   };
 
-  const fieldClass = `
-    flex-1 flex flex-col px-6 py-5 bg-white border-r border-gray-100
-    cursor-pointer hover:bg-gray-50/80 transition-colors duration-200 min-w-[160px]
-  `;
-  const labelClass =
-    "text-[0.65rem] text-green tracking-[0.12em] uppercase font-medium mb-1.5";
-  const selectClass =
-    "border-none outline-none font-sans text-[0.95rem] text-charcoal bg-transparent cursor-pointer w-full";
-
   return (
-    <div className="bg-green px-[5%] py-8">
-      <div
-        className="flex items-stretch max-w-[940px] mx-auto
-                      shadow-[0_12px_40px_rgba(0,0,0,0.18)] rounded-sm overflow-hidden"
-      >
-        <div className={fieldClass}>
-          <label className={labelClass}>Destination</label>
-          <select
-            className={selectClass}
-            value={dest}
-            onChange={(e) => setDest(e.target.value)}
-          >
-            <option value="">All Destinations</option>
-            {DESTINATIONS.map((d) => (
-              <option key={d} value={d.toLowerCase()}>
-                {d}
-              </option>
-            ))}
-          </select>
-        </div>
+    /* REMOVED bg-ivory HERE -> Now it's transparent so the StatsBar green shows through */
+    <div className="relative z-30 w-full">
+      <div className="max-w-7xl mx-auto px-[5%]">
+        <div className="flex flex-col md:flex-row items-stretch bg-white shadow-[0_20px_60px_rgba(0,0,0,0.15)] -translate-y-1/2 rounded-sm overflow-hidden">
+          {/* Destination */}
+          <div className="flex-1 px-8 py-7 border-r border-gray-100 group hover:bg-ivory/30 transition-colors">
+            <label className="text-[0.65rem] text-orange tracking-[0.2em] uppercase font-bold mb-2 flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5" /> Destination
+            </label>
+            <div className="relative">
+              <select
+                value={dest}
+                onChange={(e) => setDest(e.target.value)}
+                className="appearance-none border-none outline-none font-serif italic text-[1.15rem] text-charcoal bg-transparent w-full cursor-pointer pr-8"
+              >
+                <option value="">All Regions</option>
+                {DESTINATIONS.map((d) => (
+                  <option key={d} value={d.toLowerCase()}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 pointer-events-none" />
+            </div>
+          </div>
 
-        <div className={fieldClass}>
-          <label className={labelClass}>Duration</label>
-          <select
-            className={selectClass}
-            value={dur}
-            onChange={(e) => setDur(e.target.value)}
-          >
-            <option value="">Any Duration</option>
-            <option value="short">3–5 Days</option>
-            <option value="medium">6–8 Days</option>
-            <option value="long">9–14 Days</option>
-          </select>
-        </div>
+          {/* Duration */}
+          <div className="flex-1 px-8 py-7 border-r border-gray-100 group hover:bg-ivory/30 transition-colors">
+            <label className="text-[0.65rem] text-orange tracking-[0.2em] uppercase font-bold mb-2 flex items-center gap-2">
+              <Calendar className="w-3.5 h-3.5" /> Duration
+            </label>
+            <div className="relative">
+              <select
+                value={dur}
+                onChange={(e) => setDur(e.target.value)}
+                className="appearance-none border-none outline-none font-serif italic text-[1.15rem] text-charcoal bg-transparent w-full cursor-pointer pr-8"
+              >
+                <option value="">Any Length</option>
+                <option value="short">Short (3–5 Days)</option>
+                <option value="medium">Medium (6–8 Days)</option>
+                <option value="long">Long (9–14 Days)</option>
+              </select>
+              <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 pointer-events-none" />
+            </div>
+          </div>
 
-        <div className={`${fieldClass} border-r-0`}>
-          <label className={labelClass}>Travel Style</label>
-          <select
-            className={selectClass}
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-          >
-            <option value="">Any Style</option>
-            {STYLES.map((s) => (
-              <option key={s} value={s.toLowerCase()}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </div>
+          {/* Style */}
+          <div className="flex-1 px-8 py-7 border-r border-gray-100 group hover:bg-ivory/30 transition-colors">
+            <label className="text-[0.65rem] text-orange tracking-[0.2em] uppercase font-bold mb-2 flex items-center gap-2">
+              <Compass className="w-3.5 h-3.5" /> Travel Style
+            </label>
+            <div className="relative">
+              <select
+                value={style}
+                onChange={(e) => setStyle(e.target.value)}
+                className="appearance-none border-none outline-none font-serif italic text-[1.15rem] text-charcoal bg-transparent w-full cursor-pointer pr-8"
+              >
+                <option value="">Any Style</option>
+                {STYLES.map((s) => (
+                  <option key={s} value={s.toLowerCase()}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 pointer-events-none" />
+            </div>
+          </div>
 
-        <button
-          onClick={handleSearch}
-          className="bg-orange text-white px-8 font-medium text-[0.85rem] tracking-[0.07em]
-                     uppercase flex items-center gap-2.5 whitespace-nowrap flex-shrink-0
-                     hover:bg-orange-dark transition-colors duration-300"
-        >
-          <Search className="w-4 h-4" />
-          Search
-        </button>
+          {/* Search Button - Increased authoritativeness */}
+          <button
+            onClick={handleSearch}
+            className="bg-green text-white px-14 py-8 md:py-0 font-medium text-[0.9rem] tracking-[0.25em] uppercase flex items-center justify-center gap-3 hover:bg-green-dark transition-all"
+          >
+            <Search className="w-4 h-4" />
+            <span>Search</span>
+          </button>
+        </div>
       </div>
     </div>
   );

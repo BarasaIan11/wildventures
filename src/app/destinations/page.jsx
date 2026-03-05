@@ -6,11 +6,13 @@ import { destinations } from "@/data/destinations";
 export const metadata = { title: "Destinations | WildVentures" };
 
 export default function DestinationsPage() {
-  const [first, ...rest] = destinations;
+  // We'll treat all 4 destinations as a premium collection
+  const [kenya, tanzania, rwanda, uganda] = destinations;
+
   return (
-    <>
-      {/* HERO SECTION */}
-      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
+    <main className="bg-ivory">
+      {/* --- HERO SECTION --- */}
+      <div className="relative h-[65vh] min-h-[520px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/destinations-hero.png"
           alt="African destinations"
@@ -29,27 +31,41 @@ export default function DestinationsPage() {
             <em className="italic text-beige">Destinations</em>
           </h1>
 
-          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
+          <p className="text-white/80 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
             From the endless plains of the Serengeti to the mist-covered peaks
             of Rwanda. Discover the soul of East Africa.
           </p>
         </div>
       </div>
 
-      <section className="section-pad">
-        {/* Featured large */}
-        <div className="mb-4">
-          <DestinationCard dest={first} large />
+      {/* --- DESTINATIONS GRID --- */}
+      <section className="section-pad max-w-7xl mx-auto">
+        <div className="mb-12">
+          <p className="section-label">The Collection</p>
+          <h2 className="section-title italic text-green">Our Focus Regions</h2>
         </div>
-        {/* Grid of rest */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {rest.map((d) => (
-            <DestinationCard key={d.id} dest={d} />
-          ))}
+
+        {/* 
+          FIXED GRID LAYOUT:
+          Using a 2-column grid (md:grid-cols-2) for all cards. 
+          This provides the vertical space needed for your portrait 
+          images (Gorillas/Chimps) so they don't get chopped.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <DestinationCard dest={kenya} />
+          <DestinationCard dest={tanzania} />
+          <DestinationCard dest={rwanda} />
+          <DestinationCard dest={uganda} />
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-[0.8rem] text-gray-400 tracking-[0.2em] uppercase font-medium">
+            Specializing Exclusively in East Africa
+          </p>
         </div>
       </section>
 
       <BookingCTA />
-    </>
+    </main>
   );
 }

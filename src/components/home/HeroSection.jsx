@@ -3,76 +3,91 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen min-h-[680px] flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 bg-[#1a2e22]">
+    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-green-dark">
+      {/* 1. Background Image - Full Opacity for Vibrancy */}
+      <div className="absolute inset-0">
         <Image
-          src="/images/hero/hero-main.png"
-          alt="African elephants at golden hour"
+          src="/images/hero/story-main.png"
+          alt="Lions in the Serengeti at sunset"
           fill
           priority
-          className="object-cover opacity-60 animate-hero-zoom"
+          // FIX: object-bottom ensures the lions stay in frame on wide screens
+          className="object-cover object-bottom animate-hero-zoom transition-transform duration-[10s]"
           sizes="100vw"
         />
       </div>
 
-      {/* Gradient overlay — stronger at top so navbar reads clearly */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/65" />
+      {/* 2. Intelligent Overlay - Not a flat black blanket */}
+      {/* This gradient protects the top (Navbar) and bottom (Lions/Text) but leaves the center sun bright */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/70" />
 
-      {/* Atmospheric warm glow */}
+      {/* 3. The "Sun Glow" - Enhances the existing sunset light */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-40"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 70% 55%, rgba(196,122,44,0.15) 0%, transparent 60%)",
+            "radial-gradient(circle at 20% 30%, rgba(255,145,0,0.15) 0%, transparent 50%)",
         }}
       />
 
-      {/* Content — mt-20 clears the fixed navbar (80px) */}
-      <div className="relative z-10 text-center px-5 max-w-[860px] mt-20">
-        {/* Eyebrow */}
+      {/* 4. Content */}
+      <div className="relative z-10 text-center px-6 max-w-[900px] mt-12">
+        {/* Eyebrow with more "Air" */}
         <div
-          className="flex items-center justify-center gap-3 mb-6"
-          style={{ animation: "fadeUp 0.8s 0.2s both" }}
+          className="flex items-center justify-center gap-4 mb-8 opacity-0 animate-fade-up"
+          style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
         >
-          <span className="block w-8 h-px bg-orange flex-shrink-0" />
-          <p className="text-beige/90 text-[0.72rem] tracking-[0.2em] uppercase whitespace-nowrap">
+          <span className="block w-10 h-px bg-orange/60" />
+          <p className="text-beige text-[0.75rem] tracking-[0.4em] uppercase font-medium">
             East Africa's Premier Safari Company
           </p>
-          <span className="block w-8 h-px bg-orange flex-shrink-0" />
+          <span className="block w-10 h-px bg-orange/60" />
         </div>
 
-        {/* Headline */}
+        {/* Headline - "Wild Beauty" as a true focal point */}
         <h1
-          className="font-serif text-[clamp(2.8rem,7.5vw,6rem)] font-light text-white leading-[1.05] tracking-tight mb-6"
-          style={{ animation: "fadeUp 0.8s 0.4s both" }}
+          className="font-serif text-[clamp(3rem,8vw,6.5rem)] font-light text-white leading-[1] tracking-tight mb-8 opacity-0 animate-fade-up"
+          style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
         >
           Experience Africa's
           <br />
-          <em className="italic text-beige">Wild Beauty</em>
+          <span className="italic font-normal text-beige block mt-2">
+            Wild Beauty
+          </span>
         </h1>
 
-        {/* Subheadline */}
+        {/* Subheadline - Widened slightly for better luxury feel */}
         <p
-          className="text-white/80 text-[clamp(0.92rem,2vw,1.1rem)] font-light max-w-[500px] mx-auto leading-[1.75] mb-10"
-          style={{ animation: "fadeUp 0.8s 0.6s both" }}
+          className="text-white/90 text-[clamp(1rem,1.5vw,1.15rem)] font-light max-w-[550px] mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up"
+          style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
         >
           Curated safari experiences crafted for those who seek the
           extraordinary — where every sunrise reveals a new story.
         </p>
 
-        {/* CTAs */}
+        {/* CTAs - Improved Button Contrast
         <div
-          className="flex gap-4 justify-center flex-wrap"
-          style={{ animation: "fadeUp 0.8s 0.8s both" }}
+          className="flex flex-col sm:flex-row gap-5 justify-center items-center opacity-0 animate-fade-up"
+          style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
         >
-          <Link href="/tours" className="btn btn-primary">
+          <Link
+            href="/tours"
+            className="btn btn-primary min-w-[200px] py-5 shadow-2xl"
+          >
             Book Your Safari
           </Link>
-          <Link href="/tours" className="btn btn-outline-white">
+          <Link
+            href="/tours"
+            className="btn btn-outline-white min-w-[200px] py-5 backdrop-blur-sm bg-white/5"
+          >
             Explore Tours
           </Link>
-        </div>
+        </div> */}
+      </div>
+
+      {/* 6. Creative Addition: Scroll Hint (Uwanda Style) */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 opacity-50">
+        <div className="w-px h-12 bg-gradient-to-b from-white/0 via-white to-white/0" />
       </div>
     </section>
   );

@@ -2,83 +2,91 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { Calendar, Users, DollarSign, Heart, Send } from "lucide-react";
+import {
+  Calendar,
+  Users,
+  DollarSign,
+  Heart,
+  Send,
+  Map,
+  Sparkles,
+  User,
+} from "lucide-react";
 
 export default function PlanPage() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
   const [submitted, setSubmitted] = useState(false);
+
+  // Watch values for "Selection Tile" styling
+  const selectedDestinations = watch("destinations") || [];
+  const selectedInterests = watch("interests") || [];
 
   const onSubmit = (data) => {
     console.log(data);
     setSubmitted(true);
   };
 
-  const inputClass = `w-full border border-gray-200 rounded-sm px-4 py-3 text-[0.9rem]
-    text-charcoal focus:outline-none focus:border-green transition-colors duration-200`;
-  const labelClass = `block text-[0.7rem] tracking-[0.12em] uppercase text-green font-medium mb-1.5`;
-  const errorClass = `text-red-400 text-[0.78rem] mt-1`;
+  const inputClass = `w-full bg-ivory/50 border border-gray-100 rounded-sm px-5 py-4 text-[1rem]
+    text-charcoal focus:outline-none focus:border-orange focus:bg-white transition-all duration-300 placeholder:text-gray-300`;
+  const labelClass = `block text-[0.65rem] tracking-[0.2em] uppercase text-orange font-bold mb-2`;
+  const sectionHeader =
+    "font-serif text-[1.5rem] text-green mb-8 flex items-center gap-3";
 
   if (submitted)
     return (
       <div className="min-h-screen flex items-center justify-center bg-ivory px-5">
         <div className="text-center max-w-md">
-          <div className="text-6xl mb-6">🦁</div>
-          <h2 className="font-serif text-3xl text-green mb-4">
-            Safari Inquiry Received!
+          <div className="text-6xl mb-6 animate-bounce">🦁</div>
+          <h2 className="font-serif text-4xl text-green mb-4">
+            Inquiry Received
           </h2>
-          <p className="text-gray-500 leading-relaxed mb-8">
-            Thank you for reaching out. One of our safari specialists will
-            contact you within 24 hours to start crafting your perfect African
-            adventure.
+          <p className="text-gray-500 leading-relaxed mb-10 font-light">
+            Your dream safari is now in the hands of our experts. We will
+            contact you within 24 hours to begin crafting your journey.
           </p>
-          <a href="/" className="btn btn-primary">
-            Back to Home
+          <a href="/" className="btn btn-primary px-12">
+            Return to Home
           </a>
         </div>
       </div>
     );
 
   return (
-    <>
-      {/* HERO SECTION */}
-      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
+    <main className="bg-ivory">
+      {/* --- HERO SECTION --- */}
+      <div className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/plan-hero.png"
           alt="Plan your safari"
           fill
           priority
-          className="object-cover animate-hero-zoom"
+          className="object-cover animate-hero-zoom opacity-80"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/10 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
-          <p className="section-label light">Custom Safari Planner</p>
+          <p className="section-label light">Bespoke Journeys</p>
           <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-2xl">
-            Tell Us Your <br />
+            Design Your <br />
             <em className="italic text-beige">Dream Safari</em>
           </h1>
-          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
-            Your journey should be as unique as you are. Share your vision with
-            us, and we'll bring the magic of Africa to life.
+          <p className="text-white/70 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
+            Every traveler is unique. Tell us your vision, and we will bring the
+            magic of East Africa to life.
           </p>
         </div>
       </div>
 
-      <section className="section-pad">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-sm shadow-card p-8 md:p-12 -mt-20 relative z-20">
-            <p className="text-gray-500 text-[0.95rem] leading-relaxed mb-10 border-l-2 border-orange/30 pl-6">
-              Fill in the form below and our safari specialists will design a
-              completely personalised itinerary just for you — no obligation, no
-              pressure.
-            </p>
-
+      {/* --- FORM SECTION --- */}
+      <section className="pb-28 px-[5%] -mt-16 relative z-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white shadow-2xl rounded-sm p-8 md:p-16 border border-gray-100">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
               {/* Personal info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -292,6 +300,6 @@ export default function PlanPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

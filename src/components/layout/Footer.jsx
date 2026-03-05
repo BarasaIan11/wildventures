@@ -1,173 +1,179 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Instagram,
+  Facebook,
+  Youtube,
+  ArrowUpRight,
+} from "lucide-react";
 
 const tourLinks = [
   {
     href: "/tours/great-migration-serengeti-masai-mara",
-    label: "Great Migration Safari",
+    label: "Great Migration",
   },
   {
     href: "/tours/ngorongoro-serengeti-luxury",
     label: "Ngorongoro & Serengeti",
   },
-  {
-    href: "/tours/amboseli-masai-mara-classic",
-    label: "Amboseli & Masai Mara",
-  },
-  { href: "/tours/rwanda-gorilla-trekking", label: "Gorilla Trekking Rwanda" },
-  { href: "/tours/uganda-primates-pearl-of-africa", label: "Uganda Primates" },
+  { href: "/tours/rwanda-gorilla-trekking", label: "Gorilla Trekking" },
   { href: "/tours/east-africa-grand-loop", label: "East Africa Grand Loop" },
-  { href: "/tours", label: "View All Tours →" },
 ];
-const destLinks = ["Kenya", "Tanzania", "Rwanda", "Uganda"];
+
 const companyLinks = [
-  { href: "/plan", label: "Plan Your Trip" },
-  { href: "/reviews", label: "Traveler Reviews" },
+  { href: "/about", label: "Our Story" },
+  { href: "/reviews", label: "Traveler Stories" },
+  { href: "/plan", label: "Custom Safaris" },
   { href: "/contact", label: "Contact Us" },
-  { href: "/about", label: "About WildVentures" },
-  { href: "#", label: "Sustainability" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-white/60">
-      <div className="px-[5%] pt-16 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <p className="font-serif text-[1.9rem] text-white mb-3 font-light">
+    <footer className="bg-charcoal text-white/50 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-[5%] pt-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          {/* 1. Brand Signature */}
+          <div className="space-y-6">
+            <p className="font-serif text-[2rem] text-white font-light tracking-tight leading-none">
               WildVentures
             </p>
-            <p className="text-[0.87rem] leading-[1.75] mb-2">
-              Crafting extraordinary safari experiences across East Africa since
-              2009.
+            <p className="text-[0.9rem] leading-relaxed font-light">
+              We specialize in life-changing journeys across the landscapes of
+              East Africa. Crafted for those who seek the extraordinary.
             </p>
-            <p className="text-[0.78rem] text-orange tracking-wide mb-5">
-              Kenya · Tanzania · Rwanda · Uganda
-            </p>
-            <div className="flex gap-2.5">
-              {["Instagram", "Facebook", "YouTube", "TikTok"].map((s) => (
+            <div className="flex gap-4 pt-2">
+              {[
+                { Icon: Instagram, label: "Instagram" },
+                { Icon: Facebook, label: "Facebook" },
+                { Icon: Youtube, label: "YouTube" },
+              ].map(({ Icon, label }) => (
                 <a
-                  key={s}
+                  key={label}
                   href="#"
-                  aria-label={s}
-                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-[0.75rem] text-white/60 hover:border-orange hover:text-white hover:bg-orange transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-orange hover:text-orange transition-all duration-300"
                 >
-                  {s[0]}
+                  <Icon size={18} strokeWidth={1.5} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Tours */}
+          {/* 2. Signature Experiences */}
           <div>
-            <p className="text-white text-[0.82rem] tracking-[0.08em] uppercase font-medium mb-4">
-              Popular Tours
+            <p className="text-beige text-[0.7rem] tracking-[0.25em] uppercase font-bold mb-8">
+              Signature Experiences
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-4">
               {tourLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-[0.87rem] text-white/50 hover:text-orange transition-colors"
+                    className="text-[0.88rem] hover:text-white transition-colors flex items-center group"
                   >
                     {label}
+                    <ArrowUpRight
+                      size={14}
+                      className="ml-1 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
+                    />
                   </Link>
                 </li>
               ))}
+              <li className="pt-2">
+                <Link
+                  href="/tours"
+                  className="text-[0.75rem] text-orange uppercase tracking-widest font-bold hover:underline"
+                >
+                  View All Safaris
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Destinations + Company */}
+          {/* 3. Discover More */}
           <div>
-            <p className="text-white text-[0.82rem] tracking-[0.08em] uppercase font-medium mb-4">
-              Destinations
+            <p className="text-beige text-[0.7rem] tracking-[0.25em] uppercase font-bold mb-8">
+              Discover More
             </p>
-            <ul className="space-y-2.5 mb-7">
-              {destLinks.map((d) => (
-                <li key={d}>
-                  <Link
-                    href={`/destinations/${d.toLowerCase()}`}
-                    className="text-[0.87rem] text-white/50 hover:text-orange transition-colors"
-                  >
-                    {d}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="text-white text-[0.82rem] tracking-[0.08em] uppercase font-medium mb-4">
-              Company
-            </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-4">
               {companyLinks.map(({ href, label }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[0.87rem] text-white/50 hover:text-orange transition-colors"
+                    className="text-[0.88rem] hover:text-white transition-colors"
                   >
                     {label}
                   </Link>
                 </li>
               ))}
+              {/* <li>
+                <span className="text-[0.88rem] opacity-30 cursor-not-allowed">
+                  Conservation Fund
+                </span>
+              </li> */}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* 4. Contact Details */}
           <div>
-            <p className="text-white text-[0.82rem] tracking-[0.08em] uppercase font-medium mb-4">
+            <p className="text-beige text-[0.7rem] tracking-[0.25em] uppercase font-bold mb-8">
               Get In Touch
             </p>
-            <div className="space-y-3.5">
+            <div className="space-y-5">
               {[
-                {
-                  Icon: MapPin,
-                  text: "Westlands Business Park,\nNairobi, Kenya",
-                },
+                { Icon: MapPin, text: "Nairobi, Kenya" },
                 { Icon: Phone, text: "+254 700 123 456" },
                 { Icon: Mail, text: "hello@wildventures.co" },
                 { Icon: Clock, text: "Mon–Sat, 8am – 6pm EAT" },
               ].map(({ Icon, text }) => (
-                <div key={text} className="flex gap-3 items-start">
-                  <Icon className="w-4 h-4 text-orange mt-0.5 flex-shrink-0" />
-                  <span className="text-[0.87rem] leading-[1.5] whitespace-pre-line">
+                <div key={text} className="flex gap-4 items-start">
+                  <Icon className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-[0.88rem] leading-tight font-light">
                     {text}
                   </span>
                 </div>
               ))}
             </div>
+
             <a
               href="https://wa.me/254700123456"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 flex items-center gap-2.5 bg-[#25D366]/15 border border-[#25D366]/30
-                         text-[#25D366] text-[0.82rem] font-medium px-4 py-2.5 rounded-sm w-fit
-                         hover:bg-[#25D366] hover:text-white transition-all duration-300"
+              className="mt-8 flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white text-[0.75rem] tracking-widest uppercase font-bold py-4 px-6 rounded-sm hover:bg-orange hover:border-orange transition-all duration-500"
             >
-              <span className="text-base">💬</span>
               Chat on WhatsApp
             </a>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-[5%] py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-        <p className="text-[0.78rem] text-white/30">
-          © {new Date().getFullYear()} WildVentures. All rights reserved.
-        </p>
+      {/* Bottom Bar */}
+      <div className="border-t border-white/5 px-[5%] py-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+            <p className="text-[0.75rem] opacity-40">
+              © {new Date().getFullYear()} WildVentures Safari Co.
+            </p>
+            <p className="text-[0.7rem] opacity-20 hidden md:block">|</p>
+            <p className="text-[0.75rem] opacity-40">
+              Designed by{" "}
+              <span className="text-white/60">Innovition Solutions</span>
+            </p>
+          </div>
 
-        <p className="text-[0.78rem] text-white/30">
-          Designed by{" Innovition Solutions"}
-        </p>
-        <div className="flex gap-5 text-[0.78rem]">
-          {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((l) => (
-            <a
-              key={l}
-              href="#"
-              className="text-white/30 hover:text-orange transition-colors"
-            >
-              {l}
-            </a>
-          ))}
+          <div className="flex gap-8">
+            {["Privacy", "Terms", "Cookies"].map((l) => (
+              <a
+                key={l}
+                href="#"
+                className="text-[0.75rem] opacity-40 hover:text-white hover:opacity-100 transition-all uppercase tracking-widest"
+              >
+                {l}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
