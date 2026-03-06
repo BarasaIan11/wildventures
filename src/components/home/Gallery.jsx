@@ -51,19 +51,13 @@ export default function Gallery() {
           </div>
         </RevealWrapper>
         <RevealWrapper delay={0.1}>
-          {/* FIX: Forced the em to beige so it's visible on dark background */}
           <h2 className="font-serif text-[clamp(2.2rem,5vw,3.5rem)] font-light text-white leading-tight">
             A Glimpse of What{" "}
-            <em className="italic text-beige not-italic italic">Awaits</em>
+            <em className="text-beige">Awaits</em>
           </h2>
         </RevealWrapper>
       </div>
 
-      {/* 
-          GRID FIX: 
-          1. Increased gap to 4 for a more premium, spacious feel.
-          2. Removed hardcoded row height to let the container be more flexible.
-      */}
       <div className="max-w-[1600px] mx-auto px-4 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[280px]">
         {images.map((img, i) => (
           <RevealWrapper

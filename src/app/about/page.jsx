@@ -210,7 +210,7 @@ export default function AboutPage() {
               <p>
                 In 2009, James Mwangi — a young guide from Nyeri, Kenya — packed
                 everything he owned into a second-hand Land Cruiser and drove to
-                the Masai Mara with one guest: a retired schoolteacher from
+                the Maasai Mara with one guest: a retired schoolteacher from
                 Edinburgh who had dreamed of Africa her whole life.
               </p>
               <p>
@@ -362,7 +362,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/about/conservation.png"
-            alt="Conservation"
+            alt=""
             fill
             className="object-cover opacity-40"
           />
@@ -393,8 +393,10 @@ export default function AboutPage() {
                   wild.
                 </p>
                 <p>
-                  We publish our annual impact report every January. We believe
-                  accountability is part of the commitment.
+                  {/* We publish our annual impact report every January. We believe
+                  accountability is part of the commitment. */}
+                  We are deeply committed to accountability. That's why we meticulously track the impact 
+                  of every safari, ensuring your journey makes a real difference in the lives of local communities and the preservation of wildlife.
                 </p>
               </div>
               {/* TODO: Add impact report link when available */}

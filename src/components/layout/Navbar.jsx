@@ -99,12 +99,14 @@ export default function Navbar() {
 
       {/* ── Mobile Nav Overlay */}
       <div
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen ? "" : undefined}
         className={clsx(
           "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-center p-10",
           "transition-all duration-700 ease-in-out",
           mobileOpen
             ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0", // Slide in effect
+            : "translate-x-full opacity-0 pointer-events-none", // Slide in effect
         )}
       >
         {/* Subtle background texture for mobile menu */}

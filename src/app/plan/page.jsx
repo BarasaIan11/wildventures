@@ -26,9 +26,22 @@ export default function PlanPage() {
   const selectedDestinations = watch("destinations") || [];
   const selectedInterests = watch("interests") || [];
 
-  const onSubmit = (data) => {
-    console.log(data);
-    setSubmitted(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      // Simulate an async API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // TODO: replace with actual API call: await fetch('/api/inquiry', { method: 'POST', body: JSON.stringify(data) });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError("Failed to submit inquiry. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = `w-full bg-ivory/50 border border-gray-100 rounded-sm px-5 py-4 text-[1rem]
@@ -288,11 +301,13 @@ const errorClass = "text-red-500 text-[0.75rem] mt-1";
 
               <button
                 type="submit"
-                className="btn btn-primary w-full flex items-center justify-center gap-2.5"
+                disabled={isSubmitting}
+                className="btn btn-primary w-full flex items-center justify-center gap-2.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
-                Send My Safari Inquiry
+                {isSubmitting ? "Sending..." : "Send My Safari Inquiry"}
               </button>
+              {submitError && <p className="text-red-500 text-center text-sm">{submitError}</p>}
 
               <p className="text-center text-[0.78rem] text-gray-400">
                 We'll respond within 24 hours · No commitment required
