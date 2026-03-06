@@ -65,12 +65,6 @@ function DestCard({ dest }) {
       href={`/destinations/${dest.slug}`}
       className="group block relative rounded-sm overflow-hidden bg-charcoal aspect-[3/4.5] sm:aspect-[3/4]"
     >
-      {/* 
-          IMAGE FIX: 
-          1. aspect-[3/4] is a tall portrait ratio. This fits your Gorilla/Chimp perfectly.
-          2. object-top ensures the heads are never cut off.
-          3. We use 'fill' so it occupies the entire tall container.
-      */}
       <Image
         src={dest.image}
         alt={dest.name}
@@ -79,7 +73,6 @@ function DestCard({ dest }) {
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
 
-      {/* Sophisticated Dark Scrim for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Content */}

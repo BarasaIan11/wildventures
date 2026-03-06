@@ -22,12 +22,11 @@ export default function SearchBar() {
   };
 
   return (
-    /* REMOVED bg-ivory HERE -> Now it's transparent so the StatsBar green shows through */
-    <div className="relative z-30 w-full">
-      <div className="max-w-7xl mx-auto px-[5%]">
-        <div className="flex flex-col md:flex-row items-stretch bg-white shadow-[0_20px_60px_rgba(0,0,0,0.15)] -translate-y-1/2 rounded-sm overflow-hidden">
+    <div className="relative z-30 w-full px-[5%] -mt-6 sm:-mt-10 md:-mt-16 lg:-mt-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-stretch bg-white shadow-2xl rounded-sm overflow-hidden border border-gray-100">
           {/* Destination */}
-          <div className="flex-1 px-8 py-7 border-r border-gray-100 group hover:bg-ivory/30 transition-colors">
+          <div className="flex-1 px-8 py-6 border-b lg:border-b-0 lg:border-r border-gray-100 group">
             <label className="text-[0.65rem] text-orange tracking-[0.2em] uppercase font-bold mb-2 flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5" /> Destination
             </label>

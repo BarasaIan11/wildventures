@@ -100,38 +100,59 @@ export default function Navbar() {
       {/* ── Mobile Nav Overlay */}
       <div
         className={clsx(
-          "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-center gap-8",
-          "transition-all duration-500",
+          "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-center p-10",
+          "transition-all duration-700 ease-in-out",
           mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0", // Slide in effect
         )}
       >
+        {/* Subtle background texture for mobile menu */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: 'url("/images/hero/hero-main.png")',
+              backgroundSize: "cover",
+            }}
+          />
+        </div>
+
         <button
           onClick={() => setMobileOpen(false)}
-          className="absolute top-6 right-6 text-white"
-          aria-label="Close menu"
+          className="absolute top-8 right-8 text-white/50 hover:text-white"
         >
-          <X className="w-7 h-7" />
+          <X className="w-8 h-8" />
         </button>
 
-        {links.map(({ href, label }) => (
+        <nav className="relative z-10 flex flex-col items-center gap-8 text-center">
+          {links.map(({ href, label }, i) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMobileOpen(false)}
+              style={{ transitionDelay: `${i * 50}ms` }}
+              className="font-serif text-[2.2rem] font-light text-white hover:text-beige transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
+
           <Link
-            key={href}
-            href={href}
+            href="/tours"
             onClick={() => setMobileOpen(false)}
-            className="font-serif text-[2rem] font-light text-white hover:text-beige transition-colors"
+            className="btn btn-primary mt-8 w-full"
           >
-            {label}
+            Book Your Safari
           </Link>
-        ))}
-        <Link
-          href="/tours"
-          onClick={() => setMobileOpen(false)}
-          className="btn btn-primary mt-4"
-        >
-          Book Safari
-        </Link>
+        </nav>
+
+        {/* Mobile Socials */}
+        <div className="absolute bottom-12 flex gap-6 text-white/40">
+          <span className="text-[0.7rem] tracking-[0.3em] uppercase">
+            Follow the Journey
+          </span>
+        </div>
       </div>
     </>
   );

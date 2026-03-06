@@ -32,7 +32,7 @@ export default function TourFilters() {
     "block text-[0.7rem] tracking-[0.12em] uppercase text-green font-medium mb-1.5";
 
   return (
-    <div className="bg-white rounded-sm shadow-card p-6 sticky top-24">
+    <div className="bg-white rounded-sm shadow-card p-6 lg:sticky lg:top-24 z-10">
       <h3 className="font-serif text-[1.2rem] text-charcoal mb-5">
         Filter Safaris
       </h3>

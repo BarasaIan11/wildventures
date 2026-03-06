@@ -64,7 +64,7 @@ export default function Gallery() {
           1. Increased gap to 4 for a more premium, spacious feel.
           2. Removed hardcoded row height to let the container be more flexible.
       */}
-      <div className="max-w-[1600px] mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[280px]">
+      <div className="max-w-[1600px] mx-auto px-4 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[280px]">
         {images.map((img, i) => (
           <RevealWrapper
             key={i}

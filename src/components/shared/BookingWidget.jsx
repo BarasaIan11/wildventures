@@ -24,7 +24,7 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
   )
 
   return (
-    <div className="bg-white rounded-sm shadow-card-hover overflow-hidden sticky top-24">
+    <div className="bg-white rounded-sm shadow-card-hover overflow-hidden lg:sticky lg:top-24 z-10">
       {/* Header */}
       <div className="bg-green px-6 py-5">
         <p className="text-white/70 text-[0.75rem] tracking-[0.1em] uppercase mb-1">Starting from</p>

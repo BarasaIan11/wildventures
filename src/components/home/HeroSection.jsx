@@ -64,25 +64,6 @@ export default function HeroSection() {
           Curated safari experiences crafted for those who seek the
           extraordinary — where every sunrise reveals a new story.
         </p>
-
-        {/* CTAs - Improved Button Contrast
-        <div
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center opacity-0 animate-fade-up"
-          style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
-        >
-          <Link
-            href="/tours"
-            className="btn btn-primary min-w-[200px] py-5 shadow-2xl"
-          >
-            Book Your Safari
-          </Link>
-          <Link
-            href="/tours"
-            className="btn btn-outline-white min-w-[200px] py-5 backdrop-blur-sm bg-white/5"
-          >
-            Explore Tours
-          </Link>
-        </div> */}
       </div>
 
       {/* 6. Creative Addition: Scroll Hint (Uwanda Style) */}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RevealWrapper from "@/components/shared/RevealWrapper";
 import BookingCTA from "@/components/home/BookingCTA";
+import { Leaf, Users, ShieldCheck, Compass, Globe, Heart } from "lucide-react";
 
 export const metadata = {
   title: "About Us — Our Story, Mission & Values | WildVentures",
@@ -39,34 +40,34 @@ const milestones = [
 
 const values = [
   {
-    icon: "🌿",
+    icon: Leaf,
     title: "Conservation First",
-    desc: "Every safari we run directly funds ranger salaries, anti-poaching patrols, and wildlife corridors. The animals you come to see are protected — in part — by your visit.",
+    desc: "Every safari we run directly funds ranger salaries and wildlife corridors. The animals you see are protected by your visit.",
   },
   {
-    icon: "🤝",
+    icon: Users,
     title: "Community at the Heart",
-    desc: "We hire locally, source locally, and ensure tourism money stays in the communities surrounding the parks. When local people benefit from wildlife, they protect it.",
+    desc: "We hire and source locally, ensuring tourism money stays in the bush. When local people benefit from wildlife, they protect it.",
   },
   {
-    icon: "✦",
+    icon: ShieldCheck,
     title: "Uncompromising Quality",
-    desc: "We personally inspect every lodge, vet every guide, and test every route. We will never recommend something we have not experienced ourselves.",
+    desc: "We personally inspect every lodge and test every route. We never recommend an experience we haven't lived ourselves.",
   },
   {
-    icon: "🧭",
+    icon: Compass,
     title: "Deep Local Knowledge",
-    desc: "Our guides are not just trained — they grew up here. They know the secret waterholes, the trees leopards prefer, the hour when the cheetah hunts. That is the difference.",
+    desc: "Our guides didn't just train here; they grew up here. They know the secret waterholes and the leopard's favorite trees.",
   },
   {
-    icon: "♻️",
+    icon: Globe,
     title: "Responsible Travel",
-    desc: "Low-impact camping, carbon offset partnerships, single-use plastic bans at all our camps. We believe the next generation deserves the same Africa we fell in love with.",
+    desc: "From carbon offsets to plastic-free camps, we believe the next generation deserves the same Africa we fell in love with.",
   },
   {
-    icon: "💛",
+    icon: Heart,
     title: "Lifelong Relationships",
-    desc: "More than 40% of our guests return within three years. We are not a booking platform — we are your safari family, for life.",
+    desc: "More than 40% of our guests return. We aren't a booking platform; we are your safari family for life.",
   },
 ];
 
@@ -307,39 +308,52 @@ export default function AboutPage() {
       </section>
 
       {/* ── VALUES */}
-      <section className="section-pad bg-beige/30">
-        <RevealWrapper className="text-center mb-16">
-          <p className="section-label justify-center">What We Stand For</p>
-          <h2 className="section-title">
-            Our Values Are Not
-            <br />
-            <em>Negotiable</em>
-          </h2>
-          <p className="section-sub mx-auto text-center mt-2">
-            These are not marketing words. They are the principles we apply to
-            every decision, every booking, and every morning we drive into the
-            bush.
-          </p>
-        </RevealWrapper>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {values.map((v, i) => (
-            <RevealWrapper key={v.title} delay={(i % 3) * 0.1}>
-              <div
-                className="bg-white rounded-sm p-8 h-full hover:-translate-y-1.5
-                              hover:shadow-card-hover transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-sm bg-beige/50 flex items-center justify-center text-2xl mb-6">
-                  {v.icon}
-                </div>
-                <h3 className="font-serif text-[1.25rem] text-charcoal mb-4">
-                  {v.title}
-                </h3>
-                <p className="text-[0.9rem] text-gray-500 leading-[1.8] font-light">
-                  {v.desc}
-                </p>
-              </div>
-            </RevealWrapper>
-          ))}
+      <section className="section-pad bg-beige/20 border-y border-beige/40">
+        <div className="max-w-7xl mx-auto">
+          <RevealWrapper className="text-center mb-20">
+            <div className="flex items-center justify-center gap-3 mb-4">
+               <span className="w-8 h-px bg-orange" />
+               <p className="section-label !mb-0">Our Philosophy</p>
+               <span className="w-8 h-px bg-orange" />
+            </div>
+            <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-green-dark leading-tight mb-6">
+              Our Values Are Not <br />
+              <span className="italic font-normal text-green">Negotiable</span>
+            </h2>
+            <p className="text-gray-500 text-[1rem] leading-relaxed max-w-2xl mx-auto font-light">
+              These are not marketing words. They are the principles we apply to
+              every decision and every morning we drive into the bush.
+            </p>
+          </RevealWrapper>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+            {values.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <RevealWrapper key={v.title} delay={i * 0.1}>
+                  <div className="group relative">
+                    {/* Minimalist Icon Header */}
+                    <div className="flex items-center gap-5 mb-5">
+                      <div className="w-12 h-12 rounded-sm bg-white flex items-center justify-center shadow-sm border border-beige group-hover:bg-green group-hover:border-green transition-all duration-500">
+                        <Icon size={22} className="text-orange group-hover:text-white transition-colors" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="font-serif text-[1.4rem] text-charcoal leading-none group-hover:text-green transition-colors">
+                        {v.title}
+                      </h3>
+                    </div>
+                    
+                    {/* Descriptive Text */}
+                    <p className="text-[0.92rem] text-gray-500 leading-relaxed font-light pl-0 md:pl-2">
+                      {v.desc}
+                    </p>
+                    
+                    {/* Subtle accent line that grows on hover */}
+                    <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-orange/20 group-hover:bg-orange transition-all duration-500 hidden md:block" />
+                  </div>
+                </RevealWrapper>
+              );
+            })}
+          </div>
         </div>
       </section>
 

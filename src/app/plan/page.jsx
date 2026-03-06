@@ -211,7 +211,7 @@ export default function PlanPage() {
                 <label className={labelClass}>
                   Preferred Destinations (select all that interest you)
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
                   {[
                     "Kenya",
                     "Tanzania",
@@ -243,7 +243,7 @@ export default function PlanPage() {
                     <Heart className="w-3 h-3" /> Travel Interests
                   </span>
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
                   {[
                     "Big Five Game Drives",
                     "Gorilla Trekking",
