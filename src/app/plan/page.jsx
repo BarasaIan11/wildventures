@@ -58,10 +58,18 @@ export default function PlanPage() {
       
       text += `Submitted via WildVentures website.`;
 
+      if (!phoneNumber) {
+        setSubmitError("WhatsApp is currently unavailable. Please try again later.");
+        return;
+      }
       const encodedMessage = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      if (!popup || popup.closed || typeof popup.closed === "undefined") {
+        setSubmitError("Popup blocked. Please allow popups and try again.");
+        return;
+      }
       setShowToast(true);
     } catch (error) {
       setSubmitError("Failed to submit inquiry. Please try again.");
@@ -84,7 +92,7 @@ const errorClass = "text-red-500 text-[0.75rem] mt-1";
         title="WhatsApp Draft Opened"
         message="Your inquiry details are pre-filled in WhatsApp. Just tap Send to submit to our team."
         duration={5000}
-        onClose={() => { setShowToast(false); reset(); }}
+        onClose={() => { setShowToast(false);}}
       />
       <main className="bg-ivory">
       {/* --- HERO SECTION --- */}

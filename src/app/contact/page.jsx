@@ -40,7 +40,7 @@ export default function ContactPage() {
     
 
     if (message) {
-      text += `*Message:*\n`;
+      text += `\n*Message:*\n`;
       text += `${message.split('\n').map(l => `│ ${l}`).join('\n')}\n`;
       
     }
@@ -48,10 +48,19 @@ export default function ContactPage() {
     text += `_Submitted: ${new Date().toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" })}_\n`;
     text += `_Via WildVentures website_`;
 
+    if (!phoneNumber) {
+      setSubmitError("WhatsApp is currently unavailable. Please contact us by email.");
+      return;
+    }
+
     const encodedMessage = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!popup || popup.closed || typeof popup.closed === "undefined") {
+      setSubmitError("Popup blocked. Please allow popups and try again.");
+      return;
+    }
     setShowToast(true);
   } catch (error) {
     setSubmitError("Failed to send message. Please try again.");
@@ -83,10 +92,10 @@ export default function ContactPage() {
     <>
       <SuccessToast
         visible={showToast}
-        title="Message Sent! 💚"
-        message="Thanks for reaching out. We'll get back to you within 24 hours."
+        title="WhatsApp Draft Opened"
+        message="Your message is pre-filled in WhatsApp. Tap Send there to deliver it to our team."
         duration={5000}
-        onClose={() => { setShowToast(false); reset(); }}
+        onClose={() => { setShowToast(false); }}
       />
       {/* HERO SECTION */}
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
