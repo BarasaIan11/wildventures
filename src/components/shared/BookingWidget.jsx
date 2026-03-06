@@ -12,6 +12,21 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
 
   const submit = (e) => {
     e.preventDefault()
+    
+    const { name, email, date, travelers } = form;
+    
+    let text = `Hello Wild Ventures! I would like to book a safari.\n\n`;
+    if (tourTitle) text += `Tour: ${tourTitle}\n`;
+    text += `Name: ${name}\n`;
+    text += `Email: ${email}\n`;
+    text += `Travel Date: ${date}\n`;
+    text += `Travelers: ${travelers}\n`;
+    if (price > 0) text += `Estimated Total: $${total.toLocaleString()}\n`;
+
+    const encodedMessage = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
     setSubmitted(true)
   }
 

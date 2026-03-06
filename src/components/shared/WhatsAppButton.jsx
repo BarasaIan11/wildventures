@@ -2,7 +2,7 @@
 import React from "react";
 
 export default function WhatsAppButton() {
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
   const message = "Hello WildVentures, I'm interested in planning a safari.";
 
   if (!phoneNumber) return null;

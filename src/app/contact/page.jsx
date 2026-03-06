@@ -13,7 +13,18 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (data) => {
-   // TODO: Implement actual form submission (API call) 
+    const { name, email, subject, message } = data;
+    
+    let text = `Hello Wild Ventures! I have an inquiry.\n\n`;
+    text += `Name: ${name}\n`;
+    text += `Email: ${email}\n`;
+    if (subject) text += `Subject: ${subject}\n`;
+    if (message) text += `Message: ${message}\n`;
+
+    const encodedMessage = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
     setSubmitted(true);
   };
 
@@ -27,7 +38,7 @@ export default function ContactPage() {
       label: "Visit Us",
       value: "Westlands Business Park, Nairobi, Kenya",
     },
-    { Icon: Phone, label: "Call Us", value: "+254 700 123 456" },
+    { Icon: Phone, label: "Call Us", value: "+254 780 166 113" },
     { Icon: Mail, label: "Email Us", value: "hello@wildventures.co" },
     {
       Icon: Clock,
@@ -95,7 +106,7 @@ export default function ContactPage() {
 
             {/* WhatsApp highlight */}
             <a
-              href="https://wa.me/254700123456"
+              href="https://wa.me/254780166113"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-[#25D366]/10 border border-[#25D366]/30 rounded-sm p-5

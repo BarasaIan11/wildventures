@@ -33,9 +33,24 @@ export default function PlanPage() {
     setIsSubmitting(true);
     setSubmitError("");
     try {
-      // Simulate an async API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // TODO: replace with actual API call: await fetch('/api/inquiry', { method: 'POST', body: JSON.stringify(data) });
+      const { firstName, lastName, email, phone, startDate, duration, travelers, budget, destinations, interests, message } = data;
+      
+      let text = `Hello Wild Ventures! I would like to plan a custom safari.\n\n`;
+      text += `Name: ${firstName} ${lastName}\n`;
+      text += `Email: ${email}\n`;
+      if (phone) text += `Phone: ${phone}\n`;
+      text += `Travel Dates: ${startDate}\n`;
+      if (duration) text += `Duration: ${duration}\n`;
+      if (travelers) text += `Travelers: ${travelers}\n`;
+      if (budget) text += `Budget (per person): ${budget}\n`;
+      if (destinations && destinations.length > 0) text += `Destinations: ${destinations.join(', ')}\n`;
+      if (interests && interests.length > 0) text += `Interests: ${interests.join(', ')}\n`;
+      if (message) text += `Message: ${message}\n`;
+
+      const encodedMessage = encodeURIComponent(text);
+      const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, "_blank");
       setSubmitted(true);
     } catch (error) {
       setSubmitError("Failed to submit inquiry. Please try again.");

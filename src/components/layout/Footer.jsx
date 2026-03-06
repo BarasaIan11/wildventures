@@ -127,7 +127,7 @@ export default function Footer() {
             <div className="space-y-5">
               {[
                 { Icon: MapPin, text: "Nairobi, Kenya" },
-                { Icon: Phone, text: "+254 700 123 456" },
+                { Icon: Phone, text: "+254 780 166 113" },
                 { Icon: Mail, text: "hello@wildventures.co" },
                 { Icon: Clock, text: "Mon–Sat, 8am – 6pm EAT" },
               ].map(({ Icon, text }) => (
@@ -141,7 +141,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://wa.me/254700123456"
+              href="https://wa.me/254780166113"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white text-[0.75rem] tracking-widest uppercase font-bold py-4 px-6 rounded-sm hover:bg-orange hover:border-orange transition-all duration-500"

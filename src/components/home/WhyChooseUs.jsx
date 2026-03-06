@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
               src="/images/hero/reviews-hero.png"
               alt="Travelers in Africa"
               fill
-              sizes="(min-width: 1024px) 40vw, 80vw"
+              sizes="(min-width: 1024px) 28vw, 55vw"
               className="object-cover"
             />
           </div>
