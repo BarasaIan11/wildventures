@@ -163,7 +163,7 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-hidden={!mobileOpen}
-        inert={!mobileOpen ? true : undefined}
+        inert={!mobileOpen ? "" : undefined}
         onKeyDown={handleKeyDown}
         className={clsx(
           "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-start overflow-y-auto px-10 pt-24 pb-12",

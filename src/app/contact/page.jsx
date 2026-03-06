@@ -6,7 +6,8 @@ import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
 export default function ContactPage() {
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
-  const formattedPhone = phoneNumber ? `+${phoneNumber.slice(0,3)} ${phoneNumber.slice(3,6)} ${phoneNumber.slice(6)}` : "";
+  const formattedPhone = phoneNumber ? `+${phoneNumber.slice(0,3)} ${phoneNumber.slice(3,6)} ${phoneNumber.slice(6)}` : "Contact via email";
+  const hasWhatsApp = phoneNumber.length > 0;
 
   const {
     register,

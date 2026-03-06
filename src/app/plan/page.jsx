@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 export default function PlanPage() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
   const {
     register,
     handleSubmit,
@@ -48,7 +49,8 @@ export default function PlanPage() {
 
       const whatsappText = `Hi, I submitted a custom safari inquiry on your website! (Ref: #${refId}) — please confirm.`;
       const encodedMessage = encodeURIComponent(whatsappText);
-      const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
       
       window.open(whatsappUrl, "_blank");
       setSubmitted(true);
