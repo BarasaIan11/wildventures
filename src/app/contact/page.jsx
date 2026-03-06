@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import SuccessToast from "@/components/shared/SuccessToast";
 
 export default function ContactPage() {
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
@@ -12,43 +13,52 @@ export default function ContactPage() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const [submitted, setSubmitted] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
   const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setSubmitError("");
-    try {
-      const response = await fetch("/api/inquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+  setIsSubmitting(true);
+  setSubmitError("");
+  try {
+    const { name, email, subject, message } = data;
 
-      if (!response.ok) {
-        throw new Error("Failed to submit inquiry.");
-      }
+    const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-      const result = await response.json();
-      const refId = result.inquiryId;
+    let text = `📩 *CONTACT MESSAGE — WildVentures*\n`;
+    text += `🔖 Ref: *#${refId}*\n\n`;
 
-      const whatsappText = `Hi, I submitted a contact inquiry on your website! (Ref: #${refId}) — please confirm.`;
-      const encodedMessage = encodeURIComponent(whatsappText);
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    text += `👤 *SENDER DETAILS*\n`;
+    
+    text += ` Name:${name}\n`;
+    text += ` Email:${email}\n`;
+    text += ` Subject:${subject || "General Inquiry"}\n`;
+    
 
+    if (message) {
+      text += `💬 *MESSAGE*\n`;
+      text += `${message.split('\n').map(l => `│ ${l}`).join('\n')}\n`;
       
-      window.open(whatsappUrl, "_blank");
-      setSubmitted(true);
-    } catch (error) {
-      setSubmitError("Failed to send message. Please try again.");
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+
+    text += `⏰ _Submitted: ${new Date().toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" })}_\n`;
+    text += `🌐 _Via WildVentures website_`;
+
+    const encodedMessage = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+    setShowToast(true);
+  } catch (error) {
+    setSubmitError("Failed to send message. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const inputClass = `w-full border border-gray-200 rounded-sm px-4 py-3 text-[0.9rem]
     text-charcoal focus:outline-none focus:border-green transition-colors duration-200`;
@@ -71,6 +81,13 @@ export default function ContactPage() {
 
   return (
     <>
+      <SuccessToast
+        visible={showToast}
+        title="Message Sent! 💚"
+        message="Thanks for reaching out. We'll get back to you within 24 hours."
+        duration={5000}
+        onClose={() => { setShowToast(false); reset(); }}
+      />
       {/* HERO SECTION */}
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
@@ -162,17 +179,6 @@ export default function ContactPage() {
 
           {/* Right: Form */}
           <div>
-            {submitted ? (
-              <div className="bg-green rounded-sm p-10 text-center shadow-card">
-                <div className="text-5xl mb-4">✅</div>
-                <h3 className="font-serif text-2xl text-white mb-3">
-                  Message Sent!
-                </h3>
-                <p className="text-white/70 leading-relaxed">
-                  Thank you for reaching out. We'll be in touch within 24 hours.
-                </p>
-              </div>
-            ) : (
               <div className="bg-white shadow-card rounded-sm p-8">
                 <p className="section-label">Send a Message</p>
                 <h3 className="section-title mb-7">
@@ -253,8 +259,7 @@ export default function ContactPage() {
                   </button>
                   {submitError && <p className="text-red-500 text-center text-sm mt-3">{submitError}</p>}
                 </form>
-              </div>
-            )}
+                </div>
           </div>
         </div>
       </section>

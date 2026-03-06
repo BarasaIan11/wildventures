@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react'
 import { Calendar, Users, Mail } from 'lucide-react'
+import SuccessToast from './SuccessToast'
 
 export default function BookingWidget({ tourTitle = '', price = 0 }) {
-  const [form, setForm] = useState({ date: '', travelers: '2', name: '', email: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const emptyForm = { date: '', travelers: '2', name: '', email: '' }
+  const [form, setForm] = useState(emptyForm)
+  const [showToast, setShowToast] = useState(false)
 
   const total = price * parseInt(form.travelers || 1)
 
@@ -33,19 +35,20 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
-    setSubmitted(true)
+    setShowToast(true)
   }
 
-  if (submitted) return (
-    <div className="bg-white rounded-sm shadow-card-hover p-7 text-center">
-      <div className="text-4xl mb-3">✅</div>
-      <h3 className="font-serif text-xl text-green mb-2">Request Sent!</h3>
-      <p className="text-sm text-gray-500">We'll contact you within 24 hours to confirm your booking.</p>
-    </div>
-  )
 
   return (
-    <div className="bg-white rounded-sm shadow-card-hover overflow-hidden lg:sticky lg:top-24 z-10">
+    <>
+      <SuccessToast
+        visible={showToast}
+        title="Booking Request Sent! 🦁"
+        message="Our team will reach out within 24 hours to confirm your safari."
+        duration={5000}
+        onClose={() => { setShowToast(false); setForm(emptyForm); }}
+      />
+      <div className="bg-white rounded-sm shadow-card-hover overflow-hidden lg:sticky lg:top-24 z-10">
       {/* Header */}
       <div className="bg-green px-6 py-5">
         <p className="text-white/70 text-[0.75rem] tracking-[0.1em] uppercase mb-1">Starting from</p>
@@ -159,5 +162,6 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
         </p>
       </form>
     </div>
+    </>
   )
 }
