@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, Instagram, Facebook, Youtube } from "lucide-react";
 import clsx from "clsx";
@@ -163,7 +163,7 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-hidden={!mobileOpen}
-        inert={!mobileOpen ? "" : undefined}
+        inert={!mobileOpen ? true : undefined}
         onKeyDown={handleKeyDown}
         className={clsx(
           "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-start overflow-y-auto px-10 pt-24 pb-12",
