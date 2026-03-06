@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import SuccessToast from "@/components/shared/SuccessToast";
 import {
   Calendar,
   Users,
@@ -18,10 +19,11 @@ export default function PlanPage() {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
-  const [submitted, setSubmitted] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   // Watch values for "Selection Tile" styling
   const selectedDestinations = watch("destinations") || [];
@@ -34,26 +36,41 @@ export default function PlanPage() {
     setIsSubmitting(true);
     setSubmitError("");
     try {
-      const response = await fetch("/api/inquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const { firstName, lastName, email, phone, startDate, duration, travelers, budget, destinations, interests, message } = data;
 
-      if (!response.ok) {
-        throw new Error("Failed to submit inquiry.");
+      // Generate a short reference ID locally
+      const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+      let text = `*New Safari Inquiry — WildVentures*\n`;
+      text += `Ref: #${refId}\n`;
+  
+      text += `*Name:* ${firstName} ${lastName}\n`;
+      text += `*Email:* ${email}\n`;
+      if (phone) text += `*Phone:* ${phone}\n`;
+      text += `\n*Trip Details*\n`;
+      text += `*Travel Date:* ${startDate}\n`;
+      if (duration) text += `*Duration:* ${duration}\n`;
+      if (travelers) text += `*Travelers:* ${travelers}\n`;
+      if (budget) text += `*Budget (per person):* ${budget}\n`;
+      if (destinations && destinations.length > 0) text += `*Destinations:* ${destinations.join(", ")}\n`;
+      if (interests && interests.length > 0) text += `*Interests:* ${interests.join(", ")}\n`;
+      if (message) text += `\n*Additional Notes:*\n${message}\n`;
+      
+      text += `Submitted via WildVentures website.`;
+
+      if (!phoneNumber) {
+        setSubmitError("WhatsApp is currently unavailable. Please try again later.");
+        return;
       }
-
-      const result = await response.json();
-      const refId = result.inquiryId;
-
-      const whatsappText = `Hi, I submitted a custom safari inquiry on your website! (Ref: #${refId}) — please confirm.`;
-      const encodedMessage = encodeURIComponent(whatsappText);
+      const encodedMessage = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-      
-      window.open(whatsappUrl, "_blank");
-      setSubmitted(true);
+      const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      if (!popup || popup.closed || typeof popup.closed === "undefined") {
+        setSubmitError("Popup blocked. Please allow popups and try again.");
+        return;
+      }
+      setShowToast(true);
     } catch (error) {
       setSubmitError("Failed to submit inquiry. Please try again.");
     } finally {
@@ -68,27 +85,16 @@ export default function PlanPage() {
     "font-serif text-[1.5rem] text-green mb-8 flex items-center gap-3";
 const errorClass = "text-red-500 text-[0.75rem] mt-1";
 
-  if (submitted)
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-ivory px-5">
-        <div className="text-center max-w-md">
-          <div className="text-6xl mb-6 animate-bounce">🦁</div>
-          <h2 className="font-serif text-4xl text-green mb-4">
-            Inquiry Received
-          </h2>
-          <p className="text-gray-500 leading-relaxed mb-10 font-light">
-            Your dream safari is now in the hands of our experts. We will
-            contact you within 24 hours to begin crafting your journey.
-          </p>
-          <a href="/" className="btn btn-primary px-12">
-            Return to Home
-          </a>
-        </div>
-      </div>
-    );
-
   return (
-    <main className="bg-ivory">
+    <>
+      <SuccessToast
+        visible={showToast}
+        title="WhatsApp Draft Opened"
+        message="Your inquiry details are pre-filled in WhatsApp. Just tap Send to submit to our team."
+        duration={5000}
+        onClose={() => { setShowToast(false);}}
+      />
+      <main className="bg-ivory">
       {/* --- HERO SECTION --- */}
       <div className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
         <Image
@@ -334,5 +340,6 @@ const errorClass = "text-red-500 text-[0.75rem] mt-1";
         </div>
       </section>
     </main>
+    </>
   );
 }
