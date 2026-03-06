@@ -41,20 +41,20 @@ export default function PlanPage() {
       // Generate a short reference ID locally
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-      let text = `🌍 *New Safari Inquiry — WildVentures*\n`;
+      let text = `*New Safari Inquiry — WildVentures*\n`;
       text += `Ref: #${refId}\n`;
   
       text += `*Name:* ${firstName} ${lastName}\n`;
       text += `*Email:* ${email}\n`;
       if (phone) text += `*Phone:* ${phone}\n`;
-      text += `\n📅 *Trip Details*\n`;
+      text += `\n*Trip Details*\n`;
       text += `*Travel Date:* ${startDate}\n`;
       if (duration) text += `*Duration:* ${duration}\n`;
       if (travelers) text += `*Travelers:* ${travelers}\n`;
       if (budget) text += `*Budget (per person):* ${budget}\n`;
       if (destinations && destinations.length > 0) text += `*Destinations:* ${destinations.join(", ")}\n`;
       if (interests && interests.length > 0) text += `*Interests:* ${interests.join(", ")}\n`;
-      if (message) text += `\n💬 *Additional Notes:*\n${message}\n`;
+      if (message) text += `\n*Additional Notes:*\n${message}\n`;
       
       text += `Submitted via WildVentures website.`;
 
@@ -81,7 +81,7 @@ const errorClass = "text-red-500 text-[0.75rem] mt-1";
     <>
       <SuccessToast
         visible={showToast}
-        title="Inquiry Sent! 🌍"
+        title="Inquiry Sent!"
         message="Your safari inquiry is on its way to our team. We'll be in touch within 24 hours."
         duration={5000}
         onClose={() => { setShowToast(false); reset(); }}

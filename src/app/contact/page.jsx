@@ -29,10 +29,10 @@ export default function ContactPage() {
 
     const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-    let text = `📩 *CONTACT MESSAGE — WildVentures*\n`;
-    text += `🔖 Ref: *#${refId}*\n\n`;
+    let text = `*CONTACT MESSAGE — WildVentures*\n`;
+    text += `Ref: *#${refId}*\n\n`;
 
-    text += `👤 *SENDER DETAILS*\n`;
+    text += `*SENDER DETAILS*\n`;
     
     text += ` Name:${name}\n`;
     text += ` Email:${email}\n`;
@@ -40,13 +40,13 @@ export default function ContactPage() {
     
 
     if (message) {
-      text += `💬 *MESSAGE*\n`;
+      text += `*MESSAGE*\n`;
       text += `${message.split('\n').map(l => `│ ${l}`).join('\n')}\n`;
       
     }
 
-    text += `⏰ _Submitted: ${new Date().toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" })}_\n`;
-    text += `🌐 _Via WildVentures website_`;
+    text += `_Submitted: ${new Date().toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" })}_\n`;
+    text += `_Via WildVentures website_`;
 
     const encodedMessage = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
