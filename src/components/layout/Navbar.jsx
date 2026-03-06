@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Youtube } from "lucide-react";
 import clsx from "clsx";
 
 const links = [
@@ -16,6 +16,12 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Ref to hold the active element before opening the menu
+  const triggerRef = useRef(null);
+  // Ref for the modal dialog container
+  const modalRef = useRef(null);
+  // Ref for the close button, to easily focus it on open
+  const closeButtonRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -24,11 +30,65 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      // Store the currently focused element
+      triggerRef.current = document.activeElement;
+
+      // Focus the close button when the modal opens
+      // Using a short timeout to ensure the DOM has updated and element is visible
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
+    } else {
+      document.body.style.overflow = "";
+      // Restore focus to the trigger element when modal closes
+      if (triggerRef.current) {
+        triggerRef.current.focus();
+      }
+    }
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  // Handle focus trap and escape key
+  const handleKeyDown = (e) => {
+    if (!mobileOpen) return;
+
+    if (e.key === "Escape") {
+      setMobileOpen(false);
+      return;
+    }
+
+    if (e.key === "Tab") {
+      // Find all focusable elements inside the modal
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (!focusableElements || focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      // Shift + Tab
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } 
+      // Tab
+      else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  };
+
 
   return (
     <>
@@ -99,39 +159,77 @@ export default function Navbar() {
 
       {/* ── Mobile Nav Overlay */}
       <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen ? "" : undefined}
+        onKeyDown={handleKeyDown}
         className={clsx(
-          "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-center gap-8",
-          "transition-all duration-500",
+          "fixed inset-0 z-[1000] bg-green flex flex-col items-center justify-start overflow-y-auto px-10 pt-24 pb-12",
+          "transition-all duration-700 ease-in-out",
           mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0 pointer-events-none", // Slide in effect
         )}
       >
+        {/* Subtle background texture for mobile menu */}
+        <div
+          className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: 'url("/images/hero/hero-main.png")',
+            backgroundSize: "cover",
+          }}
+        />
+
         <button
-          onClick={() => setMobileOpen(false)}
-          className="absolute top-6 right-6 text-white"
+          ref={closeButtonRef}
           aria-label="Close menu"
+          onClick={() => setMobileOpen(false)}
+          className="absolute top-8 right-8 text-white/50 hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
         >
-          <X className="w-7 h-7" />
+          <X className="w-8 h-8" />
         </button>
 
-        {links.map(({ href, label }) => (
+        <nav className="relative z-10 flex flex-col items-center gap-8 text-center">
+          {links.map(({ href, label }, i) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMobileOpen(false)}
+              style={{ transitionDelay: `${i * 50}ms` }}
+              className="font-serif text-[2.2rem] font-light text-white hover:text-beige focus:outline-none focus-visible:text-beige focus-visible:ring-2 focus-visible:ring-orange rounded-sm transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
+
           <Link
-            key={href}
-            href={href}
+            href="/tours"
             onClick={() => setMobileOpen(false)}
-            className="font-serif text-[2rem] font-light text-white hover:text-beige transition-colors"
+            className="btn btn-primary mt-8 w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-green"
           >
-            {label}
+            Book Your Safari
           </Link>
-        ))}
-        <Link
-          href="/tours"
-          onClick={() => setMobileOpen(false)}
-          className="btn btn-primary mt-4"
-        >
-          Book Safari
-        </Link>
+        </nav>
+
+        {/* Mobile Socials */}
+        <div className="mt-auto pt-12 flex flex-col items-center gap-4 text-white/40">
+          <span className="text-[0.7rem] tracking-[0.3em] uppercase">
+            Follow the Journey
+          </span>
+          <div className="flex gap-6">
+            <a href="https://instagram.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="https://facebook.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="https://youtube.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Youtube className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );

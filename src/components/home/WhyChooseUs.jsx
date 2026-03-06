@@ -1,69 +1,103 @@
-import Image from 'next/image'
-import RevealWrapper from '@/components/shared/RevealWrapper'
+import Image from "next/image";
+import RevealWrapper from "@/components/shared/RevealWrapper";
+import { Compass, Sparkles, Leaf, ShieldCheck } from "lucide-react"; // Using Lucide for a premium look
 
 const features = [
-  { icon: '🧭', title: 'Expert Local Guides', desc: "Born and raised in the wild — naturalists, trackers, and storytellers who bring Africa's bush to life." },
-  { icon: '✦',  title: 'Fully Tailored Itineraries', desc: 'No two safaris are the same. We design yours around your pace, interests, and dream experiences.' },
-  { icon: '🌿', title: 'Sustainable & Responsible Travel', desc: 'We partner with eco-certified lodges and community conservation projects — your adventure gives back.' },
-  { icon: '🛡', title: 'End-to-End Support', desc: 'From visa advice to airport transfers, we are with you every step of the journey.' },
-]
+  {
+    icon: Compass,
+    title: "Expert Local Guides",
+    desc: "Born and raised in the wild — naturalists and storytellers who bring Africa's bush to life.",
+  },
+  {
+    icon: Sparkles,
+    title: "Fully Tailored Itineraries",
+    desc: "No two safaris are the same. We design yours around your specific interests and pace.",
+  },
+  {
+    icon: Leaf,
+    title: "Responsible Travel",
+    desc: "We partner with eco-certified lodges to ensure your adventure gives back to the land.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "End-to-End Support",
+    desc: "From visa advice to airport transfers, we are with you every step of the journey.",
+  },
+];
 
 export default function WhyChooseUs() {
   return (
     <section className="section-pad bg-green">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-        {/* Image stack */}
-        <RevealWrapper className="relative h-[420px] md:h-[520px]">
-          <Image
-            src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?w=700&q=80"
-            alt="Expert safari guide"
-            width={560} height={440}
-            className="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-sm"
-          />
-          <Image
-            src="https://images.unsplash.com/photo-1521651201144-634f700b36ef?w=400&q=80"
-            alt="Luxury tented camp"
-            width={320} height={280}
-            className="absolute bottom-0 left-0 w-[52%] h-[52%] object-cover rounded-sm
-                       border-[6px] border-green shadow-[0_16px_40px_rgba(0,0,0,0.3)]"
-          />
-          {/* Years badge */}
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4
-                          bg-orange text-white px-5 py-4 text-center rounded-sm
-                          shadow-[0_8px_24px_rgba(196,122,44,0.4)]
-                          hidden lg:block">
-            <p className="font-serif text-[1.8rem] font-semibold leading-none">15+</p>
-            <p className="text-[0.7rem] tracking-[0.08em] mt-1 opacity-90 leading-tight">Years of<br />Excellence</p>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        {/* Image stack - Added more depth */}
+        <RevealWrapper className="relative h-[450px] md:h-[550px]">
+          <div className="absolute top-0 right-0 w-4/5 h-[85%] rounded-sm overflow-hidden shadow-2xl">
+            <Image
+              src="/images/hero/about-hero.png"
+              alt="Expert safari guide"
+              fill
+              sizes="(min-width: 1024px) 40vw, 80vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 w-[55%] h-[55%] rounded-sm overflow-hidden border-[8px] border-green shadow-card-hover">
+            <Image
+              src="/images/hero/reviews-hero.png"
+              alt="Travelers in Africa"
+              fill
+              sizes="(min-width: 1024px) 28vw, 55vw"
+              className="object-cover"
+            />
+          </div>
+
+          {/* Years badge - Styled as an 'Official Seal' */}
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 bg-orange text-white w-32 h-32 rounded-full flex flex-col items-center justify-center shadow-orange hidden lg:flex border-4 border-green">
+            <p className="font-serif text-3xl font-bold leading-none">15+</p>
+            <p className="text-[0.6rem] tracking-widest uppercase mt-1 text-center font-bold">
+              Years of
+              <br />
+              Excellence
+            </p>
           </div>
         </RevealWrapper>
 
         {/* Content */}
-        <RevealWrapper delay={0.15}>
-          <p className="section-label light">Why WildVentures</p>
-          <h2 className="section-title white">
-            Crafted with <em>Care,</em><br />Delivered with Passion
-          </h2>
-          <p className="section-sub !text-white/60 mb-8">
-            We go beyond booking tours. Every journey is personally designed to connect
-            you with Africa's most breathtaking moments.
-          </p>
+        <div className="lg:pl-10">
+          <RevealWrapper>
+            <p className="section-label light">Why WildVentures</p>
+            <h2 className="section-title white mb-6">
+              Crafted with Care,
+              <br />
+              <span className="italic font-normal text-beige">
+                Delivered with Passion
+              </span>
+            </h2>
+            <p className="text-white/60 text-[1.05rem] leading-relaxed mb-12 max-w-lg font-light">
+              We go beyond booking tours. We are a team of naturalists and
+              adventurers dedicated to connecting you with Africa's most
+              breathtaking moments.
+            </p>
+          </RevealWrapper>
 
-          <div className="space-y-5">
-            {features.map(({ icon, title, desc }) => (
-              <div key={title} className="flex gap-4 items-start">
-                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20
-                                flex items-center justify-center text-lg flex-shrink-0">
-                  {icon}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+            {features.map(({ icon: Icon, title, desc }, i) => (
+              <RevealWrapper key={title} delay={0.1 * i}>
+                <div className="group">
+                  <div className="w-10 h-10 rounded-sm bg-beige/10 flex items-center justify-center mb-4 border border-white/10 group-hover:bg-orange transition-colors duration-500">
+                    <Icon className="w-5 h-5 text-beige group-hover:text-white" />
+                  </div>
+                  <h3 className="text-white font-medium mb-2 tracking-tight">
+                    {title}
+                  </h3>
+                  <p className="text-[0.88rem] text-white/50 leading-relaxed font-light">
+                    {desc}
+                  </p>
                 </div>
-                <div>
-                  <p className="text-white font-medium mb-1">{title}</p>
-                  <p className="text-[0.85rem] text-white/55 leading-[1.65]">{desc}</p>
-                </div>
-              </div>
+              </RevealWrapper>
             ))}
           </div>
-        </RevealWrapper>
+        </div>
       </div>
     </section>
-  )
+  );
 }

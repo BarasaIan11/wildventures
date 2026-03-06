@@ -5,6 +5,10 @@ import { useForm } from "react-hook-form";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
 export default function ContactPage() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
+  const formattedPhone = phoneNumber ? `+${phoneNumber.slice(0,3)} ${phoneNumber.slice(3,6)} ${phoneNumber.slice(6)}` : "Contact via email";
+  const hasWhatsApp = phoneNumber.length > 0;
+
   const {
     register,
     handleSubmit,
@@ -12,9 +16,38 @@ export default function ContactPage() {
   } = useForm();
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    setSubmitted(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit inquiry.");
+      }
+
+      const result = await response.json();
+      const refId = result.inquiryId;
+
+      const whatsappText = `Hi, I submitted a contact inquiry on your website! (Ref: #${refId}) — please confirm.`;
+      const encodedMessage = encodeURIComponent(whatsappText);
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+      
+      window.open(whatsappUrl, "_blank");
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = `w-full border border-gray-200 rounded-sm px-4 py-3 text-[0.9rem]
@@ -27,7 +60,7 @@ export default function ContactPage() {
       label: "Visit Us",
       value: "Westlands Business Park, Nairobi, Kenya",
     },
-    { Icon: Phone, label: "Call Us", value: "+254 700 123 456" },
+    { Icon: Phone, label: "Call Us", value: formattedPhone },
     { Icon: Mail, label: "Email Us", value: "hello@wildventures.co" },
     {
       Icon: Clock,
@@ -38,19 +71,29 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
+      {/* HERO SECTION */}
+      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
-          src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=1800&q=80"
-          alt="Contact WildVentures"
+          src="/images/hero/contact-hero.png"
+          alt="African elephants in the wild"
           fill
-          className="object-cover brightness-50"
+          priority
+          className="object-cover animate-hero-zoom"
         />
-        <div className="relative z-10 px-[5%] pb-10 pt-24">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
           <p className="section-label light">Get In Touch</p>
-          <h1 className="font-serif text-[clamp(2rem,5vw,4rem)] font-light text-white">
-            Let&apos;s Plan Your <em className="italic">Safari</em>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1]">
+            Let's Plan Your <br />
+            <em className="italic text-beige">Safari</em>
           </h1>
+          <p className="text-white/80 mt-6 text-[1.05rem] font-light max-w-md leading-relaxed">
+            Our experts are on hand to help you craft an unforgettable journey
+            through East Africa. Reach out and let's start the conversation.
+          </p>
         </div>
       </div>
 
@@ -60,7 +103,7 @@ export default function ContactPage() {
           <div>
             <p className="section-label">Contact Information</p>
             <h2 className="section-title">
-              We&apos;re Here to <em>Help</em>
+              We're Here to <em>Help</em>
             </h2>
             <p className="section-sub mb-10">
               Whether you have a question about a tour, want to customise an
@@ -85,7 +128,7 @@ export default function ContactPage() {
 
             {/* WhatsApp highlight */}
             <a
-              href="https://wa.me/254700123456"
+              href={`https://wa.me/${phoneNumber}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-[#25D366]/10 border border-[#25D366]/30 rounded-sm p-5
@@ -120,14 +163,13 @@ export default function ContactPage() {
           {/* Right: Form */}
           <div>
             {submitted ? (
-              <div className="bg-green rounded-sm p-10 text-center">
+              <div className="bg-green rounded-sm p-10 text-center shadow-card">
                 <div className="text-5xl mb-4">✅</div>
                 <h3 className="font-serif text-2xl text-white mb-3">
                   Message Sent!
                 </h3>
                 <p className="text-white/70 leading-relaxed">
-                  Thank you for reaching out. We&apos;ll be in touch within 24
-                  hours.
+                  Thank you for reaching out. We'll be in touch within 24 hours.
                 </p>
               </div>
             ) : (
@@ -203,10 +245,13 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="btn btn-primary w-full flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="btn btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" /> Send Message
+                    <Send className="w-4 h-4" /> 
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
+                  {submitError && <p className="text-red-500 text-center text-sm mt-3">{submitError}</p>}
                 </form>
               </div>
             )}

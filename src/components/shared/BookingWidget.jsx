@@ -12,6 +12,27 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
 
   const submit = (e) => {
     e.preventDefault()
+    
+    const { name, email, date, travelers } = form;
+    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+    
+    if (!phoneNumber) {
+      console.error("WhatsApp number not configured");
+      return;
+    }
+    
+    let text = `Hello Wild Ventures! I would like to book a safari.\n\n`;
+    if (tourTitle) text += `Tour: ${tourTitle}\n`;
+    text += `Name: ${name}\n`;
+    text += `Email: ${email}\n`;
+    text += `Travel Date: ${date}\n`;
+    text += `Travelers: ${travelers}\n`;
+    if (price > 0) text += `Estimated Total: $${total.toLocaleString()}\n`;
+
+    const encodedMessage = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
     setSubmitted(true)
   }
 
@@ -24,7 +45,7 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
   )
 
   return (
-    <div className="bg-white rounded-sm shadow-card-hover overflow-hidden sticky top-24">
+    <div className="bg-white rounded-sm shadow-card-hover overflow-hidden lg:sticky lg:top-24 z-10">
       {/* Header */}
       <div className="bg-green px-6 py-5">
         <p className="text-white/70 text-[0.75rem] tracking-[0.1em] uppercase mb-1">Starting from</p>
