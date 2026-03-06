@@ -34,13 +34,13 @@ export default function ContactPage() {
 
     text += `*SENDER DETAILS*\n`;
     
-    text += ` Name:${name}\n`;
-    text += ` Email:${email}\n`;
-    text += ` Subject:${subject || "General Inquiry"}\n`;
+    text += ` Name: ${name}\n`;
+    text += ` Email: ${email}\n`;
+    text += ` Subject: ${subject || "General Inquiry"}\n`;
     
 
     if (message) {
-      text += `*MESSAGE*\n`;
+      text += `*Message:*\n`;
       text += `${message.split('\n').map(l => `│ ${l}`).join('\n')}\n`;
       
     }
@@ -51,7 +51,7 @@ export default function ContactPage() {
     const encodedMessage = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setShowToast(true);
   } catch (error) {
     setSubmitError("Failed to send message. Please try again.");

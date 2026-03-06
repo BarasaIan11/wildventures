@@ -34,7 +34,7 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
     const encodedMessage = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setShowToast(true)
   }
 
