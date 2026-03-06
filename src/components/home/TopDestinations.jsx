@@ -29,11 +29,6 @@ export default function TopDestinations() {
         </RevealWrapper>
       </div>
 
-      {/* 
-        FIXED GRID: 
-        Using 'lg:grid-cols-4'. By making the cards narrower, 
-        we can show more of the vertical height of your images.
-      */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
         <RevealWrapper>
           <DestCard dest={kenya} />

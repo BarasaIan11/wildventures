@@ -397,9 +397,10 @@ export default function AboutPage() {
                   accountability is part of the commitment.
                 </p>
               </div>
-              <a href="#" className="btn btn-outline-white inline-block">
+              {/* TODO: Add impact report link when available */}
+              {/* <a href="#" className="btn btn-outline-white inline-block">
                 Read Our Impact Report
-              </a>
+              </a> */}
             </RevealWrapper>
 
             <RevealWrapper delay={0.15}>

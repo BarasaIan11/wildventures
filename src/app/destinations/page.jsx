@@ -45,12 +45,6 @@ export default function DestinationsPage() {
           <h2 className="section-title italic text-green">Our Focus Regions</h2>
         </div>
 
-        {/* 
-          FIXED GRID LAYOUT:
-          Using a 2-column grid (md:grid-cols-2) for all cards. 
-          This provides the vertical space needed for your portrait 
-          images (Gorillas/Chimps) so they don't get chopped.
-        */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           <DestinationCard dest={kenya} />
           <DestinationCard dest={tanzania} />

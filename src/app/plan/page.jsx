@@ -36,6 +36,7 @@ export default function PlanPage() {
   const labelClass = `block text-[0.65rem] tracking-[0.2em] uppercase text-orange font-bold mb-2`;
   const sectionHeader =
     "font-serif text-[1.5rem] text-green mb-8 flex items-center gap-3";
+const errorClass = "text-red-500 text-[0.75rem] mt-1";
 
   if (submitted)
     return (

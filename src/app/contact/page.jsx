@@ -13,7 +13,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (data) => {
-    console.log(data);
+   // TODO: Implement actual form submission (API call) 
     setSubmitted(true);
   };
 

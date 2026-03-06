@@ -46,14 +46,17 @@ export default function Footer() {
             </p>
             <div className="flex gap-4 pt-2">
               {[
-                { Icon: Instagram, label: "Instagram" },
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Youtube, label: "YouTube" },
-              ].map(({ Icon, label }) => (
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/wildventures" },
+                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/wildventures" },
+                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/wildventures" },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-orange hover:text-orange transition-all duration-300"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-orange hover:text-orange focus:outline-none focus-visible:border-orange focus-visible:text-orange focus-visible:ring-2 focus-visible:ring-orange transition-all duration-300"
                 >
                   <Icon size={18} strokeWidth={1.5} />
                 </a>
@@ -165,13 +168,13 @@ export default function Footer() {
 
           <div className="flex gap-8">
             {["Privacy", "Terms", "Cookies"].map((l) => (
-              <a
+              <span
                 key={l}
-                href="#"
-                className="text-[0.75rem] opacity-40 hover:text-white hover:opacity-100 transition-all uppercase tracking-widest"
+                aria-disabled="true"
+                className="text-[0.75rem] opacity-40 uppercase tracking-widest cursor-not-allowed"
               >
                 {l}
-              </a>
+              </span>
             ))}
           </div>
         </div>

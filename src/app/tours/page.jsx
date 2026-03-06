@@ -55,8 +55,11 @@ function ToursContent({ destination, style, duration }) {
 }
 
 export default async function ToursPage({ searchParams }) {
-  const params = await searchParams;
-  const { destination, style, duration } = params;
+  const params = (await searchParams) ?? {};
+const first = (value) => (Array.isArray(value) ? value[0] : value);
+  const destination = first(params.destination);
+  const style = first(params.style);
+  const duration = first(params.duration);
   return (
     <>
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">

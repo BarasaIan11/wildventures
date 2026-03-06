@@ -7,6 +7,7 @@ export const metadata = { title: "Traveler Reviews | WildVentures" };
 function Avatar({ initials, color, size = 44 }) {
   return (
     <div
+    aria-hidden="true"
       className="rounded-full flex items-center justify-center flex-shrink-0 border-2 border-beige"
       style={{ width: size, height: size, backgroundColor: color }}
     >
@@ -70,7 +71,7 @@ export default function ReviewsPage() {
             </div>
             <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
               {[
-                { num: "347", label: "Verified Reviews" },
+                { num: testimonials.length.toString(), label: "Verified Reviews" },
                 { num: "98%", label: "Would Recommend" },
                 { num: "15+", label: "Years of Excellence" },
               ].map(({ num, label }) => (

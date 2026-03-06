@@ -1,6 +1,6 @@
 import Link from "next/link";
 import RevealWrapper from "@/components/shared/RevealWrapper";
-import { testimonials } from "@/data/testimonials";
+import { getFeatured, getRegular } from "@/data/testimonials";
 
 function Avatar({ initials, color, size = 44 }) {
   return (
@@ -63,8 +63,11 @@ function TestimonialCard({ t, featured = false }) {
 }
 
 export default function Testimonials() {
-  const [feat, ...rest] = testimonials;
-  const shown = [rest[0], feat, rest[1]];
+  const feat = getFeatured();
+ const regular = getRegular();
+  const shown = feat
+    ? [regular[0], feat, regular[1]].filter(Boolean)
+    : regular.slice(0, 3);
 
   return (
     <section className="section-pad bg-beige">

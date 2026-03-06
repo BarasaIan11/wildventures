@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Youtube } from "lucide-react";
 import clsx from "clsx";
 
 const links = [
@@ -119,6 +119,7 @@ export default function Navbar() {
         </div>
 
         <button
+        aria-label="Close menu"
           onClick={() => setMobileOpen(false)}
           className="absolute top-8 right-8 text-white/50 hover:text-white"
         >
@@ -148,10 +149,21 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Socials */}
-        <div className="absolute bottom-12 flex gap-6 text-white/40">
+        <div className="absolute bottom-12 flex flex-col items-center gap-4 text-white/40">
           <span className="text-[0.7rem] tracking-[0.3em] uppercase">
             Follow the Journey
           </span>
+          <div className="flex gap-6">
+            <a href="https://instagram.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="https://facebook.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="https://youtube.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <Youtube className="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </div>
     </>

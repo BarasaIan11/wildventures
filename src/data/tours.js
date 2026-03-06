@@ -240,8 +240,8 @@ export const tours = [
     maxGroup: 10,
     price: 1950,
     style: "Mid-Range",
-    image: "/images/hero/contact-hero.png",
-    heroImage: "/images/hero/contact-hero.png",
+    image: "/images/tours/amboseli.png",
+    heroImage: "/images/tours/amboseli.png",
     gallery: ["/images/tours/family-safari.png"],
     summary:
       "Kenya's two crown jewels in one trip — elephants beneath Kilimanjaro in Amboseli, then the big cat paradise of the Masai Mara.",
