@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
 export default function ContactPage() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
+  const formattedPhone = phoneNumber ? `+${phoneNumber.slice(0,3)} ${phoneNumber.slice(3,6)} ${phoneNumber.slice(6)}` : "";
+
   const {
     register,
     handleSubmit,
@@ -12,20 +15,38 @@ export default function ContactPage() {
   } = useForm();
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (data) => {
-    const { name, email, subject, message } = data;
-    
-    let text = `Hello Wild Ventures! I have an inquiry.\n\n`;
-    text += `Name: ${name}\n`;
-    text += `Email: ${email}\n`;
-    if (subject) text += `Subject: ${subject}\n`;
-    if (message) text += `Message: ${message}\n`;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-    const encodedMessage = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, "_blank");
-    setSubmitted(true);
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit inquiry.");
+      }
+
+      const result = await response.json();
+      const refId = result.inquiryId;
+
+      const whatsappText = `Hi, I submitted a contact inquiry on your website! (Ref: #${refId}) — please confirm.`;
+      const encodedMessage = encodeURIComponent(whatsappText);
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+      
+      window.open(whatsappUrl, "_blank");
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = `w-full border border-gray-200 rounded-sm px-4 py-3 text-[0.9rem]
@@ -38,7 +59,7 @@ export default function ContactPage() {
       label: "Visit Us",
       value: "Westlands Business Park, Nairobi, Kenya",
     },
-    { Icon: Phone, label: "Call Us", value: "+254 780 166 113" },
+    { Icon: Phone, label: "Call Us", value: formattedPhone },
     { Icon: Mail, label: "Email Us", value: "hello@wildventures.co" },
     {
       Icon: Clock,
@@ -106,7 +127,7 @@ export default function ContactPage() {
 
             {/* WhatsApp highlight */}
             <a
-              href="https://wa.me/254780166113"
+              href={`https://wa.me/${phoneNumber}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-[#25D366]/10 border border-[#25D366]/30 rounded-sm p-5
@@ -223,10 +244,13 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="btn btn-primary w-full flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="btn btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" /> Send Message
+                    <Send className="w-4 h-4" /> 
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
+                  {submitError && <p className="text-red-500 text-center text-sm mt-3">{submitError}</p>}
                 </form>
               </div>
             )}

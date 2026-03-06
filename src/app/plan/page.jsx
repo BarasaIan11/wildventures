@@ -33,21 +33,21 @@ export default function PlanPage() {
     setIsSubmitting(true);
     setSubmitError("");
     try {
-      const { firstName, lastName, email, phone, startDate, duration, travelers, budget, destinations, interests, message } = data;
-      
-      let text = `Hello Wild Ventures! I would like to plan a custom safari.\n\n`;
-      text += `Name: ${firstName} ${lastName}\n`;
-      text += `Email: ${email}\n`;
-      if (phone) text += `Phone: ${phone}\n`;
-      text += `Travel Dates: ${startDate}\n`;
-      if (duration) text += `Duration: ${duration}\n`;
-      if (travelers) text += `Travelers: ${travelers}\n`;
-      if (budget) text += `Budget (per person): ${budget}\n`;
-      if (destinations && destinations.length > 0) text += `Destinations: ${destinations.join(', ')}\n`;
-      if (interests && interests.length > 0) text += `Interests: ${interests.join(', ')}\n`;
-      if (message) text += `Message: ${message}\n`;
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-      const encodedMessage = encodeURIComponent(text);
+      if (!response.ok) {
+        throw new Error("Failed to submit inquiry.");
+      }
+
+      const result = await response.json();
+      const refId = result.inquiryId;
+
+      const whatsappText = `Hi, I submitted a custom safari inquiry on your website! (Ref: #${refId}) — please confirm.`;
+      const encodedMessage = encodeURIComponent(whatsappText);
       const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
       
       window.open(whatsappUrl, "_blank");

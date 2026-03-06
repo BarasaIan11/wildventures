@@ -14,6 +14,12 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
     e.preventDefault()
     
     const { name, email, date, travelers } = form;
+    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+    
+    if (!phoneNumber) {
+      console.error("WhatsApp number not configured");
+      return;
+    }
     
     let text = `Hello Wild Ventures! I would like to book a safari.\n\n`;
     if (tourTitle) text += `Tour: ${tourTitle}\n`;
@@ -24,7 +30,7 @@ export default function BookingWidget({ tourTitle = '', price = 0 }) {
     if (price > 0) text += `Estimated Total: $${total.toLocaleString()}\n`;
 
     const encodedMessage = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/254780166113?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
     setSubmitted(true)

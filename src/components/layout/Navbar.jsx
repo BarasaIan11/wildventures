@@ -174,15 +174,13 @@ export default function Navbar() {
         )}
       >
         {/* Subtle background texture for mobile menu */}
-        <div className="relative z-10 mt-12 flex flex-col items-center gap-4 text-white/40">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage: 'url("/images/hero/hero-main.png")',
-              backgroundSize: "cover",
-            }}
-          />
-        </div>
+        <div
+          className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: 'url("/images/hero/hero-main.png")',
+            backgroundSize: "cover",
+          }}
+        />
 
         <button
           ref={closeButtonRef}
@@ -216,7 +214,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Socials */}
-        <div className="absolute bottom-12 flex flex-col items-center gap-4 text-white/40">
+        <div className="mt-auto pt-12 flex flex-col items-center gap-4 text-white/40">
           <span className="text-[0.7rem] tracking-[0.3em] uppercase">
             Follow the Journey
           </span>
