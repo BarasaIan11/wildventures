@@ -11,39 +11,199 @@ export async function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
 }
 
-// FIX: params is a Promise
+// ─────────────────────────────────────────────────────────────
+// SEO METADATA
+// ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
-  return { title: dest?.name || "Destination" };
+
+  if (!dest) return { title: "Destination Not Found | WildVentures" };
+
+  // Keyword-rich title per destination
+  const titleMap = {
+    kenya: "Kenya Safari Holidays & Tours 2025/2026 | WildVentures",
+    tanzania: "Tanzania Safari Tours & Packages 2025/2026 | WildVentures",
+    zanzibar: "Zanzibar Beach Holidays & Safari Combos | WildVentures",
+    rwanda: "Rwanda Gorilla Trekking Tours | WildVentures",
+    uganda: "Uganda Safari & Gorilla Trekking | WildVentures",
+  };
+
+  const descriptionMap = {
+    kenya:
+      "Explore Kenya's iconic Masai Mara, Amboseli & Samburu on a tailor-made safari. Expert guides, luxury camps & the Great Migration. Book from $1,450/pp.",
+    tanzania:
+      "Discover the Serengeti, Ngorongoro Crater & Zanzibar with WildVentures. Tanzania's greatest safari experiences crafted for international travellers.",
+    zanzibar:
+      "White-sand beaches, Stone Town spice tours & Indian Ocean diving. Combine Zanzibar with a Tanzania safari for the ultimate East Africa escape.",
+    rwanda:
+      "Trek to see mountain gorillas in Volcanoes National Park. Life-changing Rwanda gorilla safaris with WildVentures. Permits included.",
+    uganda:
+      "Gorilla trekking in Bwindi, chimpanzees in Kibale & tree-climbing lions. Uganda's best wildlife experiences with WildVentures.",
+  };
+
+  const title = titleMap[slug] || `${dest.name} Safari | WildVentures`;
+  const description =
+    descriptionMap[slug] ||
+    `Explore ${dest.name} with WildVentures — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
+
+  const canonicalUrl = `https://wildventures.co.ke/destinations/${slug}`;
+  const imageUrl = `https://wildventures.co.ke${dest.heroImage}`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      `${dest.name} safari`,
+      `${dest.name} safari packages`,
+      `${dest.name} safari tours`,
+      `${dest.name} wildlife safari`,
+      `best ${dest.name} safari company`,
+      `${dest.name} safari holidays`,
+      "East Africa safari",
+      "WildVentures",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "WildVentures Safari Co.",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${dest.name} Safari — WildVentures`,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+      site: "@WildVentures",
+    },
+  };
 }
 
-// FIX: Component is async
+// ─────────────────────────────────────────────────────────────
+// JSON-LD SCHEMA — TouristDestination + BreadcrumbList
+// ─────────────────────────────────────────────────────────────
+function DestinationSchema({ dest }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "@id": `https://wildventures.co.ke/destinations/${dest.slug}`,
+        name: dest.name,
+        description: dest.description,
+        url: `https://wildventures.co.ke/destinations/${dest.slug}`,
+        image: `https://wildventures.co.ke${dest.heroImage}`,
+        touristType: ["Safari", "Wildlife", "Adventure", "Luxury Travel"],
+        includesAttraction: dest.highlights.map((h) => ({
+          "@type": "TouristAttraction",
+          name: h,
+        })),
+      },
+      // TravelAgency offering tours to this destination
+      {
+        "@type": "TravelAgency",
+        "@id": "https://wildventures.co.ke",
+        name: "WildVentures Safari Co.",
+        url: "https://wildventures.co.ke",
+        telephone: "+254780166113",
+        email: "hello@wildventures.co",
+        priceRange: "$$$",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Westlands Business Park",
+          addressLocality: "Nairobi",
+          addressCountry: "KE",
+        },
+        areaServed: [
+          "Kenya",
+          "Tanzania",
+          "Zanzibar",
+          "Rwanda",
+          "Uganda",
+        ],
+      },
+      // Breadcrumb
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://wildventures.co.ke",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Destinations",
+            item: "https://wildventures.co.ke/destinations",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: dest.name,
+            item: `https://wildventures.co.ke/destinations/${dest.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE COMPONENT
+// ─────────────────────────────────────────────────────────────
 export default async function DestinationDetailPage({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
 
   if (!dest) notFound();
+
   const tours = getToursByDest(dest.slug);
 
   return (
     <>
-      {/* ── IMPROVED Hero */}
+      {/* Inject JSON-LD schema */}
+      <DestinationSchema dest={dest} />
+
+      {/* ── Hero */}
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src={dest.heroImage}
-          alt={dest.name}
+          alt={`${dest.name} safari landscape — WildVentures`}
           fill
+          sizes="100vw"
           className="object-cover animate-hero-zoom"
           priority
         />
-
-        {/* IMAGE FIX: Directional gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto pt-24">
-          <nav className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6"
+          >
             <Link
               href="/destinations"
               className="hover:text-beige transition-colors"
@@ -65,10 +225,11 @@ export default async function DestinationDetailPage({ params }) {
 
       <section className="section-pad">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-16 max-w-7xl mx-auto">
-          {/* Main Content (Logic preserved) */}
+          {/* Main Content */}
           <div className="space-y-12">
             <div>
               <p className="section-label">About {dest.name}</p>
+              {/* Rendered as <p> so Google indexes the full description */}
               <p className="text-[1.1rem] text-gray-600 leading-[1.85] font-light">
                 {dest.description}
               </p>
@@ -77,8 +238,7 @@ export default async function DestinationDetailPage({ params }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="bg-beige/40 rounded-sm p-6 border border-beige/60">
                 <div className="flex items-center gap-2 text-green font-semibold uppercase tracking-wider text-[0.75rem] mb-3">
-                  <Calendar className="w-4 h-4 text-orange" /> Best Time to
-                  Visit
+                  <Calendar className="w-4 h-4 text-orange" /> Best Time to Visit
                 </div>
                 <p className="text-[1rem] text-charcoal">{dest.bestTime}</p>
               </div>
@@ -90,7 +250,6 @@ export default async function DestinationDetailPage({ params }) {
               </div>
             </div>
 
-            {/* Rest of content sections... */}
             <div>
               <p className="section-label">Must-See Highlights</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -145,6 +304,7 @@ export default async function DestinationDetailPage({ params }) {
           </aside>
         </div>
 
+        {/* Tours for this destination */}
         {tours.length > 0 && (
           <div className="mt-24 max-w-7xl mx-auto">
             <p className="section-label">{dest.name} Safaris</p>
