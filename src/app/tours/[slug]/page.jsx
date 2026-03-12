@@ -6,6 +6,7 @@ import ItineraryAccordion from "@/components/tours/ItineraryAccordion";
 import BookingWidget from "@/components/shared/BookingWidget";
 import TourCard from "@/components/tours/TourCard";
 import { getTourBySlug, tours } from "@/data/tours";
+import TourFAQ from "@/components/tours/TourFAQ";
 
 export async function generateStaticParams() {
   return tours.map((t) => ({ slug: t.slug }));
@@ -392,6 +393,8 @@ export default async function TourDetailPage({ params }) {
                 </div>
               </div>
             )}
+            {/* ── FAQ Section */}
+            <TourFAQ tour={tour} />
           </div>
 
           <aside className="sticky top-28">

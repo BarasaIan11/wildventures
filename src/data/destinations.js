@@ -78,8 +78,8 @@ export const destinations = [
     flag: "🇹🇿",
     tagline: "The Spice Island of the Indian Ocean",
     tourCount: 2,
-    image: "/images/destinations/tanzania.png",
-    heroImage: "/images/destinations/tanzania.png",
+    image: "/images/destinations/zanzibar.png",
+    heroImage: "/images/destinations/zanzibar.png",
     description:
       "Zanzibar is East Africa's most enchanting island — a perfect finale to any Tanzania or Kenya safari. The island's north and east coasts are lined with some of the Indian Ocean's finest beaches: powder-white sand, warm turquoise water, and offshore coral gardens teeming with tropical fish. Stone Town, the island's ancient Arab trading capital, is a UNESCO World Heritage Site — a labyrinth of carved wooden doorways, mosques, spice markets, and crumbling merchant palaces that tell the story of centuries of trade between Africa, Arabia, India, and Europe. In the south, the village of Kizimkazi is one of the best places in East Africa to swim with wild spinner and bottlenose dolphins. Zanzibar is not simply a beach bolt-on. It is a destination of genuine depth, culture, and extraordinary natural beauty.",
     bestTime:

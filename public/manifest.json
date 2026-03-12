@@ -1,0 +1,29 @@
+{
+  "name": "WildVentures Safari Co.",
+  "short_name": "WildVentures",
+  "description": "Kenya, Tanzania & Zanzibar safari specialists. Tailor-made wildlife experiences since 2009.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FDFAF5",
+  "theme_color": "#1B3A2D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["travel", "lifestyle"],
+  "lang": "en-GB"
+}

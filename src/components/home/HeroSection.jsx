@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* 1. Background Image - Full Opacity for Vibrancy */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/story-main.png"
+          src="/images/hero/hero-main.png"
           alt="Lions in the Serengeti at sunset"
           fill
           priority

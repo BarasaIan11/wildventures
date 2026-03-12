@@ -11,6 +11,7 @@ export default function BookingCTA() {
           src="/images/hero/elephant.png"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover grayscale"
         />
       </div>

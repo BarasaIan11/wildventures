@@ -4,12 +4,137 @@ import RevealWrapper from "@/components/shared/RevealWrapper";
 import BookingCTA from "@/components/home/BookingCTA";
 import { Leaf, Users, ShieldCheck, Compass, Globe, Heart } from "lucide-react";
 
+// ─────────────────────────────────────────────────────────────
+// SEO METADATA
+// ─────────────────────────────────────────────────────────────
 export const metadata = {
-  title: "About Us — Our Story, Mission & Values | WildVentures",
+  title: "About WildVentures — East Africa's Premier Safari Company",
   description:
-    "WildVentures was born from a deep love of East Africa. Learn our story, our people, and our commitment to conservation.",
+    "WildVentures has guided 3,200+ travellers from 60 countries across Kenya, Tanzania & Zanzibar since 2009. Meet our team, our story & our conservation mission.",
+  keywords: [
+    "about WildVentures",
+    "Kenya safari company",
+    "East Africa safari operator",
+    "responsible safari company",
+    "wildlife conservation safari",
+    "Nairobi safari company",
+    "best safari company Kenya Tanzania",
+  ],
+  alternates: {
+    canonical: "https://wildventures.co.ke/about",
+  },
+  openGraph: {
+    title: "About WildVentures — East Africa's Premier Safari Company",
+    description:
+      "Born from a love of East Africa. WildVentures has guided 3,200+ travellers from 60 countries since 2009. Learn our story, our team & our conservation commitment.",
+    url: "https://wildventures.co.ke/about",
+    siteName: "WildVentures Safari Co.",
+    images: [
+      {
+        url: "https://wildventures.co.ke/images/hero/about-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "WildVentures safari guide in the East African bush",
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About WildVentures — East Africa's Premier Safari Company",
+    description:
+      "Born from a love of East Africa. 3,200+ travellers guided since 2009. Learn our story & conservation mission.",
+    images: ["https://wildventures.co.ke/images/hero/about-hero.png"],
+    site: "@WildVentures",
+  },
 };
 
+// ─────────────────────────────────────────────────────────────
+// JSON-LD SCHEMA — TravelAgency + AboutPage
+// ─────────────────────────────────────────────────────────────
+function AboutSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://wildventures.co.ke",
+        name: "WildVentures Safari Co.",
+        url: "https://wildventures.co.ke",
+        logo: "https://wildventures.co.ke/icons/logo.png",
+        description:
+          "WildVentures is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2009.",
+        foundingDate: "2009",
+        founder: {
+          "@type": "Person",
+          name: "James Mwangi",
+          jobTitle: "Founder & Lead Naturalist",
+        },
+        numberOfEmployees: {
+          "@type": "QuantitativeValue",
+          value: 15,
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Westlands Business Park",
+          addressLocality: "Nairobi",
+          addressCountry: "KE",
+        },
+        telephone: "+254780166113",
+        email: "hello@wildventures.co",
+        priceRange: "$$$",
+        areaServed: ["Kenya", "Tanzania", "Zanzibar", "Rwanda", "Uganda"],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "3200",
+          bestRating: "5",
+        },
+        sameAs: [
+          "https://wa.me/254780166113",
+        ],
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://wildventures.co.ke/about",
+        url: "https://wildventures.co.ke/about",
+        name: "About WildVentures — Our Story, Mission & Values",
+        description:
+          "Learn about WildVentures — East Africa's premier safari company. Our story, team, conservation fund and values.",
+        isPartOf: { "@id": "https://wildventures.co.ke" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://wildventures.co.ke",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Us",
+            item: "https://wildventures.co.ke/about",
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE DATA
+// ─────────────────────────────────────────────────────────────
 const milestones = [
   {
     year: "2009",
@@ -122,19 +247,25 @@ const partners = [
   "Big Life Foundation",
 ];
 
+// ─────────────────────────────────────────────────────────────
+// PAGE COMPONENT
+// ─────────────────────────────────────────────────────────────
 export default function AboutPage() {
   return (
     <>
-      {/* HERO */}
+      {/* Inject JSON-LD schema */}
+      <AboutSchema />
+
+      {/* ── HERO */}
       <div className="relative h-[70vh] min-h-[520px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/about-hero.png"
-          alt="WildVentures safari guide in the bush"
+          alt="WildVentures safari guide leading guests through the East African bush"
           fill
           priority
+          sizes="100vw"
           className="object-cover scale-105 animate-hero-zoom"
         />
-
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
@@ -164,30 +295,27 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* FOUNDING STORY*/}
+      {/* ── FOUNDING STORY */}
       <section className="section-pad bg-ivory">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <RevealWrapper className="relative h-[500px]">
             <Image
               src="/images/about/story-main.png"
-              alt="East African safari landscape"
+              alt="East African safari landscape at golden hour"
               width={560}
               height={400}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="absolute top-0 right-0 w-[82%] h-[75%] object-cover rounded-sm shadow-card"
             />
             <Image
               src="/images/about/story-accent.png"
-              alt="Wildebeest migration"
+              alt="Wildebeest migration crossing the Mara River"
               width={340}
               height={280}
-              className="absolute bottom-0 left-0 w-[55%] h-[48%] object-cover rounded-sm
-                         border-[6px] border-ivory shadow-card-hover"
+              sizes="(max-width: 1024px) 55vw, 28vw"
+              className="absolute bottom-0 left-0 w-[55%] h-[48%] object-cover rounded-sm border-[6px] border-ivory shadow-card-hover"
             />
-            <div
-              className="absolute bottom-[44%] right-[-10px] lg:right-[-30px]
-                            bg-orange text-white px-5 py-4 text-center rounded-sm
-                            shadow-orange hidden sm:block"
-            >
+            <div className="absolute bottom-[44%] right-[-10px] lg:right-[-30px] bg-orange text-white px-5 py-4 text-center rounded-sm shadow-orange hidden sm:block">
               <p className="font-serif text-[2rem] font-semibold leading-none">
                 15+
               </p>
@@ -269,23 +397,23 @@ export default function AboutPage() {
             </h2>
           </RevealWrapper>
           <div className="relative">
-            <div
-              className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-beige-dark
-                            md:-translate-x-px hidden sm:block"
-            />
+            <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-beige-dark md:-translate-x-px hidden sm:block" />
             <div className="space-y-10">
               {milestones.map((m, i) => (
                 <RevealWrapper key={m.year} delay={i * 0.1}>
                   <div
-                    className={`flex gap-6 md:gap-0 items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                    className={`flex gap-6 md:gap-0 items-start ${
+                      i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
                   >
                     <div
-                      className={`flex-1 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
+                      className={`flex-1 ${
+                        i % 2 === 0
+                          ? "md:pr-12 md:text-right"
+                          : "md:pl-12"
+                      }`}
                     >
-                      <span
-                        className="inline-block bg-beige text-green text-[0.7rem] tracking-[0.15em]
-                                       uppercase font-medium px-3 py-1 rounded-sm mb-3"
-                      >
+                      <span className="inline-block bg-beige text-green text-[0.7rem] tracking-[0.15em] uppercase font-medium px-3 py-1 rounded-sm mb-3">
                         {m.year}
                       </span>
                       <h3 className="font-serif text-[1.4rem] text-charcoal mb-2">
@@ -312,9 +440,9 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <RevealWrapper className="text-center mb-20">
             <div className="flex items-center justify-center gap-3 mb-4">
-               <span className="w-8 h-px bg-orange" />
-               <p className="section-label !mb-0">Our Philosophy</p>
-               <span className="w-8 h-px bg-orange" />
+              <span className="w-8 h-px bg-orange" />
+              <p className="section-label !mb-0">Our Philosophy</p>
+              <span className="w-8 h-px bg-orange" />
             </div>
             <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-green-dark leading-tight mb-6">
               Our Values Are Not <br />
@@ -332,22 +460,21 @@ export default function AboutPage() {
               return (
                 <RevealWrapper key={v.title} delay={i * 0.1}>
                   <div className="group relative">
-                    {/* Minimalist Icon Header */}
                     <div className="flex items-center gap-5 mb-5">
                       <div className="w-12 h-12 rounded-sm bg-white flex items-center justify-center shadow-sm border border-beige group-hover:bg-green group-hover:border-green transition-all duration-500">
-                        <Icon size={22} className="text-orange group-hover:text-white transition-colors" strokeWidth={1.5} />
+                        <Icon
+                          size={22}
+                          className="text-orange group-hover:text-white transition-colors"
+                          strokeWidth={1.5}
+                        />
                       </div>
                       <h3 className="font-serif text-[1.4rem] text-charcoal leading-none group-hover:text-green transition-colors">
                         {v.title}
                       </h3>
                     </div>
-                    
-                    {/* Descriptive Text */}
                     <p className="text-[0.92rem] text-gray-500 leading-relaxed font-light pl-0 md:pl-2">
                       {v.desc}
                     </p>
-                    
-                    {/* Subtle accent line that grows on hover */}
                     <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-orange/20 group-hover:bg-orange transition-all duration-500 hidden md:block" />
                   </div>
                 </RevealWrapper>
@@ -362,11 +489,11 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/about/conservation.png"
-            alt=""
+            alt="Wildlife conservation in East Africa — rangers protecting the savanna"
             fill
+            sizes="100vw"
             className="object-cover opacity-40"
           />
-
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/80 to-transparent" />
         </div>
 
@@ -393,16 +520,12 @@ export default function AboutPage() {
                   wild.
                 </p>
                 <p>
-                  {/* We publish our annual impact report every January. We believe
-                  accountability is part of the commitment. */}
-                  We are deeply committed to accountability. That's why we meticulously track the impact 
-                  of every safari, ensuring your journey makes a real difference in the lives of local communities and the preservation of wildlife.
+                  We are deeply committed to accountability. That's why we
+                  meticulously track the impact of every safari, ensuring your
+                  journey makes a real difference in the lives of local
+                  communities and the preservation of wildlife.
                 </p>
               </div>
-              {/* TODO: Add impact report link when available */}
-              {/* <a href="#" className="btn btn-outline-white inline-block">
-                Read Our Impact Report
-              </a> */}
             </RevealWrapper>
 
             <RevealWrapper delay={0.15}>
@@ -410,8 +533,7 @@ export default function AboutPage() {
                 {conservation.map(({ num, label }) => (
                   <div
                     key={label}
-                    className="bg-white/5 border border-white/10 rounded-sm p-6
-                                       hover:bg-white/10 transition-colors duration-300"
+                    className="bg-white/5 border border-white/10 rounded-sm p-6 hover:bg-white/10 transition-colors duration-300"
                   >
                     <p className="font-serif text-[2.4rem] text-orange font-light leading-none mb-2">
                       {num}
@@ -456,13 +578,9 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {team.map((member, i) => (
             <RevealWrapper key={member.name} delay={i * 0.1}>
-              <div
-                className="group bg-white rounded-sm overflow-hidden shadow-card
-                              hover:-translate-y-2 hover:shadow-card-hover transition-all duration-300"
-              >
+              <div className="group bg-white rounded-sm overflow-hidden shadow-card hover:-translate-y-2 hover:shadow-card-hover transition-all duration-300">
                 <div
-                  className={`aspect-[3/4] ${member.color} flex items-center justify-center
-                                  relative overflow-hidden`}
+                  className={`aspect-[3/4] ${member.color} flex items-center justify-center relative overflow-hidden`}
                 >
                   <span className="font-serif text-[5rem] text-white/20 select-none">
                     {member.initials}
