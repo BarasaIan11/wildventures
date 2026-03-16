@@ -273,20 +273,35 @@ export default function ReviewsPage() {
           ))}
         </div>
 
-        {/* Trust badges */}
-        <div className="mt-20 border-t border-beige pt-12 text-center">
-          <p className="text-[0.75rem] tracking-[0.2em] uppercase text-green font-semibold mb-8">
-            Verified on trusted platforms
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-40">
-            {["TripAdvisor", "Google Reviews", "Safari Bookings", "Trustpilot"].map(
-              (p) => (
-                <p key={p} className="font-serif italic text-[1.4rem] text-charcoal">
-                  {p}
-                </p>
-              )
-            )}
-          </div>
+        {/* --- Trust Logos Section --- */}
+<div className="mt-28 border-t border-beige pt-16">
+  <p className="text-center text-[0.7rem] tracking-[0.3em] uppercase text-green font-bold mb-10">
+    Verified by the World's Leading Platforms
+  </p>
+  
+  <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+    {/* TripAdvisor */}
+    <div className="flex justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Tripadvisor_Logo.svg" alt="TripAdvisor" className="h-8 md:h-10" />
+    </div>
+    
+    {/* Google Reviews */}
+    <div className="flex justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-7 md:h-9" />
+    </div>
+
+    {/* Safari Bookings */}
+    <div className="flex justify-center">
+       <div className="flex items-center gap-1 font-bold text-charcoal text-xl tracking-tighter">
+         <span className="text-orange">Safari</span>Bookings
+       </div>
+    </div>
+
+    {/* Trustpilot */}
+    <div className="flex justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Trustpilot_logo.svg" alt="Trustpilot" className="h-8 md:h-10" />
+    </div>
+  </div>
         </div>
       </section>
 

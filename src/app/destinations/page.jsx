@@ -129,7 +129,7 @@ export default function DestinationsPage() {
 
       {/* ── Primary destinations: Kenya, Tanzania, Zanzibar */}
       <section className="section-pad max-w-7xl mx-auto">
-        <div className="mb-12">
+        <div className="mb-16">
           <p className="section-label">The Collection</p>
           <h2 className="section-title italic text-green">Our Focus Regions</h2>
           <p className="text-gray-500 text-[1rem] leading-relaxed max-w-2xl mt-4 font-light">
@@ -139,12 +139,11 @@ export default function DestinationsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {featured.map((dest) => (
             <DestinationCard key={dest.id} dest={dest} />
           ))}
         </div>
-      </section>
 
       {/* ── Secondary destinations: Rwanda, Uganda */}
       {/* {secondary.length > 0 && (
@@ -168,11 +167,12 @@ export default function DestinationsPage() {
         </section>
       )} */}
 
-      <div className="max-w-7xl mx-auto px-[5%] pb-16 text-center">
-        <p className="text-[0.8rem] text-gray-400 tracking-[0.2em] uppercase font-medium">
+      <div className="mt-24 pt-12 border-t border-beige/60 text-center">
+            <p className="text-[0.8rem] text-gray-400 tracking-[0.3em] uppercase font-medium mb-2">
           Specialising in East Africa
         </p>
       </div>
+      </section>
 
       <BookingCTA />
     </main>
