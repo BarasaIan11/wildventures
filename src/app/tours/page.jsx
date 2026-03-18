@@ -5,13 +5,10 @@ import TourFilters from "@/components/tours/TourFilters";
 import BookingCTA from "@/components/home/BookingCTA";
 import { tours } from "@/data/tours";
 
-// ─────────────────────────────────────────────────────────────
-// SEO METADATA
-// ─────────────────────────────────────────────────────────────
 export const metadata = {
   title: "Kenya & Tanzania Safari Tours & Packages 2025/2026",
   description:
-    "Browse WildVentures' full collection of Kenya and Tanzania safari packages — from 5-day Masai Mara classics to 14-day Tanzania & Zanzibar grand tours. From $1,450/pp.",
+    "Browse Zafronix Safaris' full collection of Kenya and Tanzania safari packages — from 5-day Masai Mara classics to 14-day Tanzania & Zanzibar grand tours. From $1,450/pp.",
   keywords: [
     "Kenya safari packages 2025",
     "Tanzania safari tours",
@@ -24,43 +21,41 @@ export const metadata = {
     "Great Migration safari tour",
   ],
   alternates: {
-    canonical: "https://wildventures.co.ke/tours",
+    canonical: "https://zafronixsafaris.co.ke/tours",
   },
   openGraph: {
-    title: "Kenya & Tanzania Safari Tours & Packages | WildVentures",
+    title: "Kenya & Tanzania Safari Tours & Packages | Zafronix Safaris",
     description:
       "Browse our full collection of Kenya and Tanzania safari packages. Masai Mara, Serengeti, Ngorongoro, Zanzibar & more. Expert guides, luxury camps. From $1,450/pp.",
-    url: "https://wildventures.co.ke/tours",
+    url: "https://zafronixsafaris.co.ke/tours",
     images: [
       {
-        url: "https://wildventures.co.ke/images/hero/lions.png",
+        url: "https://zafronixsafaris.co.ke/images/hero/lions.png",
         width: 1200,
         height: 630,
-        alt: "Safari lions on the Masai Mara plains — WildVentures Tours",
+        alt: "Safari lions on the Masai Mara plains — Zafronix Safaris Tours",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kenya & Tanzania Safari Tours | WildVentures",
+    title: "Kenya & Tanzania Safari Tours | Zafronix Safaris",
     description:
       "Browse our full collection of East Africa safari packages. From $1,450/pp.",
-    images: ["https://wildventures.co.ke/images/hero/lions.png"],
+    images: ["https://zafronixsafaris.co.ke/images/hero/lions.png"],
   },
 };
 
-// ─────────────────────────────────────────────────────────────
 // JSON-LD — ItemList of all tours for rich results
 // Google can show individual tours as expandable results
-// ─────────────────────────────────────────────────────────────
 function ToursSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "WildVentures Kenya & Tanzania Safari Tours",
+    name: "Zafronix Safaris Kenya & Tanzania Safari Tours",
     description:
       "Tailor-made safari packages across Kenya, Tanzania and Zanzibar.",
-    url: "https://wildventures.co.ke/tours",
+    url: "https://zafronixsafaris.co.ke/tours",
     numberOfItems: tours.length,
     itemListElement: tours.map((tour, index) => ({
       "@type": "ListItem",
@@ -69,8 +64,8 @@ function ToursSchema() {
         "@type": "TouristTrip",
         name: tour.title,
         description: tour.summary,
-        url: `https://wildventures.co.ke/tours/${tour.slug}`,
-        image: `https://wildventures.co.ke${tour.image}`,
+        url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
+        image: `https://zafronixsafaris.co.ke${tour.image}`,
         offers: {
           "@type": "Offer",
           price: tour.price,
@@ -89,9 +84,7 @@ function ToursSchema() {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
 // TOURS FILTER + GRID
-// ─────────────────────────────────────────────────────────────
 function ToursContent({ destination, style, duration }) {
   let filtered = [...tours];
 
@@ -141,9 +134,7 @@ function ToursContent({ destination, style, duration }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
 // PAGE
-// ─────────────────────────────────────────────────────────────
 export default async function ToursPage({ searchParams }) {
   const params = (await searchParams) ?? {};
   const first = (value) => (Array.isArray(value) ? value[0] : value);
@@ -159,7 +150,7 @@ export default async function ToursPage({ searchParams }) {
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/lions.png"
-          alt="Lions resting on the Masai Mara plains at golden hour — WildVentures Kenya safaris"
+          alt="Lions resting on the Masai Mara plains at golden hour — Zafronix Safaris Kenya safaris"
           fill
           priority
           sizes="100vw"

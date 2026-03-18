@@ -4,7 +4,7 @@ export const blogs = [
     slug: "best-time-to-visit-masai-mara",
     title: "The Ultimate Guide: Best Time to Visit the Masai Mara",
     category: "Planning",
-    author: "WildVentures Expedition Team",
+    author: "Zafronix Safaris Expedition Team",
     date: "March 15, 2026",
     image: "/images/hero/hero-main.png",
     excerpt: "From the thunderous Great Migration to the quiet emerald season, discover the perfect month for your Kenyan adventure.",
@@ -33,13 +33,13 @@ export const blogs = [
     slug: "how-much-does-a-kenya-safari-cost",
     title: "Transparent Safari: How Much Does a Kenya Safari Really Cost?",
     category: "Advice",
-    author: "WildVentures Planning Team",
+    author: "Zafronix Safaris Planning Team",
     date: "March 10, 2026",
     image: "/images/tours/amboseli-tsavo.png",
     excerpt: "Breaking down the costs of a luxury expedition, from park fees and local flights to world-class lodge inclusions.",
     readTime: "8 min read",
     content: `
-      <p>One of the most frequent questions we receive at WildVentures is about the investment required for a premium safari. Unlike a standard holiday, a safari is a complex logistical operation involving private bush flights, conservation fees, and remote luxury hospitality.</p>
+      <p>One of the most frequent questions we receive at Zafronix Safaris is about the investment required for a premium safari. Unlike a standard holiday, a safari is a complex logistical operation involving private bush flights, conservation fees, and remote luxury hospitality.</p>
       
       <h2>Breaking Down the Investment</h2>
       <p>A high-end safari usually ranges from $600 to $1,500 per person, per night. This all-inclusive rate covers your luxury accommodation, all gourmet meals, sundowner drinks, and the expertise of a professional naturalist guide.</p>
@@ -59,7 +59,7 @@ export const blogs = [
     slug: "kenya-vs-tanzania-safari",
     title: "Kenya vs Tanzania: Which Safari Destination is Right for You?",
     category: "Comparison",
-    author: "WildVentures Expedition Team",
+    author: "Zafronix Safaris Expedition Team",
     date: "March 05, 2026",
     image: "/images/destinations/tanzania.png",
     excerpt: "Comparing the vast Serengeti and the intimate Mara, the crater floors and the coastal shores of East Africa.",
@@ -87,13 +87,13 @@ export const blogs = [
     slug: "top-10-safari-parks-in-africa",
     title: "Beyond the Ordinary: Top Safari Parks in East Africa for 2026",
     category: "Inspiration",
-    author: "WildVentures Team",
+    author: "Zafronix Safaris Team",
     date: "Feb 28, 2026",
     image: "/images/gallery/gallery-6.png",
     excerpt: "Our curated list of the most biodiverse and breathtaking national parks across the African continent.",
     readTime: "12 min read",
     content: `
-      <p>Not all parks are created equal. At WildVentures, we have spent decades exploring the corners of East Africa to find the destinations that offer the most authentic connection to the wild.</p>
+      <p>Not all parks are created equal. At Zafronix Safaris, we have spent decades exploring the corners of East Africa to find the destinations that offer the most authentic connection to the wild.</p>
       
       <h2>1. Masai Mara National Reserve, Kenya</h2>
       <p>The undisputed king of big cat sightings. Nowhere else can you see lions, leopards, and cheetahs with such consistency.</p>

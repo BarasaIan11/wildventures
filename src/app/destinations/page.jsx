@@ -9,7 +9,7 @@ import { destinations } from "@/data/destinations";
 export const metadata = {
   title: "Kenya, Tanzania & Zanzibar Safari Destinations",
   description:
-    "Explore WildVentures' East African destinations — Kenya's Masai Mara, Tanzania's Serengeti, Zanzibar's white-sand beaches & more. Find your perfect safari destination.",
+    "Explore Zafronix Safaris' East African destinations — Kenya's Masai Mara, Tanzania's Serengeti, Zanzibar's white-sand beaches & more. Find your perfect safari destination.",
   keywords: [
     "Kenya safari destination",
     "Tanzania safari destination",
@@ -21,28 +21,28 @@ export const metadata = {
     "Rwanda gorilla trekking",
   ],
   alternates: {
-    canonical: "https://wildventures.co.ke/destinations",
+    canonical: "https://zafronixsafaris.co.ke/destinations",
   },
   openGraph: {
-    title: "Kenya, Tanzania & Zanzibar Safari Destinations | WildVentures",
+    title: "Kenya, Tanzania & Zanzibar Safari Destinations | Zafronix Safaris",
     description:
-      "Explore WildVentures' East African destinations — Kenya's Masai Mara, Tanzania's Serengeti, Zanzibar beaches & more.",
-    url: "https://wildventures.co.ke/destinations",
+      "Explore Zafronix Safaris' East African destinations — Kenya's Masai Mara, Tanzania's Serengeti, Zanzibar beaches & more.",
+    url: "https://zafronixsafaris.co.ke/destinations",
     images: [
       {
-        url: "https://wildventures.co.ke/images/hero/destinations-hero.png",
+        url: "https://zafronixsafaris.co.ke/images/hero/destinations-hero.png",
         width: 1200,
         height: 630,
-        alt: "East Africa safari destinations — WildVentures",
+        alt: "East Africa safari destinations — Zafronix Safaris",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kenya, Tanzania & Zanzibar Destinations | WildVentures",
+    title: "Kenya, Tanzania & Zanzibar Destinations | Zafronix Safaris",
     description:
       "Masai Mara, Serengeti, Zanzibar beaches & more. Find your perfect East Africa safari destination.",
-    images: ["https://wildventures.co.ke/images/hero/destinations-hero.png"],
+    images: ["https://zafronixsafaris.co.ke/images/hero/destinations-hero.png"],
   },
 };
 
@@ -53,10 +53,10 @@ function DestinationsSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "WildVentures East Africa Safari Destinations",
+    name: "Zafronix Safaris East Africa Safari Destinations",
     description:
       "Safari and beach holiday destinations across East Africa, including Kenya, Tanzania, Zanzibar, Rwanda and Uganda.",
-    url: "https://wildventures.co.ke/destinations",
+    url: "https://zafronixsafaris.co.ke/destinations",
     numberOfItems: destinations.length,
     itemListElement: destinations.map((dest, index) => ({
       "@type": "ListItem",
@@ -65,8 +65,8 @@ function DestinationsSchema() {
         "@type": "TouristDestination",
         name: dest.name,
         description: dest.description.slice(0, 200),
-        url: `https://wildventures.co.ke/destinations/${dest.slug}`,
-        image: `https://wildventures.co.ke${dest.image}`,
+        url: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
+        image: `https://zafronixsafaris.co.ke${dest.image}`,
         touristType: ["Safari", "Wildlife", "Adventure"],
       },
     })),

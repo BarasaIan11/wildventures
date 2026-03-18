@@ -18,37 +18,37 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
 
-  if (!dest) return { title: "Destination Not Found | WildVentures" };
+  if (!dest) return { title: "Destination Not Found | Zafronix Safaris" };
 
   // Keyword-rich title per destination
   const titleMap = {
-    kenya: "Kenya Safari Holidays & Tours 2025/2026 | WildVentures",
-    tanzania: "Tanzania Safari Tours & Packages 2025/2026 | WildVentures",
-    zanzibar: "Zanzibar Beach Holidays & Safari Combos | WildVentures",
-    rwanda: "Rwanda Gorilla Trekking Tours | WildVentures",
-    uganda: "Uganda Safari & Gorilla Trekking | WildVentures",
+    kenya: "Kenya Safari Holidays & Tours 2025/2026 | Zafronix Safaris",
+    tanzania: "Tanzania Safari Tours & Packages 2025/2026 | Zafronix Safaris",
+    zanzibar: "Zanzibar Beach Holidays & Safari Combos | Zafronix Safaris",
+    rwanda: "Rwanda Gorilla Trekking Tours | Zafronix Safaris",
+    uganda: "Uganda Safari & Gorilla Trekking | Zafronix Safaris",
   };
 
   const descriptionMap = {
     kenya:
       "Explore Kenya's iconic Masai Mara, Amboseli & Samburu on a tailor-made safari. Expert guides, luxury camps & the Great Migration. Book from $1,450/pp.",
     tanzania:
-      "Discover the Serengeti, Ngorongoro Crater & Zanzibar with WildVentures. Tanzania's greatest safari experiences crafted for international travellers.",
+      "Discover the Serengeti, Ngorongoro Crater & Zanzibar with Zafronix Safaris. Tanzania's greatest safari experiences crafted for international travellers.",
     zanzibar:
       "White-sand beaches, Stone Town spice tours & Indian Ocean diving. Combine Zanzibar with a Tanzania safari for the ultimate East Africa escape.",
     rwanda:
-      "Trek to see mountain gorillas in Volcanoes National Park. Life-changing Rwanda gorilla safaris with WildVentures. Permits included.",
+      "Trek to see mountain gorillas in Volcanoes National Park. Life-changing Rwanda gorilla safaris with Zafronix Safaris. Permits included.",
     uganda:
-      "Gorilla trekking in Bwindi, chimpanzees in Kibale & tree-climbing lions. Uganda's best wildlife experiences with WildVentures.",
+      "Gorilla trekking in Bwindi, chimpanzees in Kibale & tree-climbing lions. Uganda's best wildlife experiences with Zafronix Safaris.",
   };
 
-  const title = titleMap[slug] || `${dest.name} Safari | WildVentures`;
+  const title = titleMap[slug] || `${dest.name} Safari | Zafronix Safaris`;
   const description =
     descriptionMap[slug] ||
-    `Explore ${dest.name} with WildVentures — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
+    `Explore ${dest.name} with Zafronix Safaris — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
 
-  const canonicalUrl = `https://wildventures.co.ke/destinations/${slug}`;
-  const imageUrl = `https://wildventures.co.ke${dest.heroImage}`;
+  const canonicalUrl = `https://zafronixsafaris.co.ke/destinations/${slug}`;
+  const imageUrl = `https://zafronixsafaris.co.ke${dest.heroImage}`;
 
   return {
     title,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }) {
       `best ${dest.name} safari company`,
       `${dest.name} safari holidays`,
       "East Africa safari",
-      "WildVentures",
+      "Zafronix Safaris",
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -70,13 +70,13 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "WildVentures Safari Co.",
+      siteName: "Zafronix Safaris Safari Co.",
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${dest.name} Safari — WildVentures`,
+          alt: `${dest.name} Safari — Zafronix Safaris`,
         },
       ],
       locale: "en_GB",
@@ -87,7 +87,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: [imageUrl],
-      site: "@WildVentures",
+      site: "@Zafronix Safaris",
     },
   };
 }
@@ -101,11 +101,11 @@ function DestinationSchema({ dest }) {
     "@graph": [
       {
         "@type": "TouristDestination",
-        "@id": `https://wildventures.co.ke/destinations/${dest.slug}`,
+        "@id": `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
         name: dest.name,
         description: dest.description,
-        url: `https://wildventures.co.ke/destinations/${dest.slug}`,
-        image: `https://wildventures.co.ke${dest.heroImage}`,
+        url: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
+        image: `https://zafronixsafaris.co.ke${dest.heroImage}`,
         touristType: ["Safari", "Wildlife", "Adventure", "Luxury Travel"],
         includesAttraction: dest.highlights.map((h) => ({
           "@type": "TouristAttraction",
@@ -115,11 +115,11 @@ function DestinationSchema({ dest }) {
       // TravelAgency offering tours to this destination
       {
         "@type": "TravelAgency",
-        "@id": "https://wildventures.co.ke",
-        name: "WildVentures Safari Co.",
-        url: "https://wildventures.co.ke",
+        "@id": "https://zafronixsafaris.co.ke",
+        name: "Zafronix Safaris Safari Co.",
+        url: "https://zafronixsafaris.co.ke",
         telephone: "+254780166113",
-        email: "hello@wildventures.co",
+        email: "hello@zafronixsafaris.co",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
@@ -143,19 +143,19 @@ function DestinationSchema({ dest }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://wildventures.co.ke",
+            item: "https://zafronixsafaris.co.ke",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Destinations",
-            item: "https://wildventures.co.ke/destinations",
+            item: "https://zafronixsafaris.co.ke/destinations",
           },
           {
             "@type": "ListItem",
             position: 3,
             name: dest.name,
-            item: `https://wildventures.co.ke/destinations/${dest.slug}`,
+            item: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
           },
         ],
       },
@@ -190,7 +190,7 @@ export default async function DestinationDetailPage({ params }) {
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src={dest.heroImage}
-          alt={`${dest.name} safari landscape — WildVentures`}
+          alt={`${dest.name} safari landscape — Zafronix Safaris`}
           fill
           sizes="100vw"
           className="object-cover animate-hero-zoom"

@@ -5,7 +5,7 @@ import { destinations } from "@/data/destinations";
 // SITEMAP
 // Next.js reads this file and serves it at /sitemap.xml
 // Submit the URL to Google Search Console after deploying:
-// https://wildventures.co.ke/sitemap.xml
+// https://zafronixsafaris.co.ke/sitemap.xml
 //
 // Priority guide:
 //   1.0 = Homepage (most important)
@@ -17,7 +17,7 @@ import { destinations } from "@/data/destinations";
 // ─────────────────────────────────────────────────────────────
 
 export default function sitemap() {
-  const baseUrl = "https://wildventures.co.ke";
+  const baseUrl = "https://zafronixsafaris.co.ke";
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
   // ── Static pages

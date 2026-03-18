@@ -12,22 +12,18 @@ export async function generateStaticParams() {
   return tours.map((t) => ({ slug: t.slug }));
 }
 
-// ─────────────────────────────────────────────────────────────
-// SEO METADATA — Updated to remove specific pricing
-// ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
 
-  if (!tour) return { title: "Tour Not Found | WildVentures" };
+  if (!tour) return { title: "Tour Not Found | Zafronix Safaris" };
 
-  const title = `${tour.title} | ${tour.duration} Safari | WildVentures`;
+  const title = `${tour.title} | ${tour.duration} Safari | Zafronix Safaris`;
 
-  // REMOVED: Price from description. ADDED: Consultative language
-  const description = `${tour.summary.slice(0, 140).trim()}… Private expeditions across ${tour.destination}. Enquire for bespoke rates and tailored itineraries with WildVentures.`;
+  const description = `${tour.summary.slice(0, 140).trim()}… Private expeditions across ${tour.destination}. Enquire for bespoke rates and tailored itineraries with Zafronix Safaris.`;
 
-  const canonicalUrl = `https://wildventures.co.ke/tours/${slug}`;
-  const imageUrl = `https://wildventures.co.ke${tour.heroImage}`;
+  const canonicalUrl = `https://zafronixsafaris.co.ke/tours/${slug}`;
+  const imageUrl = `https://zafronixsafaris.co.ke${tour.heroImage}`;
 
   return {
     title,
@@ -46,13 +42,13 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "WildVentures Safari Co.",
+      siteName: "Zafronix Safaris Safari Co.",
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${tour.title} — WildVentures`,
+          alt: `${tour.title} — Zafronix Safaris`,
         },
       ],
       locale: "en_GB",
@@ -63,48 +59,44 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: [imageUrl],
-      site: "@WildVentures",
+      site: "@Zafronix Safaris",
     },
   };
 }
 
-// ─────────────────────────────────────────────────────────────
-// JSON-LD SCHEMA — Removed price to prevent it showing in Google
-// ─────────────────────────────────────────────────────────────
 function TourSchema({ tour }) {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://wildventures.co.ke/tours/${tour.slug}`,
+        "@id": `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
         name: tour.title,
         description: tour.summary,
-        url: `https://wildventures.co.ke/tours/${tour.slug}`,
-        image: `https://wildventures.co.ke${tour.heroImage}`,
+        url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
+        image: `https://zafronixsafaris.co.ke${tour.heroImage}`,
         touristType: tour.style,
         itinerary: tour.itinerary.map((day) => ({
           "@type": "TouristAttraction",
           name: day.title,
           description: day.description,
         })),
-        // OFFERS UPDATED: Removed price, set to "Price on Request" logic
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
-          url: `https://wildventures.co.ke/tours/${tour.slug}`,
+          url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
-            name: "WildVentures Safari Co.",
+            name: "Zafronix Safaris Safari Co.",
           },
         },
         provider: {
           "@type": "TravelAgency",
-          name: "WildVentures Safari Co.",
-          url: "https://wildventures.co.ke",
+          name: "Zafronix Safaris Safari Co.",
+          url: "https://zafronixsafaris.co.ke",
           telephone: "+254780166113",
-          email: "hello@wildventures.co",
+          email: "hello@zafronixsafaris.co",
         },
         ...(tour.reviews.length > 0 && {
           aggregateRating: {
@@ -118,9 +110,9 @@ function TourSchema({ tour }) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://wildventures.co.ke" },
-          { "@type": "ListItem", position: 2, name: "Tours", item: "https://wildventures.co.ke/tours" },
-          { "@type": "ListItem", position: 3, name: tour.title, item: `https://wildventures.co.ke/tours/${tour.slug}` },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://zafronixsafaris.co.ke" },
+          { "@type": "ListItem", position: 2, name: "Tours", item: "https://zafronixsafaris.co.ke/tours" },
+          { "@type": "ListItem", position: 3, name: tour.title, item: `https://zafronixsafaris.co.ke/tours/${tour.slug}` },
         ],
       },
     ],

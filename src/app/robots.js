@@ -18,8 +18,8 @@ export default function robots() {
       },
     ],
     // Tell Google (and all crawlers) where your sitemap is
-    sitemap: "https://wildventures.co.ke/sitemap.xml",
+    sitemap: "https://zafronixsafaris.co.ke/sitemap.xml",
     // Your canonical domain — prevents crawling of Vercel preview URLs
-    host: "https://wildventures.co.ke",
+    host: "https://zafronixsafaris.co.ke",
   };
 }

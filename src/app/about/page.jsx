@@ -54,7 +54,7 @@ const philosophy = [
   {
     icon: ShieldCheck,
     title: "Uncompromising Standards",
-    desc: "From the location of our camps to the knowledge of our guides, we maintain a level of quality that is non-negotiable. If it isn't extraordinary, it isn't WildVentures.",
+    desc: "From the location of our camps to the knowledge of our guides, we maintain a level of quality that is non-negotiable. If it isn't extraordinary, it isn't Zafronix Safaris.",
   },
   {
     icon: Heart,
@@ -110,7 +110,7 @@ export default function AboutPage() {
           <RevealWrapper className="relative aspect-[4/5] lg:aspect-auto lg:h-[650px]">
             <Image
               src="/images/about/story-main.png"
-              alt="The WildVentures experience"
+              alt="The Zafronix Safaris experience"
               fill
               className="object-cover rounded-sm shadow-2xl"
             />
@@ -127,7 +127,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-8 text-[1.1rem] text-gray-500 leading-relaxed font-light">
               <p>
-                WildVentures is a premier, Kenya-based operator offering bespoke and luxurious safari and travel experiences across the continent. Our journey began over fifteen years ago with a simple belief: that travel, when done right, can transform the soul.
+                Zafronix Safaris is a premier, Kenya-based operator offering bespoke and luxurious safari and travel experiences across the continent. Our journey began over fifteen years ago with a simple belief: that travel, when done right, can transform the soul.
               </p>
               <p>
                 Today, we lead the industry where innovation meets timeless adventure. We specialize in combining modern comforts and professional expertise with the raw, untamed beauty of the African bush. From the first river crossing to the final sunset, every detail is orchestrated to ensure your journey is seamless.
@@ -171,7 +171,7 @@ export default function AboutPage() {
       <section className="section-pad bg-ivory/20 border-t border-beige/40">
         <div className="max-w-7xl mx-auto">
           <RevealWrapper className="mb-20">
-            <p className="section-label">The WildVentures Difference</p>
+            <p className="section-label">The Zafronix Safaris Difference</p>
             <h2 className="font-serif text-[3rem] text-green-dark">What We Stand For</h2>
           </RevealWrapper>
 

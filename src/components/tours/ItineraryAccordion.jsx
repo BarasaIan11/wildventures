@@ -35,10 +35,6 @@ export default function ItineraryAccordion({ itinerary }) {
             )} />
           </button>
 
-          {/* 
-              SEO FIX: Content is ALWAYS rendered in the DOM.
-              Tailwind's grid-rows-0/1 handles the visual animation.
-          */}
           <div className={clsx(
             "grid transition-all duration-500 ease-in-out",
             open === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
@@ -46,12 +42,11 @@ export default function ItineraryAccordion({ itinerary }) {
             <div className="overflow-hidden">
               <div className="px-8 py-8 md:px-20 border-t border-gray-50 bg-ivory/10">
                 <p className="text-[1.05rem] text-gray-600 leading-[1.8] font-light">
-                   {item.description}
+                  {item.description}
                 </p>
-                {/* Visual anchor for richness */}
                 <div className="mt-6 flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-orange font-bold">
-                   <MapPin size={12} />
-                   <span>Key Location Highlighted</span>
+                  <MapPin size={12} />
+                  <span>Key Location Highlighted</span>
                 </div>
               </div>
             </div>

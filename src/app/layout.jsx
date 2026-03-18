@@ -19,16 +19,16 @@ export const viewport = {
 // their own metadata export — the template handles the title.
 // ─────────────────────────────────────────────────────────────
 export const metadata = {
-  // Title template: page titles become "Page Name | WildVentures"
+  // Title template: page titles become "Page Name | Zafronix Safaris"
   // The default shows on the homepage only
   title: {
-    default: "WildVentures — Kenya & Tanzania Safari Specialists",
-    template: "%s | WildVentures",
+    default: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
+    template: "%s | Zafronix Safaris",
   },
 
   // Default meta description — shown on homepage & any page without its own
   description:
-    "WildVentures crafts tailor-made Kenya, Tanzania & Zanzibar safari experiences for international travellers. Expert guides, luxury camps & unforgettable wildlife encounters since 2009.",
+    "Zafronix Safaris crafts tailor-made Kenya, Tanzania & Zanzibar safari experiences for international travellers. Expert guides, luxury camps & unforgettable wildlife encounters since 2009.",
 
   // Keywords — broad site-level terms; individual pages add their own
   keywords: [
@@ -41,14 +41,14 @@ export const metadata = {
     "luxury safari Kenya",
     "family safari Kenya Tanzania",
     "Great Migration safari",
-    "WildVentures safari",
+    "Zafronix Safaris safari",
     "safari company Nairobi",
     "best safari company East Africa",
   ],
 
   // ── Canonical base URL
   // Prevents duplicate content issues across http/https/www variants
-  metadataBase: new URL("https://wildventures.co.ke"),
+  metadataBase: new URL("https://zafronixsafaris.co.ke"),
   alternates: {
     canonical: "/",
   },
@@ -71,17 +71,17 @@ export const metadata = {
   // International clients sharing your site with friends
   // will see a rich preview with image + description
   openGraph: {
-    title: "WildVentures — Kenya & Tanzania Safari Specialists",
+    title: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris crafted for international travellers. Expert guides, luxury camps & life-changing wildlife encounters.",
-    url: "https://wildventures.co.ke",
-    siteName: "WildVentures Safari Co.",
+    url: "https://zafronixsafaris.co.ke",
+    siteName: "Zafronix Safaris Safari Co.",
     images: [
       {
         url: "/images/hero/story-main.png", // metadataBase prepends the domain
         width: 1200,
         height: 630,
-        alt: "Lions at sunset in the Serengeti — WildVentures Safari",
+        alt: "Lions at sunset in the Serengeti — Zafronix Safaris Safari",
       },
     ],
     locale: "en_GB",
@@ -91,12 +91,12 @@ export const metadata = {
   // ── Twitter / X card
   twitter: {
     card: "summary_large_image",
-    title: "WildVentures — Kenya & Tanzania Safari Specialists",
+    title: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris for international travellers. Life-changing wildlife encounters since 2009.",
     images: ["/images/hero/story-main.png"],
-    site: "@WildVentures",
-    creator: "@WildVentures",
+    site: "@Zafronix Safaris",
+    creator: "@Zafronix Safaris",
   },
 
   // ── Favicons & app icons
@@ -134,7 +134,7 @@ export const metadata = {
   // ── Additional meta tags
   other: {
     // Tells browsers this is a travel/safari business
-    "application-name": "WildVentures",
+    "application-name": "Zafronix Safaris",
     // Prevents phone number auto-detection reformatting your content
     "format-detection": "telephone=no",
     // Geographic targeting — helps local East Africa searches

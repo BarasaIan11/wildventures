@@ -15,7 +15,7 @@ export default function BookingWidget({ tourTitle = '' }) {
     const { name, email, date, travelers } = form;
     const phoneNumber = "254780166113";
 
-    let text = `Hello WildVentures! I am looking for a custom quote for:\n\n`;
+    let text = `Hello Zafronix Safaris! I am looking for a custom quote for:\n\n`;
     text += `Adventure: ${tourTitle}\n`;
     text += `Name: ${name}\n`;
     text += `Proposed Date: ${date}\n`;
@@ -37,7 +37,7 @@ export default function BookingWidget({ tourTitle = '' }) {
       />
 
       <div className="bg-white rounded-sm shadow-2xl overflow-hidden lg:sticky lg:top-28 z-10 border border-gray-100">
-        {/* HEADER: Indicative Pricing Model */}
+        {/* HEADER */}
         <div className="bg-green px-8 py-10">
           <div className="flex items-center gap-2 mb-4">
             <Sparkles size={16} className="text-orange" />

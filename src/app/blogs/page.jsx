@@ -6,7 +6,7 @@ import { blogs } from "@/data/blogs";
 import { Clock, ChevronRight } from "lucide-react";
 
 export const metadata = {
-  title: "Safari Journal & Expert Guides | WildVentures",
+  title: "Safari Journal & Expert Guides | Zafronix Safaris",
   description: "Expert advice on African safaris. Learn about the best times to visit, costs, and comparisons for your next journey.",
 };
 

@@ -36,7 +36,7 @@ export default function PlanClient() {
 
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-      let text = `*New Safari Inquiry — WildVentures*\n`;
+      let text = `*New Safari Inquiry — Zafronix Safaris*\n`;
       text += `Ref: #${refId}\n`;
       text += `*Name:* ${firstName} ${lastName}\n`;
       text += `*Email:* ${email}\n`;
@@ -51,7 +51,7 @@ export default function PlanClient() {
       if (interests?.length > 0)
         text += `*Interests:* ${interests.join(", ")}\n`;
       if (message) text += `\n*Additional Notes:*\n${message}\n`;
-      text += `Submitted via WildVentures website.`;
+      text += `Submitted via Zafronix Safaris website.`;
 
       if (!phoneNumber) {
         setSubmitError(
@@ -95,7 +95,7 @@ export default function PlanClient() {
         <div className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
           <Image
             src="/images/hero/plan-hero.png"
-            alt="Plan your tailor-made Kenya or Tanzania safari with WildVentures"
+            alt="Plan your tailor-made Kenya or Tanzania safari with Zafronix Safaris"
             fill
             priority
             sizes="100vw"

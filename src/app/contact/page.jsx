@@ -10,11 +10,11 @@ import ContactClient from "./ContactClient";
 
 // ── SEO Metadata
 export const metadata = {
-  title: "Contact WildVentures — Plan Your Kenya & Tanzania Safari",
+  title: "Contact Zafronix Safaris — Plan Your Kenya & Tanzania Safari",
   description:
-    "Get in touch with WildVentures' safari specialists. Based in Nairobi, Kenya. Call, email or WhatsApp us to start planning your East Africa safari today.",
+    "Get in touch with Zafronix Safaris' safari specialists. Based in Nairobi, Kenya. Call, email or WhatsApp us to start planning your East Africa safari today.",
   keywords: [
-    "contact WildVentures",
+    "contact Zafronix Safaris",
     "safari inquiry Kenya",
     "plan safari East Africa",
     "Nairobi safari company contact",
@@ -22,28 +22,28 @@ export const metadata = {
     "Tanzania safari booking",
   ],
   alternates: {
-    canonical: "https://wildventures.co.ke/contact",
+    canonical: "https://zafronixsafaris.co.ke/contact",
   },
   openGraph: {
-    title: "Contact WildVentures — Plan Your Kenya & Tanzania Safari",
+    title: "Contact Zafronix Safaris — Plan Your Kenya & Tanzania Safari",
     description:
       "Speak to our safari specialists in Nairobi. Call, email or WhatsApp to start planning your tailor-made East Africa safari.",
-    url: "https://wildventures.co.ke/contact",
+    url: "https://zafronixsafaris.co.ke/contact",
     images: [
       {
-        url: "https://wildventures.co.ke/images/hero/contact-hero.png",
+        url: "https://zafronixsafaris.co.ke/images/hero/contact-hero.png",
         width: 1200,
         height: 630,
-        alt: "Contact WildVentures safari specialists — Nairobi, Kenya",
+        alt: "Contact Zafronix Safaris safari specialists — Nairobi, Kenya",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact WildVentures — Plan Your Safari",
+    title: "Contact Zafronix Safaris — Plan Your Safari",
     description:
       "Speak to our Nairobi-based safari specialists. WhatsApp, call or email us.",
-    images: ["https://wildventures.co.ke/images/hero/contact-hero.png"],
+    images: ["https://zafronixsafaris.co.ke/images/hero/contact-hero.png"],
   },
 };
 
@@ -54,20 +54,20 @@ function ContactSchema() {
     "@graph": [
       {
         "@type": "ContactPage",
-        "@id": "https://wildventures.co.ke/contact",
-        url: "https://wildventures.co.ke/contact",
-        name: "Contact WildVentures Safari Co.",
+        "@id": "https://zafronixsafaris.co.ke/contact",
+        url: "https://zafronixsafaris.co.ke/contact",
+        name: "Contact Zafronix Safaris Safari Co.",
         description:
-          "Get in touch with WildVentures to plan your Kenya, Tanzania or Zanzibar safari.",
-        isPartOf: { "@id": "https://wildventures.co.ke/#website" },
+          "Get in touch with Zafronix Safaris to plan your Kenya, Tanzania or Zanzibar safari.",
+        isPartOf: { "@id": "https://zafronixsafaris.co.ke/#website" },
       },
       {
         "@type": "TravelAgency",
-        "@id": "https://wildventures.co.ke/#organization",
-        name: "WildVentures Safari Co.",
-        url: "https://wildventures.co.ke",
+        "@id": "https://zafronixsafaris.co.ke/#organization",
+        name: "Zafronix Safaris Safari Co.",
+        url: "https://zafronixsafaris.co.ke",
         telephone: "+254780166113",
-        email: "hello@wildventures.co",
+        email: "hello@zafronixsafaris.co",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Westlands Business Park",
@@ -93,7 +93,7 @@ function ContactSchema() {
           },
           {
             "@type": "ContactPoint",
-            email: "hello@wildventures.co",
+            email: "hello@zafronixsafaris.co",
             contactType: "sales",
             availableLanguage: ["English"],
           },
@@ -106,13 +106,13 @@ function ContactSchema() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://wildventures.co.ke",
+            item: "https://zafronixsafaris.co.ke",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Contact",
-            item: "https://wildventures.co.ke/contact",
+            item: "https://zafronixsafaris.co.ke/contact",
           },
         ],
       },

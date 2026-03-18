@@ -911,7 +911,7 @@ export const tours = [
         initials: "SM",
         color: "#2F4F3E",
         comment:
-          "Witnessing the crossing was surreal. WildVentures positioned us perfectly — we were the only vehicle there. Pure magic.",
+          "Witnessing the crossing was surreal. Zafronix Safaris positioned us perfectly — we were the only vehicle there. Pure magic.",
       },
       {
         name: "Thomas & Claudine Renard",

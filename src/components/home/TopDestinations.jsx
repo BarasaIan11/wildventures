@@ -4,7 +4,6 @@ import RevealWrapper from "@/components/shared/RevealWrapper";
 import { getMainDestinations } from "@/data/destinations";
 
 export default function TopDestinations() {
-  // Returns Kenya, Tanzania, Zanzibar
   const featured = getMainDestinations();
 
   return (

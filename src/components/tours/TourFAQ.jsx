@@ -29,7 +29,7 @@ export default function TourFAQ({ tour }) {
 
   return (
     <section className="pt-24 border-t border-gray-100">
-      {/* Header aligned with Homepage style */}
+      {/* Header */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-4">
           <span className="w-8 h-px bg-orange" />
@@ -72,7 +72,7 @@ export default function TourFAQ({ tour }) {
         ))}
       </div>
 
-      {/* CONSULTATIVE FOOTER: Redesigned for Minimalism (Uwanda Style) */}
+      {/* CONSULTATIVE FOOTER */}
       <div className="mt-20 py-12 border-t border-beige/40 flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
         <div className="flex gap-6 max-w-xl">
           <div className="hidden md:block w-[1px] h-20 bg-orange/30 shrink-0" />

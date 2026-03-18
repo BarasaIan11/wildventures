@@ -14,17 +14,17 @@ import BookingCTA from "@/components/home/BookingCTA";
 // but we override here with a more keyword-rich version.
 // ─────────────────────────────────────────────────────────────
 export const metadata = {
-  title: "Kenya & Tanzania Safari Tours | WildVentures — East Africa's Safari Specialists",
+  title: "Kenya & Tanzania Safari Tours | Zafronix Safaris — East Africa's Safari Specialists",
   description:
     "Tailor-made Kenya, Tanzania & Zanzibar safari holidays for international travellers. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
   alternates: {
-    canonical: "https://wildventures.co.ke",
+    canonical: "https://zafronixsafaris.co.ke",
   },
   openGraph: {
-    title: "Kenya & Tanzania Safari Tours | WildVentures",
+    title: "Kenya & Tanzania Safari Tours | Zafronix Safaris",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safari holidays. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
-    url: "https://wildventures.co.ke",
+    url: "https://zafronixsafaris.co.ke",
   },
 };
 
@@ -38,36 +38,36 @@ function HomeSchema() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://wildventures.co.ke/#website",
-        url: "https://wildventures.co.ke",
-        name: "WildVentures Safari Co.",
+        "@id": "https://zafronixsafaris.co.ke/#website",
+        url: "https://zafronixsafaris.co.ke",
+        name: "Zafronix Safaris Safari Co.",
         description:
           "East Africa's premier safari company. Tailor-made Kenya, Tanzania & Zanzibar safari experiences since 2009.",
-        publisher: { "@id": "https://wildventures.co.ke/#organization" },
+        publisher: { "@id": "https://zafronixsafaris.co.ke/#organization" },
         potentialAction: {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
             urlTemplate:
-              "https://wildventures.co.ke/tours?destination={search_term_string}",
+              "https://zafronixsafaris.co.ke/tours?destination={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
       },
       {
         "@type": "TravelAgency",
-        "@id": "https://wildventures.co.ke/#organization",
-        name: "WildVentures Safari Co.",
-        url: "https://wildventures.co.ke",
+        "@id": "https://zafronixsafaris.co.ke/#organization",
+        name: "Zafronix Safaris Safari Co.",
+        url: "https://zafronixsafaris.co.ke",
         logo: {
           "@type": "ImageObject",
-          url: "https://wildventures.co.ke/icons/logo.png",
+          url: "https://zafronixsafaris.co.ke/icons/logo.png",
           width: 200,
           height: 60,
         },
-        image: "https://wildventures.co.ke/images/hero/story-main.png",
+        image: "https://zafronixsafaris.co.ke/images/hero/story-main.png",
         description:
-          "WildVentures is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2009.",
+          "Zafronix Safaris is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2009.",
         foundingDate: "2009",
         address: {
           "@type": "PostalAddress",
@@ -76,7 +76,7 @@ function HomeSchema() {
           addressCountry: "KE",
         },
         telephone: "+254780166113",
-        email: "hello@wildventures.co",
+        email: "hello@zafronixsafaris.co",
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: [

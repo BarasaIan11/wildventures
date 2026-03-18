@@ -7,7 +7,7 @@ const platforms = [
   {
     name: "TripAdvisor",
     title: "TripAdvisor Experiences",
-    desc: "Read the stories of our WildVentures travelers on TripAdvisor and get inspired for your own unforgettable safari.",
+    desc: "Read the stories of our Zafronix Safaris travelers on TripAdvisor and get inspired for your own unforgettable safari.",
     rating: "4.9/5",
     logo: "https://www.tripadvisor.com/img/cdsi/langs/en/tripadvisor_logo_transp_500x125-44413-1.png",
     link: "#", // Replace with your link
@@ -15,7 +15,7 @@ const platforms = [
   {
     name: "Google Reviews",
     title: "Google Experiences",
-    desc: "Discover what our travelers have to say about their safari with WildVentures. Let their stories inspire your next adventure.",
+    desc: "Discover what our travelers have to say about their safari with Zafronix Safaris. Let their stories inspire your next adventure.",
     rating: "5.0/5",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png",
     link: "#", // Replace with your link
@@ -23,7 +23,7 @@ const platforms = [
   {
     name: "Safari Bookings",
     title: "Safari Bookings Stories",
-    desc: "Explore reviews from our travelers on SafariBookings and see why WildVentures is a top choice for safari enthusiasts.",
+    desc: "Explore reviews from our travelers on SafariBookings and see why Zafronix Safaris is a top choice for safari enthusiasts.",
     rating: "5.0/5",
     logo: "https://www.safaribookings.com/img/logo/logo.svg",
     link: "#", // Replace with your link

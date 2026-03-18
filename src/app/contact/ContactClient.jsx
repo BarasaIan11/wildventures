@@ -36,7 +36,7 @@ export default function ContactClient() {
       const { name, email, subject, message } = data;
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-      let text = `*CONTACT MESSAGE — WildVentures*\n`;
+      let text = `*CONTACT MESSAGE — Zafronix Safaris*\n`;
       text += `Ref: *#${refId}*\n\n`;
       text += `*SENDER DETAILS*\n`;
       text += ` Name: ${name}\n`;
@@ -53,7 +53,7 @@ export default function ContactClient() {
         dateStyle: "medium",
         timeStyle: "short",
       })}_\n`;
-      text += `_Via WildVentures website_`;
+      text += `_Via Zafronix Safaris website_`;
 
       if (!phoneNumber) {
         setSubmitError(
@@ -88,7 +88,7 @@ export default function ContactClient() {
       value: "Westlands Business Park, Nairobi, Kenya",
     },
     { Icon: Phone, label: "Call Us", value: formattedPhone },
-    { Icon: Mail, label: "Email Us", value: "hello@wildventures.co" },
+    { Icon: Mail, label: "Email Us", value: "hello@zafronixsafaris.co" },
     {
       Icon: Clock,
       label: "Office Hours",
@@ -110,7 +110,7 @@ export default function ContactClient() {
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/contact-hero.png"
-          alt="African elephants in the wild — WildVentures contact page"
+          alt="African elephants in the wild — Zafronix Safaris contact page"
           fill
           priority
           sizes="100vw"
