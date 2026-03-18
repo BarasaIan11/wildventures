@@ -5,7 +5,7 @@ export const destinations = [
     name: "Kenya",
     flag: "🇰🇪",
     tagline: "The Home of Safari",
-    tourCount: 4,
+    tourCount: 5,
     image: "/images/destinations/kenya.png",
     heroImage: "/images/destinations/kenya.png",
     description:
@@ -41,7 +41,7 @@ export const destinations = [
     name: "Tanzania",
     flag: "🇹🇿",
     tagline: "The Greatest Safari on Earth",
-    tourCount: 3,
+    tourCount: 4,
     image: "/images/destinations/tanzania.png",
     heroImage: "/images/destinations/tanzania.png",
     description:
@@ -111,7 +111,7 @@ export const destinations = [
     name: "Rwanda",
     flag: "🇷🇼",
     tagline: "Land of a Thousand Hills",
-    tourCount: 1,
+    tourCount: 0,
     image: "/images/destinations/rwanda.png",
     heroImage: "/images/destinations/rwanda.png",
     description:
@@ -141,7 +141,7 @@ export const destinations = [
     name: "Uganda",
     flag: "🇺🇬",
     tagline: "The Pearl of Africa",
-    tourCount: 1,
+    tourCount: 0,
     image: "/images/destinations/uganda.png",
     heroImage: "/images/destinations/uganda.png",
     description:

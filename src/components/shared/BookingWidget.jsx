@@ -13,7 +13,9 @@ export default function BookingWidget({ tourTitle = '' }) {
   const submit = (e) => {
     e.preventDefault()
     const { name, email, date, travelers } = form;
-    const phoneNumber = "254780166113";
+    const phoneNumber =
+      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
+    if (!phoneNumber) return;
 
     let text = `Hello Zafronix Safaris! I am looking for a custom quote for:\n\n`;
     text += `Adventure: ${tourTitle}\n`;
@@ -22,7 +24,12 @@ export default function BookingWidget({ tourTitle = '' }) {
     text += `Travelers: ${travelers}\n`;
     text += `\nPlease let me know the seasonal rates for this itinerary.`;
 
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, "_blank");
+    const popup = window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (!popup || popup.closed || typeof popup.closed === "undefined") return;
     setShowToast(true)
   }
 
@@ -57,24 +64,24 @@ export default function BookingWidget({ tourTitle = '' }) {
 
         <form onSubmit={submit} className="p-8 space-y-8">
           <div className="space-y-1">
-            <label className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold flex items-center gap-2">
+            <label htmlFor="travel-date" className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold flex items-center gap-2">
               <Calendar size={12} className="text-orange" /> Target Travel Date
             </label>
-            <input type="date" name="date" value={form.date} onChange={handle} required className="w-full border-b border-gray-100 py-3 focus:outline-none focus:border-orange font-serif italic text-lg" />
+            <input id="travel-date" type="date" name="date" value={form.date} onChange={handle} required className="w-full border-b border-gray-100 py-3 focus:outline-none focus:border-orange font-serif italic text-lg" />
           </div>
 
           <div className="space-y-1">
-            <label className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold flex items-center gap-2">
+            <label htmlFor="traveler-count" className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold flex items-center gap-2">
               <Users size={12} className="text-orange" /> Number of Guests
             </label>
-            <select name="travelers" value={form.travelers} onChange={handle} className="w-full border-b border-gray-100 py-3 focus:outline-none font-serif italic text-lg appearance-none bg-transparent">
+            <select id="traveler-count" name="travelers" value={form.travelers} onChange={handle} className="w-full border-b border-gray-100 py-3 focus:outline-none font-serif italic text-lg appearance-none bg-transparent">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => <option key={n} value={n}>{n} {n === 1 ? 'Guest' : 'Guests'}</option>)}
             </select>
           </div>
 
           <div className="space-y-1">
-            <label className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold">Full Name</label>
-            <input type="text" name="name" value={form.name} onChange={handle} required placeholder="Name" className="w-full border-b border-gray-100 py-3 focus:outline-none focus:border-orange font-serif italic text-lg" />
+            <label htmlFor="full-name" className="text-[0.65rem] tracking-[0.2em] uppercase text-green font-bold">Full Name</label>
+            <input id="full-name" type="text" name="name" value={form.name} onChange={handle} required placeholder="Name" className="w-full border-b border-gray-100 py-3 focus:outline-none focus:border-orange font-serif italic text-lg" />
           </div>
 
           <button type="submit" className="btn btn-primary w-full py-6 shadow-xl group flex items-center justify-center gap-4">

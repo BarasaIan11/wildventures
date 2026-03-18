@@ -74,7 +74,7 @@ export const metadata = {
     title: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris crafted for international travellers. Expert guides, luxury camps & life-changing wildlife encounters.",
-    url: "https://zafronixsafaris.co.ke",
+    url: "https://zafronixsafaris.com",
     siteName: "Zafronix Safaris Safari Co.",
     images: [
       {
@@ -103,16 +103,16 @@ export const metadata = {
   // Place these files in your /public folder
   icons: {
     icon: [
-      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
     ],
     apple: [
-      { url: "/icons/apple-touch-icon.png", sizes: "180x180" },
+      { url: "/logo.png", sizes: "180x180" },
     ],
     other: [
       {
         rel: "mask-icon",
-        url: "/icons/safari-pinned-tab.svg",
+        url: "/logo.png",
         color: "#1B3A2D",
       },
     ],
@@ -126,9 +126,7 @@ export const metadata = {
   // search.google.com/search-console → Add Property → HTML tag method
   // Copy only the content="..." value, paste it below
   verification: {
-    google: "REPLACE_WITH_YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN",
-    // yandex: "your-yandex-token",   // Add if targeting Russian market
-    // bing: "your-bing-token",       // Add for Bing/Microsoft search
+    google: process.env.GOOGLE_SITE_VERIFICATION,
   },
 
   // ── Additional meta tags

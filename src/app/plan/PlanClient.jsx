@@ -36,6 +36,18 @@ export default function PlanClient() {
 
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
+      let nonPiiText = `*New Safari Inquiry — Zafronix Safaris*\n`;
+      nonPiiText += `Ref: #${refId}\n`;
+      nonPiiText += `\n*Trip Details*\n`;
+      nonPiiText += `*Travel Date:* ${startDate}\n`;
+      if (duration) nonPiiText += `*Duration:* ${duration}\n`;
+      if (travelers) nonPiiText += `*Travelers:* ${travelers}\n`;
+      if (budget) nonPiiText += `*Budget (per person):* ${budget}\n`;
+      if (destinations?.length > 0)
+        nonPiiText += `*Destinations:* ${destinations.join(", ")}\n`;
+      if (interests?.length > 0)
+        nonPiiText += `*Interests:* ${interests.join(", ")}\n`;
+
       let text = `*New Safari Inquiry — Zafronix Safaris*\n`;
       text += `Ref: #${refId}\n`;
       text += `*Name:* ${firstName} ${lastName}\n`;
@@ -60,7 +72,13 @@ export default function PlanClient() {
         return;
       }
 
-      const encodedMessage = encodeURIComponent(text);
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        console.warn("Clipboard mapping failed:", err);
+      }
+
+      const encodedMessage = encodeURIComponent(nonPiiText);
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
       const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       if (!popup || popup.closed || typeof popup.closed === "undefined") {
@@ -136,8 +154,9 @@ export default function PlanClient() {
                 {/* Personal info */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClass}>First Name</label>
+                    <label htmlFor="firstName" className={labelClass}>First Name</label>
                     <input
+                      id="firstName"
                       {...register("firstName", { required: true })}
                       placeholder="Jane"
                       className={inputClass}
@@ -147,8 +166,9 @@ export default function PlanClient() {
                     )}
                   </div>
                   <div>
-                    <label className={labelClass}>Last Name</label>
+                    <label htmlFor="lastName" className={labelClass}>Last Name</label>
                     <input
+                      id="lastName"
                       {...register("lastName", { required: true })}
                       placeholder="Smith"
                       className={inputClass}
@@ -161,8 +181,9 @@ export default function PlanClient() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClass}>Email Address</label>
+                    <label htmlFor="email" className={labelClass}>Email Address</label>
                     <input
+                      id="email"
                       {...register("email", {
                         required: true,
                         pattern: /^\S+@\S+$/i,
@@ -176,8 +197,9 @@ export default function PlanClient() {
                     )}
                   </div>
                   <div>
-                    <label className={labelClass}>Phone / WhatsApp</label>
+                    <label htmlFor="phone" className={labelClass}>Phone / WhatsApp</label>
                     <input
+                      id="phone"
                       {...register("phone")}
                       type="tel"
                       placeholder="+1 234 567 8900"
@@ -191,12 +213,13 @@ export default function PlanClient() {
                 {/* Trip details */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClass}>
+                    <label htmlFor="startDate" className={labelClass}>
                       <span className="flex items-center gap-1.5">
                         <Calendar className="w-3 h-3" /> Travel Dates
                       </span>
                     </label>
                     <input
+                      id="startDate"
                       {...register("startDate", { required: true })}
                       type="date"
                       className={inputClass}
@@ -207,8 +230,8 @@ export default function PlanClient() {
                     )}
                   </div>
                   <div>
-                    <label className={labelClass}>Trip Duration</label>
-                    <select {...register("duration")} className={inputClass}>
+                    <label htmlFor="duration" className={labelClass}>Trip Duration</label>
+                    <select id="duration" {...register("duration")} className={inputClass}>
                       {[
                         "3–5 days",
                         "6–8 days",
@@ -224,12 +247,12 @@ export default function PlanClient() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClass}>
+                    <label htmlFor="travelers" className={labelClass}>
                       <span className="flex items-center gap-1.5">
                         <Users className="w-3 h-3" /> Travelers
                       </span>
                     </label>
-                    <select {...register("travelers")} className={inputClass}>
+                    <select id="travelers" {...register("travelers")} className={inputClass}>
                       {["1", "2", "3–4", "5–8", "9–12", "13+"].map((n) => (
                         <option key={n}>
                           {n} {n === "1" ? "Traveler" : "Travelers"}
@@ -238,12 +261,12 @@ export default function PlanClient() {
                     </select>
                   </div>
                   <div>
-                    <label className={labelClass}>
+                    <label htmlFor="budget" className={labelClass}>
                       <span className="flex items-center gap-1.5">
                         <DollarSign className="w-3 h-3" /> Budget (per person)
                       </span>
                     </label>
-                    <select {...register("budget")} className={inputClass}>
+                    <select id="budget" {...register("budget")} className={inputClass}>
                       {[
                         "Under $1,500",
                         "$1,500 – $3,000",
@@ -273,9 +296,11 @@ export default function PlanClient() {
                     ].map((d) => (
                       <label
                         key={d}
+                        htmlFor={`destination-${d}`}
                         className="flex items-center gap-2 p-3 border border-gray-200 rounded-sm cursor-pointer hover:border-green transition-colors text-[0.88rem]"
                       >
                         <input
+                          id={`destination-${d}`}
                           type="checkbox"
                           {...register("destinations")}
                           value={d}
@@ -309,9 +334,11 @@ export default function PlanClient() {
                     ].map((i) => (
                       <label
                         key={i}
+                        htmlFor={`interest-${i}`}
                         className="flex items-center gap-2 p-3 border border-gray-200 rounded-sm cursor-pointer hover:border-green transition-colors text-[0.88rem]"
                       >
                         <input
+                          id={`interest-${i}`}
                           type="checkbox"
                           {...register("interests")}
                           value={i}
@@ -325,10 +352,11 @@ export default function PlanClient() {
 
                 {/* Message */}
                 <div>
-                  <label className={labelClass}>
+                  <label htmlFor="message" className={labelClass}>
                     Tell Us More About Your Dream Safari
                   </label>
                   <textarea
+                    id="message"
                     {...register("message")}
                     rows={4}
                     placeholder="Any special occasions, mobility considerations, dietary requirements, specific wildlife you'd love to see..."
