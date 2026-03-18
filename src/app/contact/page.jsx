@@ -22,16 +22,16 @@ export const metadata = {
     "Tanzania safari booking",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.co.ke/contact",
+    canonical: "https://zafronixsafaris.com/contact",
   },
   openGraph: {
     title: "Contact Zafronix Safaris — Plan Your Kenya & Tanzania Safari",
     description:
       "Speak to our safari specialists in Nairobi. Call, email or WhatsApp to start planning your tailor-made East Africa safari.",
-    url: "https://zafronixsafaris.co.ke/contact",
+    url: "https://zafronixsafaris.com/contact",
     images: [
       {
-        url: "https://zafronixsafaris.co.ke/images/hero/contact-hero.png",
+        url: "https://zafronixsafaris.com/images/hero/contact-hero.png",
         width: 1200,
         height: 630,
         alt: "Contact Zafronix Safaris safari specialists — Nairobi, Kenya",
@@ -43,7 +43,7 @@ export const metadata = {
     title: "Contact Zafronix Safaris — Plan Your Safari",
     description:
       "Speak to our Nairobi-based safari specialists. WhatsApp, call or email us.",
-    images: ["https://zafronixsafaris.co.ke/images/hero/contact-hero.png"],
+    images: ["https://zafronixsafaris.com/images/hero/contact-hero.png"],
   },
 };
 
@@ -54,18 +54,18 @@ function ContactSchema() {
     "@graph": [
       {
         "@type": "ContactPage",
-        "@id": "https://zafronixsafaris.co.ke/contact",
-        url: "https://zafronixsafaris.co.ke/contact",
+        "@id": "https://zafronixsafaris.com/contact",
+        url: "https://zafronixsafaris.com/contact",
         name: "Contact Zafronix Safaris Safari Co.",
         description:
           "Get in touch with Zafronix Safaris to plan your Kenya, Tanzania or Zanzibar safari.",
-        isPartOf: { "@id": "https://zafronixsafaris.co.ke/#website" },
+        isPartOf: { "@id": "https://zafronixsafaris.com/#website" },
       },
       {
         "@type": "TravelAgency",
-        "@id": "https://zafronixsafaris.co.ke/#organization",
+        "@id": "https://zafronixsafaris.com/#organization",
         name: "Zafronix Safaris Safari Co.",
-        url: "https://zafronixsafaris.co.ke",
+        url: "https://zafronixsafaris.com",
         telephone: "+254780166113",
         email: "hello@zafronixsafaris.co",
         address: {
@@ -106,13 +106,13 @@ function ContactSchema() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://zafronixsafaris.co.ke",
+            item: "https://zafronixsafaris.com",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Contact",
-            item: "https://zafronixsafaris.co.ke/contact",
+            item: "https://zafronixsafaris.com/contact",
           },
         ],
       },

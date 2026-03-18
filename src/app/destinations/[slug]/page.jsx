@@ -18,15 +18,15 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
 
-  if (!dest) return { title: "Destination Not Found | Zafronix Safaris" };
+  if (!dest) return { title: "Destination Not Found" };
 
   // Keyword-rich title per destination
   const titleMap = {
-    kenya: "Kenya Safari Holidays & Tours 2025/2026 | Zafronix Safaris",
-    tanzania: "Tanzania Safari Tours & Packages 2025/2026 | Zafronix Safaris",
-    zanzibar: "Zanzibar Beach Holidays & Safari Combos | Zafronix Safaris",
-    rwanda: "Rwanda Gorilla Trekking Tours | Zafronix Safaris",
-    uganda: "Uganda Safari & Gorilla Trekking | Zafronix Safaris",
+    kenya: "Kenya Safari Holidays & Tours 2025/2026",
+    tanzania: "Tanzania Safari Tours & Packages 2025/2026",
+    zanzibar: "Zanzibar Beach Holidays & Safari Combos",
+    rwanda: "Rwanda Gorilla Trekking Tours",
+    uganda: "Uganda Safari & Gorilla Trekking",
   };
 
   const descriptionMap = {
@@ -42,13 +42,13 @@ export async function generateMetadata({ params }) {
       "Gorilla trekking in Bwindi, chimpanzees in Kibale & tree-climbing lions. Uganda's best wildlife experiences with Zafronix Safaris.",
   };
 
-  const title = titleMap[slug] || `${dest.name} Safari | Zafronix Safaris`;
+  const title = titleMap[slug] || `${dest.name} Safari`;
   const description =
     descriptionMap[slug] ||
     `Explore ${dest.name} with Zafronix Safaris — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
 
-  const canonicalUrl = `https://zafronixsafaris.co.ke/destinations/${slug}`;
-  const imageUrl = `https://zafronixsafaris.co.ke${dest.heroImage}`;
+  const canonicalUrl = `https://zafronixsafaris.com/destinations/${slug}`;
+  const imageUrl = `https://zafronixsafaris.com${dest.heroImage}`;
 
   return {
     title,
@@ -101,11 +101,11 @@ function DestinationSchema({ dest }) {
     "@graph": [
       {
         "@type": "TouristDestination",
-        "@id": `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
+        "@id": `https://zafronixsafaris.com/destinations/${dest.slug}`,
         name: dest.name,
         description: dest.description,
-        url: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
-        image: `https://zafronixsafaris.co.ke${dest.heroImage}`,
+        url: `https://zafronixsafaris.com/destinations/${dest.slug}`,
+        image: `https://zafronixsafaris.com${dest.heroImage}`,
         touristType: ["Safari", "Wildlife", "Adventure", "Luxury Travel"],
         includesAttraction: dest.highlights.map((h) => ({
           "@type": "TouristAttraction",
@@ -115,9 +115,9 @@ function DestinationSchema({ dest }) {
       // TravelAgency offering tours to this destination
       {
         "@type": "TravelAgency",
-        "@id": "https://zafronixsafaris.co.ke",
+        "@id": "https://zafronixsafaris.com",
         name: "Zafronix Safaris Safari Co.",
-        url: "https://zafronixsafaris.co.ke",
+        url: "https://zafronixsafaris.com",
         telephone: "+254780166113",
         email: "hello@zafronixsafaris.co",
         priceRange: "$$$",
@@ -143,19 +143,19 @@ function DestinationSchema({ dest }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://zafronixsafaris.co.ke",
+            item: "https://zafronixsafaris.com",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Destinations",
-            item: "https://zafronixsafaris.co.ke/destinations",
+            item: "https://zafronixsafaris.com/destinations",
           },
           {
             "@type": "ListItem",
             position: 3,
             name: dest.name,
-            item: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
+            item: `https://zafronixsafaris.com/destinations/${dest.slug}`,
           },
         ],
       },

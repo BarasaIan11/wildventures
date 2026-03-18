@@ -21,16 +21,16 @@ export const metadata = {
     "Great Migration safari tour",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.co.ke/tours",
+    canonical: "https://zafronixsafaris.com/tours",
   },
   openGraph: {
-    title: "Kenya & Tanzania Safari Tours & Packages | Zafronix Safaris",
+    title: "Kenya & Tanzania Safari Tours & Packages",
     description:
       "Browse our full collection of Kenya and Tanzania safari packages. Masai Mara, Serengeti, Ngorongoro, Zanzibar & more. Expert guides, luxury camps. From $1,450/pp.",
-    url: "https://zafronixsafaris.co.ke/tours",
+    url: "https://zafronixsafaris.com/tours",
     images: [
       {
-        url: "https://zafronixsafaris.co.ke/images/hero/lions.png",
+        url: "https://zafronixsafaris.com/images/hero/lions.png",
         width: 1200,
         height: 630,
         alt: "Safari lions on the Masai Mara plains — Zafronix Safaris Tours",
@@ -39,10 +39,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kenya & Tanzania Safari Tours | Zafronix Safaris",
+    title: "Kenya & Tanzania Safari Tours",
     description:
       "Browse our full collection of East Africa safari packages. From $1,450/pp.",
-    images: ["https://zafronixsafaris.co.ke/images/hero/lions.png"],
+    images: ["https://zafronixsafaris.com/images/hero/lions.png"],
   },
 };
 
@@ -55,7 +55,7 @@ function ToursSchema() {
     name: "Zafronix Safaris Kenya & Tanzania Safari Tours",
     description:
       "Tailor-made safari packages across Kenya, Tanzania and Zanzibar.",
-    url: "https://zafronixsafaris.co.ke/tours",
+    url: "https://zafronixsafaris.com/tours",
     numberOfItems: tours.length,
     itemListElement: tours.map((tour, index) => ({
       "@type": "ListItem",
@@ -64,8 +64,8 @@ function ToursSchema() {
         "@type": "TouristTrip",
         name: tour.title,
         description: tour.summary,
-        url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
-        image: `https://zafronixsafaris.co.ke${tour.image}`,
+        url: `https://zafronixsafaris.com/tours/${tour.slug}`,
+        image: `https://zafronixsafaris.com${tour.image}`,
         offers: {
           "@type": "Offer",
           price: tour.price,

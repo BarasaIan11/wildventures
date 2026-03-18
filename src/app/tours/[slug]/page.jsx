@@ -16,14 +16,14 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
 
-  if (!tour) return { title: "Tour Not Found | Zafronix Safaris" };
+  if (!tour) return { title: "Tour Not Found" };
 
-  const title = `${tour.title} | ${tour.duration} Safari | Zafronix Safaris`;
+  const title = `${tour.title} | ${tour.duration} Safari`;
 
   const description = `${tour.summary.slice(0, 140).trim()}… Private expeditions across ${tour.destination}. Enquire for bespoke rates and tailored itineraries with Zafronix Safaris.`;
 
-  const canonicalUrl = `https://zafronixsafaris.co.ke/tours/${slug}`;
-  const imageUrl = `https://zafronixsafaris.co.ke${tour.heroImage}`;
+  const canonicalUrl = `https://zafronixsafaris.com/tours/${slug}`;
+  const imageUrl = `https://zafronixsafaris.com${tour.heroImage}`;
 
   return {
     title,
@@ -70,11 +70,11 @@ function TourSchema({ tour }) {
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
+        "@id": `https://zafronixsafaris.com/tours/${tour.slug}`,
         name: tour.title,
         description: tour.summary,
-        url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
-        image: `https://zafronixsafaris.co.ke${tour.heroImage}`,
+        url: `https://zafronixsafaris.com/tours/${tour.slug}`,
+        image: `https://zafronixsafaris.com${tour.heroImage}`,
         touristType: tour.style,
         itinerary: tour.itinerary.map((day) => ({
           "@type": "TouristAttraction",
@@ -84,7 +84,7 @@ function TourSchema({ tour }) {
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
-          url: `https://zafronixsafaris.co.ke/tours/${tour.slug}`,
+          url: `https://zafronixsafaris.com/tours/${tour.slug}`,
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
@@ -94,7 +94,7 @@ function TourSchema({ tour }) {
         provider: {
           "@type": "TravelAgency",
           name: "Zafronix Safaris Safari Co.",
-          url: "https://zafronixsafaris.co.ke",
+          url: "https://zafronixsafaris.com",
           telephone: "+254780166113",
           email: "hello@zafronixsafaris.co",
         },
@@ -110,9 +110,9 @@ function TourSchema({ tour }) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://zafronixsafaris.co.ke" },
-          { "@type": "ListItem", position: 2, name: "Tours", item: "https://zafronixsafaris.co.ke/tours" },
-          { "@type": "ListItem", position: 3, name: tour.title, item: `https://zafronixsafaris.co.ke/tours/${tour.slug}` },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://zafronixsafaris.com" },
+          { "@type": "ListItem", position: 2, name: "Tours", item: "https://zafronixsafaris.com/tours" },
+          { "@type": "ListItem", position: 3, name: tour.title, item: `https://zafronixsafaris.com/tours/${tour.slug}` },
         ],
       },
     ],

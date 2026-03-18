@@ -18,8 +18,8 @@ export default function robots() {
       },
     ],
     // Tell Google (and all crawlers) where your sitemap is
-    sitemap: "https://zafronixsafaris.co.ke/sitemap.xml",
+    sitemap: "https://zafronixsafaris.com/sitemap.xml",
     // Your canonical domain — prevents crawling of Vercel preview URLs
-    host: "https://zafronixsafaris.co.ke",
+    host: "https://zafronixsafaris.com",
   };
 }

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getBlogBySlug(slug);
   if (!post) return { title: "Article Not Found" };
-  return { title: `${post.title} | Zafronix Safaris Journal` };
+  return { title: `${post.title} Journal` };
 }
 
 export default async function BlogPostPage({ params }) {

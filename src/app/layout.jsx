@@ -48,7 +48,7 @@ export const metadata = {
 
   // ── Canonical base URL
   // Prevents duplicate content issues across http/https/www variants
-  metadataBase: new URL("https://zafronixsafaris.co.ke"),
+  metadataBase: new URL("https://zafronixsafaris.com"),
   alternates: {
     canonical: "/",
   },

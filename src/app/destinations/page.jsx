@@ -21,16 +21,16 @@ export const metadata = {
     "Rwanda gorilla trekking",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.co.ke/destinations",
+    canonical: "https://zafronixsafaris.com/destinations",
   },
   openGraph: {
-    title: "Kenya, Tanzania & Zanzibar Safari Destinations | Zafronix Safaris",
+    title: "Kenya, Tanzania & Zanzibar Safari Destinations",
     description:
       "Explore Zafronix Safaris' East African destinations — Kenya's Masai Mara, Tanzania's Serengeti, Zanzibar beaches & more.",
-    url: "https://zafronixsafaris.co.ke/destinations",
+    url: "https://zafronixsafaris.com/destinations",
     images: [
       {
-        url: "https://zafronixsafaris.co.ke/images/hero/destinations-hero.png",
+        url: "https://zafronixsafaris.com/images/hero/destinations-hero.png",
         width: 1200,
         height: 630,
         alt: "East Africa safari destinations — Zafronix Safaris",
@@ -39,10 +39,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kenya, Tanzania & Zanzibar Destinations | Zafronix Safaris",
+    title: "Kenya, Tanzania & Zanzibar Destinations",
     description:
       "Masai Mara, Serengeti, Zanzibar beaches & more. Find your perfect East Africa safari destination.",
-    images: ["https://zafronixsafaris.co.ke/images/hero/destinations-hero.png"],
+    images: ["https://zafronixsafaris.com/images/hero/destinations-hero.png"],
   },
 };
 
@@ -56,7 +56,7 @@ function DestinationsSchema() {
     name: "Zafronix Safaris East Africa Safari Destinations",
     description:
       "Safari and beach holiday destinations across East Africa, including Kenya, Tanzania, Zanzibar, Rwanda and Uganda.",
-    url: "https://zafronixsafaris.co.ke/destinations",
+    url: "https://zafronixsafaris.com/destinations",
     numberOfItems: destinations.length,
     itemListElement: destinations.map((dest, index) => ({
       "@type": "ListItem",
@@ -65,8 +65,8 @@ function DestinationsSchema() {
         "@type": "TouristDestination",
         name: dest.name,
         description: dest.description.slice(0, 200),
-        url: `https://zafronixsafaris.co.ke/destinations/${dest.slug}`,
-        image: `https://zafronixsafaris.co.ke${dest.image}`,
+        url: `https://zafronixsafaris.com/destinations/${dest.slug}`,
+        image: `https://zafronixsafaris.com${dest.image}`,
         touristType: ["Safari", "Wildlife", "Adventure"],
       },
     })),
