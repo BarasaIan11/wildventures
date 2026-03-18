@@ -146,4 +146,39 @@
   .badge-green {
     @apply badge bg-green text-white;
   }
+
+  /* --- Premium Blog Typography --- */
+.prose-custom h2 {
+  @apply font-serif text-3xl md:text-4xl text-green-dark mt-16 mb-6 leading-tight font-light;
+}
+
+.prose-custom h3 {
+  @apply font-serif text-2xl text-charcoal mt-10 mb-4 font-medium;
+}
+
+.prose-custom p {
+  @apply mb-8 text-gray-600 leading-[1.9] font-light;
+}
+
+.prose-custom blockquote {
+  @apply font-serif italic text-2xl text-orange border-l-2 border-orange pl-10 my-14 leading-relaxed;
+}
+
+.prose-custom ul {
+  @apply mb-8 space-y-3;
+}
+
+.prose-custom ul li {
+  @apply flex items-start gap-3 text-gray-600 font-light;
+}
+
+.prose-custom ul li::before {
+  content: '✦';
+  @apply text-orange mt-1 text-xs;
+}
+
+/* The "National Geographic" Drop Cap */
+.prose-custom > p:first-of-type::first-letter {
+  @apply text-7xl font-serif text-green float-left mr-3 mt-2 leading-[0.8];
+}
 }

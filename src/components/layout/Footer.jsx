@@ -9,6 +9,7 @@ import {
   Youtube,
   ArrowUpRight,
 } from "lucide-react";
+import { tours } from "@/data/tours";
 
 const tourLinks = [
   {
@@ -25,12 +26,14 @@ const tourLinks = [
 
 const companyLinks = [
   { href: "/about", label: "Our Story" },
-  { href: "/reviews", label: "Traveler Stories" },
+  { href: "/blogs", label: "Safari Blogs" },
   { href: "/plan", label: "Custom Safaris" },
   { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Footer() {
+  const signatureTours = tours.slice(0, 4);
+
   return (
     <footer className="bg-charcoal text-white/50 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-[5%] pt-20 pb-12">
@@ -70,13 +73,13 @@ export default function Footer() {
               Signature Experiences
             </p>
             <ul className="space-y-4">
-              {tourLinks.map(({ href, label }) => (
-                <li key={href}>
+              {signatureTours.map((tour) => (
+                <li key={tour.slug}>
                   <Link
-                    href={href}
+                    href={`/tours/${tour.slug}`}
                     className="text-[0.88rem] hover:text-white transition-colors flex items-center group"
                   >
-                    {label}
+                    {tour.title}
                     <ArrowUpRight
                       size={14}
                       className="ml-1 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
@@ -111,11 +114,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              {/* <li>
-                <span className="text-[0.88rem] opacity-30 cursor-not-allowed">
-                  Conservation Fund
-                </span>
-              </li> */}
             </ul>
           </div>
 

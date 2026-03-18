@@ -22,9 +22,9 @@ const images = [
   },
   {
     src: "/images/gallery/gallery-4.png",
-    alt: "Giraffe in acacia landscape",
+    alt: "Zanzibar beach",
     tall: true,
-    location: "Tarangire, Tanzania",
+    location: "Zanzibar, Tanzania",
   },
   {
     src: "/images/gallery/gallery-5.png",
@@ -34,9 +34,9 @@ const images = [
   },
   {
     src: "/images/gallery/gallery-6.png",
-    alt: "Mountain gorilla Rwanda",
+    alt: "Wildebeest migration",
     tall: false,
-    location: "Volcanoes NP, Rwanda",
+    location: "Mara River, Kenya",
   },
 ];
 
@@ -46,8 +46,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-[5%] mb-16">
         <RevealWrapper>
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-orange" />
-            <p className="section-label light !mb-0">Moments in the Wild</p>
+            <p className="section-label">Moments in the Wild</p>
           </div>
         </RevealWrapper>
         <RevealWrapper delay={0.1}>

@@ -36,12 +36,6 @@ export default function TopDestinations() {
             </RevealWrapper>
           ))}
         </div>
-
-        <RevealWrapper delay={0.4}>
-          <p className="text-center text-[0.75rem] text-gray-400 tracking-[0.3em] uppercase mt-16">
-            Kenya • Tanzania • Zanzibar
-          </p>
-        </RevealWrapper>
       </div>
     </section>
   );

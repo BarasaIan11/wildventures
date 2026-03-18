@@ -8,7 +8,7 @@ const links = [
   { href: "/tours", label: "Tours" },
   { href: "/destinations", label: "Destinations" },
   { href: "/plan", label: "Plan Your Trip" },
-  { href: "/reviews", label: "Reviews" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -78,7 +78,7 @@ export default function Navbar() {
           lastElement.focus();
           e.preventDefault();
         }
-      } 
+      }
       // Tab
       else {
         if (document.activeElement === lastElement) {
@@ -98,9 +98,9 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-[999] flex items-center justify-between px-[5%] transition-all duration-500",
           scrolled
             ? // Scrolled: solid ivory background
-              "py-3.5 bg-ivory/97 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+            "py-3.5 bg-ivory/97 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
             : // Over hero: strong top gradient — creates a clear dark band behind the nav
-              "py-5 bg-gradient-to-b from-black/65 via-black/25 to-transparent",
+            "py-5 bg-gradient-to-b from-black/65 via-black/25 to-transparent",
         )}
       >
         {/* Logo */}

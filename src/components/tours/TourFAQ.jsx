@@ -12,8 +12,8 @@ export default function TourFAQ({ tour }) {
       a: `Peak wildlife viewing in ${tour.destination} aligns with the dry season, however, each month offers unique highlights from the Great Migration to lush green landscapes. Our experts can advise on the specific window that suits your goals.`
     },
     {
-      q: "What kind of clothing should I pack?",
-      a: "Neutral-toned, breathable layers are essential. Mornings are often crisp, while afternoons can be quite warm. We provide a full packing list once your journey is confirmed."
+      q: "Why are prices not listed?",
+      a: "We specialize in bespoke travel. Factors like seasonal lodge rates, regional flight availability, and your specific group requirements mean a fixed price rarely reflects the true value of your custom journey. We provide accurate, transparent quotes within 24 hours of your inquiry."
     },
     {
       q: "Is this trip suitable for my fitness level?",
