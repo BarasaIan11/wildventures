@@ -1,0 +1,29 @@
+{
+  "name": "Zafronix Safaris Safari Co.",
+  "short_name": "Zafronix Safaris",
+  "description": "Kenya, Tanzania & Zanzibar safari specialists. Tailor-made wildlife experiences since 2009.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FDFAF5",
+  "theme_color": "#1B3A2D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["travel", "lifestyle"],
+  "lang": "en-GB"
+}

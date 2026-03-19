@@ -11,39 +11,194 @@ export async function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
 }
 
-// FIX: params is a Promise
+// ─────────────────────────────────────────────────────────────
+// SEO METADATA
+// ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
-  return { title: dest?.name || "Destination" };
+
+  if (!dest) return { title: "Destination Not Found" };
+
+  // Keyword-rich title per destination
+  const titleMap = {
+    kenya: "Kenya Safari Holidays & Tours 2025/2026",
+    tanzania: "Tanzania Safari Tours & Packages 2025/2026",
+    zanzibar: "Zanzibar Beach Holidays & Safari Combos",
+    rwanda: "Rwanda Gorilla Trekking Tours",
+    uganda: "Uganda Safari & Gorilla Trekking",
+  };
+
+  const descriptionMap = {
+    kenya:
+      "Explore Kenya's iconic Masai Mara, Amboseli & Samburu on a tailor-made safari. Expert guides, luxury camps & the Great Migration. Book from $1,450/pp.",
+    tanzania:
+      "Discover the Serengeti, Ngorongoro Crater & Zanzibar with Zafronix Safaris. Tanzania's greatest safari experiences crafted for international travellers.",
+    zanzibar:
+      "White-sand beaches, Stone Town spice tours & Indian Ocean diving. Combine Zanzibar with a Tanzania safari for the ultimate East Africa escape.",
+    rwanda:
+      "Trek to see mountain gorillas in Volcanoes National Park. Life-changing Rwanda gorilla safaris with Zafronix Safaris. Permits included.",
+    uganda:
+      "Gorilla trekking in Bwindi, chimpanzees in Kibale & tree-climbing lions. Uganda's best wildlife experiences with Zafronix Safaris.",
+  };
+
+  const title = titleMap[slug] || `${dest.name} Safari`;
+  const description =
+    descriptionMap[slug] ||
+    `Explore ${dest.name} with Zafronix Safaris — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
+
+  const canonicalUrl = `https://zafronixsafaris.com/destinations/${slug}`;
+  const imageUrl = `https://zafronixsafaris.com${dest.heroImage}`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      `${dest.name} safari`,
+      `${dest.name} safari packages`,
+      `${dest.name} safari tours`,
+      `${dest.name} wildlife safari`,
+      `best ${dest.name} safari company`,
+      `${dest.name} safari holidays`,
+      "East Africa safari",
+      "Zafronix Safaris",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "Zafronix Safaris Safari Co.",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${dest.name} Safari — Zafronix Safaris`,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+      site: "@ZafronixSafaris",
+    },
+  };
 }
 
-// FIX: Component is async
+// JSON-LD SCHEMA — TouristDestination + BreadcrumbList
+function DestinationSchema({ dest }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "@id": `https://zafronixsafaris.com/destinations/${dest.slug}`,
+        name: dest.name,
+        description: dest.description,
+        url: `https://zafronixsafaris.com/destinations/${dest.slug}`,
+        image: `https://zafronixsafaris.com${dest.heroImage}`,
+        touristType: ["Safari", "Wildlife", "Adventure", "Luxury Travel"],
+        includesAttraction: dest.highlights.map((h) => ({
+          "@type": "TouristAttraction",
+          name: h,
+        })),
+      },
+      // TravelAgency offering tours to this destination
+      {
+        "@type": "TravelAgency",
+        "@id": "https://zafronixsafaris.com",
+        name: "Zafronix Safaris Safari Co.",
+        url: "https://zafronixsafaris.com",
+        telephone: "+254780166113",
+        email: "hello@zafronixsafaris.co",
+        priceRange: "$$$",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Westlands Business Park",
+          addressLocality: "Nairobi",
+          addressCountry: "KE",
+        },
+        areaServed: [
+          "Kenya",
+          "Tanzania",
+          "Zanzibar",
+          "Rwanda",
+          "Uganda",
+        ],
+      },
+      // Breadcrumb
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://zafronixsafaris.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Destinations",
+            item: "https://zafronixsafaris.com/destinations",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: dest.name,
+            item: `https://zafronixsafaris.com/destinations/${dest.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// PAGE COMPONENT
 export default async function DestinationDetailPage({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
 
   if (!dest) notFound();
+
   const tours = getToursByDest(dest.slug);
 
   return (
     <>
-      {/* ── IMPROVED Hero */}
+      <DestinationSchema dest={dest} />
+
+      {/* ── Hero */}
       <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src={dest.heroImage}
-          alt={dest.name}
+          alt={`${dest.name} safari landscape — Zafronix Safaris`}
           fill
+          sizes="100vw"
           className="object-cover animate-hero-zoom"
           priority
         />
-
-        {/* IMAGE FIX: Directional gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto pt-24">
-          <nav className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6"
+          >
             <Link
               href="/destinations"
               className="hover:text-beige transition-colors"
@@ -65,7 +220,7 @@ export default async function DestinationDetailPage({ params }) {
 
       <section className="section-pad">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-16 max-w-7xl mx-auto">
-          {/* Main Content (Logic preserved) */}
+          {/* Main Content */}
           <div className="space-y-12">
             <div>
               <p className="section-label">About {dest.name}</p>
@@ -77,8 +232,7 @@ export default async function DestinationDetailPage({ params }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="bg-beige/40 rounded-sm p-6 border border-beige/60">
                 <div className="flex items-center gap-2 text-green font-semibold uppercase tracking-wider text-[0.75rem] mb-3">
-                  <Calendar className="w-4 h-4 text-orange" /> Best Time to
-                  Visit
+                  <Calendar className="w-4 h-4 text-orange" /> Best Time to Visit
                 </div>
                 <p className="text-[1rem] text-charcoal">{dest.bestTime}</p>
               </div>
@@ -90,7 +244,6 @@ export default async function DestinationDetailPage({ params }) {
               </div>
             </div>
 
-            {/* Rest of content sections... */}
             <div>
               <p className="section-label">Must-See Highlights</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -145,6 +298,7 @@ export default async function DestinationDetailPage({ params }) {
           </aside>
         </div>
 
+        {/* Tours for this destination */}
         {tours.length > 0 && (
           <div className="mt-24 max-w-7xl mx-auto">
             <p className="section-label">{dest.name} Safaris</p>

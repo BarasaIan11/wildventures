@@ -8,7 +8,7 @@ const links = [
   { href: "/tours", label: "Tours" },
   { href: "/destinations", label: "Destinations" },
   { href: "/plan", label: "Plan Your Trip" },
-  { href: "/reviews", label: "Reviews" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -16,11 +16,8 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  // Ref to hold the active element before opening the menu
   const triggerRef = useRef(null);
-  // Ref for the modal dialog container
   const modalRef = useRef(null);
-  // Ref for the close button, to easily focus it on open
   const closeButtonRef = useRef(null);
 
   useEffect(() => {
@@ -32,17 +29,13 @@ export default function Navbar() {
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
-      // Store the currently focused element
       triggerRef.current = document.activeElement;
 
-      // Focus the close button when the modal opens
-      // Using a short timeout to ensure the DOM has updated and element is visible
       setTimeout(() => {
         closeButtonRef.current?.focus();
       }, 50);
     } else {
       document.body.style.overflow = "";
-      // Restore focus to the trigger element when modal closes
       if (triggerRef.current) {
         triggerRef.current.focus();
       }
@@ -62,7 +55,6 @@ export default function Navbar() {
     }
 
     if (e.key === "Tab") {
-      // Find all focusable elements inside the modal
       const focusableElements = modalRef.current?.querySelectorAll(
         'a[href], button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
       );
@@ -78,7 +70,7 @@ export default function Navbar() {
           lastElement.focus();
           e.preventDefault();
         }
-      } 
+      }
       // Tab
       else {
         if (document.activeElement === lastElement) {
@@ -97,21 +89,19 @@ export default function Navbar() {
         className={clsx(
           "fixed top-0 left-0 right-0 z-[999] flex items-center justify-between px-[5%] transition-all duration-500",
           scrolled
-            ? // Scrolled: solid ivory background
-              "py-3.5 bg-ivory/97 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
-            : // Over hero: strong top gradient — creates a clear dark band behind the nav
-              "py-5 bg-gradient-to-b from-black/65 via-black/25 to-transparent",
+            ? "py-3.5 bg-ivory/97 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+            : "py-5 bg-gradient-to-b from-black/65 via-black/25 to-transparent",
         )}
       >
         {/* Logo */}
         <Link
           href="/"
           className={clsx(
-            "font-serif text-[1.6rem] font-semibold tracking-wide transition-colors duration-300",
+            "flex items-center gap-2 transition-colors duration-300",
             scrolled ? "text-green" : "text-white",
           )}
         >
-          WildVentures
+          <img src="/logo.png" alt="Zafronix Safaris Logo" className="h-16 md:h-20 w-auto object-contain" />
         </Link>
 
         {/* Desktop links */}
@@ -170,10 +160,9 @@ export default function Navbar() {
           "transition-all duration-700 ease-in-out",
           mobileOpen
             ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0 pointer-events-none", // Slide in effect
+            : "translate-x-full opacity-0 pointer-events-none",
         )}
       >
-        {/* Subtle background texture for mobile menu */}
         <div
           className="absolute inset-0 z-0 opacity-10 pointer-events-none"
           style={{
@@ -219,13 +208,13 @@ export default function Navbar() {
             Follow the Journey
           </span>
           <div className="flex gap-6">
-            <a href="https://instagram.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://instagram.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="https://facebook.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://facebook.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="https://youtube.com/wildventures" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://youtube.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Youtube className="w-5 h-5" />
             </a>
           </div>

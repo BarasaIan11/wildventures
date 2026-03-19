@@ -9,6 +9,7 @@ import {
   Youtube,
   ArrowUpRight,
 } from "lucide-react";
+import { tours } from "@/data/tours";
 
 const tourLinks = [
   {
@@ -25,30 +26,32 @@ const tourLinks = [
 
 const companyLinks = [
   { href: "/about", label: "Our Story" },
-  { href: "/reviews", label: "Traveler Stories" },
+  { href: "/blogs", label: "Safari Blogs" },
   { href: "/plan", label: "Custom Safaris" },
   { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Footer() {
+  const signatureTours = tours.slice(0, 4);
+
   return (
     <footer className="bg-charcoal text-white/50 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-[5%] pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* 1. Brand Signature */}
           <div className="space-y-6">
-            <p className="font-serif text-[2rem] text-white font-light tracking-tight leading-none">
-              WildVentures
-            </p>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt="Zafronix Safaris Logo" className="h-20 md:h-24 w-auto object-contain" />
+            </div>
             <p className="text-[0.9rem] leading-relaxed font-light">
               We specialize in life-changing journeys across the landscapes of
               East Africa. Crafted for those who seek the extraordinary.
             </p>
             <div className="flex gap-4 pt-2">
               {[
-                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/wildventures" },
-                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/wildventures" },
-                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/wildventures" },
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/zafronixsafaris" },
+                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/zafronixsafaris" },
+                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/zafronixsafaris" },
               ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
@@ -70,13 +73,13 @@ export default function Footer() {
               Signature Experiences
             </p>
             <ul className="space-y-4">
-              {tourLinks.map(({ href, label }) => (
-                <li key={href}>
+              {signatureTours.map((tour) => (
+                <li key={tour.slug}>
                   <Link
-                    href={href}
+                    href={`/tours/${tour.slug}`}
                     className="text-[0.88rem] hover:text-white transition-colors flex items-center group"
                   >
-                    {label}
+                    {tour.title}
                     <ArrowUpRight
                       size={14}
                       className="ml-1 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
@@ -111,11 +114,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              {/* <li>
-                <span className="text-[0.88rem] opacity-30 cursor-not-allowed">
-                  Conservation Fund
-                </span>
-              </li> */}
             </ul>
           </div>
 
@@ -128,7 +126,7 @@ export default function Footer() {
               {[
                 { Icon: MapPin, text: "Nairobi, Kenya" },
                 { Icon: Phone, text: "+254 780 166 113" },
-                { Icon: Mail, text: "hello@wildventures.co" },
+                { Icon: Mail, text: "hello@zafronixsafaris.co" },
                 { Icon: Clock, text: "Mon–Sat, 8am – 6pm EAT" },
               ].map(({ Icon, text }) => (
                 <div key={text} className="flex gap-4 items-start">
@@ -157,7 +155,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
             <p className="text-[0.75rem] opacity-40">
-              © {new Date().getFullYear()} WildVentures Safari Co.
+              © {new Date().getFullYear()} Zafronix Safaris Safari Co.
             </p>
             <p className="text-[0.7rem] opacity-20 hidden md:block">|</p>
             <p className="text-[0.75rem] opacity-40">

@@ -22,9 +22,9 @@ const images = [
   },
   {
     src: "/images/gallery/gallery-4.png",
-    alt: "Giraffe in acacia landscape",
+    alt: "Zanzibar beach",
     tall: true,
-    location: "Tarangire, Tanzania",
+    location: "Zanzibar, Tanzania",
   },
   {
     src: "/images/gallery/gallery-5.png",
@@ -34,9 +34,9 @@ const images = [
   },
   {
     src: "/images/gallery/gallery-6.png",
-    alt: "Mountain gorilla Rwanda",
+    alt: "Wildebeest migration",
     tall: false,
-    location: "Volcanoes NP, Rwanda",
+    location: "Mara River, Kenya",
   },
 ];
 
@@ -46,8 +46,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-[5%] mb-16">
         <RevealWrapper>
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-orange" />
-            <p className="section-label light !mb-0">Moments in the Wild</p>
+            <p className="section-label">Moments in the Wild</p>
           </div>
         </RevealWrapper>
         <RevealWrapper delay={0.1}>
@@ -78,7 +77,6 @@ export default function Gallery() {
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
 
-              {/* Overlay: Persistently showing location, with explore text on hover/focus */}
               <figcaption className="absolute inset-0 flex items-center justify-center bg-black/20 transition-all duration-500">
                 <div className="text-center px-4">
                   <p className="text-beige text-[0.65rem] tracking-[0.2em] uppercase font-bold mb-1 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0 group-focus:translate-y-0">
@@ -98,7 +96,7 @@ export default function Gallery() {
       {/* Subtle branding footer for the gallery */}
       <div className="max-w-7xl mx-auto px-[5%] mt-12 flex justify-end">
         <p className="text-white/20 text-[0.65rem] tracking-[0.3em] uppercase">
-          © {new Date().getFullYear()} WildVentures Photography
+          © {new Date().getFullYear()} Zafronix Safaris Photography
         </p>
       </div>
     </section>

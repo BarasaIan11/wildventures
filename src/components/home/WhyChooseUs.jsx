@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
         {/* Content */}
         <div className="lg:pl-10">
           <RevealWrapper>
-            <p className="section-label light">Why WildVentures</p>
+            <p className="section-label light">Why Zafronix Safaris</p>
             <h2 className="section-title white mb-6">
               Crafted with Care,
               <br />

@@ -1,7 +1,7 @@
 "use client";
 // ─────────────────────────────────────────────────────────────────────────────
 // src/components/ui/Button.jsx
-// Reusable button component with WildVentures brand variants
+// Reusable button component with Zafronix Safaris brand variants
 // ─────────────────────────────────────────────────────────────────────────────
 
 import Link from "next/link";
