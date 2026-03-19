@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Zafronix Safaris Safari Co.",
+      siteName: "Zafronix Safaris Co.",
       images: [
         {
           url: imageUrl,
@@ -88,7 +88,7 @@ function TourSchema({ tour }) {
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
-            name: "Zafronix Safaris Safari Co.",
+            name: "Zafronix Safaris Co.",
           },
         },
         provider: {
