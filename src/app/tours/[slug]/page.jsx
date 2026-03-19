@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       `${tour.destination} bespoke travel`,
       `${tour.title.toLowerCase()}`,
       "luxury safari inquiry",
-      tour.wildlife.map((w) => `${w.toLowerCase()} safari`).join(", "),
+      ...tour.wildlife.map((w) => `${w.toLowerCase()} safari`),
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: [imageUrl],
-      site: "@Zafronix Safaris",
+      site: "@ZafronixSafaris",
     },
   };
 }

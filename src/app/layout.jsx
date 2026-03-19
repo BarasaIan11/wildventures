@@ -13,24 +13,23 @@ export const viewport = {
   themeColor: "#1B3A2D", // Your green brand colour — shows in mobile browser chrome
 };
 
-// ─────────────────────────────────────────────────────────────
+
 // GLOBAL SITE METADATA
 // Every page inherits these. Individual pages override with
 // their own metadata export — the template handles the title.
-// ─────────────────────────────────────────────────────────────
+
 export const metadata = {
   // Title template: page titles become "Page Name | Zafronix Safaris"
-  // The default shows on the homepage only
   title: {
     default: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     template: "%s | Zafronix Safaris",
   },
 
-  // Default meta description — shown on homepage & any page without its own
+  // Default meta description 
   description:
     "Zafronix Safaris crafts tailor-made Kenya, Tanzania & Zanzibar safari experiences for international travellers. Expert guides, luxury camps & unforgettable wildlife encounters since 2009.",
 
-  // Keywords — broad site-level terms; individual pages add their own
+  // Keywords 
   keywords: [
     "Kenya safari",
     "Tanzania safari",
@@ -143,9 +142,7 @@ export const metadata = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────
-// ROOT LAYOUT
-// ─────────────────────────────────────────────────────────────
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

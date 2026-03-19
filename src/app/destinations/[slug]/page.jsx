@@ -87,14 +87,12 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: [imageUrl],
-      site: "@Zafronix Safaris",
+      site: "@ZafronixSafaris",
     },
   };
 }
 
-// ─────────────────────────────────────────────────────────────
 // JSON-LD SCHEMA — TouristDestination + BreadcrumbList
-// ─────────────────────────────────────────────────────────────
 function DestinationSchema({ dest }) {
   const schema = {
     "@context": "https://schema.org",
@@ -170,9 +168,7 @@ function DestinationSchema({ dest }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
 // PAGE COMPONENT
-// ─────────────────────────────────────────────────────────────
 export default async function DestinationDetailPage({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
@@ -183,7 +179,6 @@ export default async function DestinationDetailPage({ params }) {
 
   return (
     <>
-      {/* Inject JSON-LD schema */}
       <DestinationSchema dest={dest} />
 
       {/* ── Hero */}
@@ -229,7 +224,6 @@ export default async function DestinationDetailPage({ params }) {
           <div className="space-y-12">
             <div>
               <p className="section-label">About {dest.name}</p>
-              {/* Rendered as <p> so Google indexes the full description */}
               <p className="text-[1.1rem] text-gray-600 leading-[1.85] font-light">
                 {dest.description}
               </p>

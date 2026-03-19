@@ -8,11 +8,9 @@ import Testimonials from "@/components/home/Testimonials";
 import Gallery from "@/components/home/Gallery";
 import BookingCTA from "@/components/home/BookingCTA";
 
-// ─────────────────────────────────────────────────────────────
 // SEO METADATA
 // The layout.jsx title.default already covers the homepage title,
 // but we override here with a more keyword-rich version.
-// ─────────────────────────────────────────────────────────────
 export const metadata = {
   title: "Kenya & Tanzania Safari Tours — East Africa's Safari Specialists",
   description:
@@ -28,10 +26,8 @@ export const metadata = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────
 // JSON-LD — WebSite schema enables Google Sitelinks search box
 // This can show a search bar directly in Google results
-// ─────────────────────────────────────────────────────────────
 function HomeSchema() {
   const schema = {
     "@context": "https://schema.org",
@@ -57,7 +53,7 @@ function HomeSchema() {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafaris.com/#organization",
-        name: "Zafronix Safaris Safari Co.",
+        name: "Zafronix Safaris Co.",
         url: "https://zafronixsafaris.com",
         logo: {
           "@type": "ImageObject",
@@ -76,11 +72,11 @@ function HomeSchema() {
           addressCountry: "KE",
         },
         telephone: "+254780166113",
-        email: "hello@zafronixsafaris.co",
+        email: "hello@zafronixsafaris.com",
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: [
-            "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
           ],
           opens: "08:00",
           closes: "18:00",
@@ -108,9 +104,7 @@ function HomeSchema() {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// PAGE
-// ─────────────────────────────────────────────────────────────
+
 export default function HomePage() {
   return (
     <>

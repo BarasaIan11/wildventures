@@ -49,6 +49,8 @@ export const metadata = {
 
 // ── JSON-LD Schema
 function ContactSchema() {
+  const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+ const contactPhone = rawWhatsapp ? `+${rawWhatsapp}` : undefined;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -66,7 +68,7 @@ function ContactSchema() {
         "@id": "https://zafronixsafaris.com/#organization",
         name: "Zafronix Safaris Safari Co.",
         url: "https://zafronixsafaris.com",
-        telephone: "+254780166113",
+        ...(contactPhone ? { telephone: contactPhone } : {}),
         email: "hello@zafronixsafaris.co",
         address: {
           "@type": "PostalAddress",
@@ -86,10 +88,9 @@ function ContactSchema() {
         contactPoint: [
           {
             "@type": "ContactPoint",
-            telephone: "+254780166113",
+            ...(contactPhone ? { telephone: contactPhone } : {}),
             contactType: "customer service",
             availableLanguage: ["English"],
-            contactOption: "TollFree",
           },
           {
             "@type": "ContactPoint",
