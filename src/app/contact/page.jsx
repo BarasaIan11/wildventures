@@ -50,7 +50,7 @@ export const metadata = {
 // ── JSON-LD Schema
 function ContactSchema() {
   const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
- const contactPhone = rawWhatsapp ? `+${rawWhatsapp}` : undefined;
+  const contactPhone = rawWhatsapp ? `+${rawWhatsapp}` : undefined;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -58,7 +58,7 @@ function ContactSchema() {
         "@type": "ContactPage",
         "@id": "https://zafronixsafaris.com/contact",
         url: "https://zafronixsafaris.com/contact",
-        name: "Contact Zafronix Safaris Safari Co.",
+        name: "Contact Zafronix Safaris Co.",
         description:
           "Get in touch with Zafronix Safaris to plan your Kenya, Tanzania or Zanzibar safari.",
         isPartOf: { "@id": "https://zafronixsafaris.com/#website" },
@@ -66,10 +66,10 @@ function ContactSchema() {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafaris.com/#organization",
-        name: "Zafronix Safaris Safari Co.",
+        name: "Zafronix Safaris Co.",
         url: "https://zafronixsafaris.com",
         ...(contactPhone ? { telephone: contactPhone } : {}),
-        email: "hello@zafronixsafaris.co",
+        email: "hello@zafronixsafaris.com",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Westlands Business Park",
@@ -79,8 +79,8 @@ function ContactSchema() {
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: [
-            "Monday","Tuesday","Wednesday",
-            "Thursday","Friday","Saturday",
+            "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday",
           ],
           opens: "08:00",
           closes: "18:00",
