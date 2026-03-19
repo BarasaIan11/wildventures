@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Zafronix Safaris Safari Co.",
+      siteName: "Zafronix Safaris Co.",
       images: [
         {
           url: imageUrl,
@@ -88,20 +88,20 @@ function TourSchema({ tour }) {
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
-            name: "Zafronix Safaris Safari Co.",
+            name: "Zafronix Safaris Co.",
           },
         },
         provider: {
           "@type": "TravelAgency",
-          name: "Zafronix Safaris Safari Co.",
+          name: "Zafronix Safaris Co.",
           url: "https://zafronixsafaris.com",
-          telephone: "+254780166113",
-          email: "hello@zafronixsafaris.co",
+          telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
+          email: process.env.NEXT_PUBLIC_EMAIL || "hello@zafronixsafaris.com",
         },
         ...(tour.reviews.length > 0 && {
           aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "5",
+            ratingValue: (tour.reviews.reduce((sum, r) => sum + (r.rating || 5), 0) / tour.reviews.length).toFixed(1),
             reviewCount: tour.reviews.length,
             bestRating: "5",
           },

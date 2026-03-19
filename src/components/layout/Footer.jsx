@@ -137,15 +137,6 @@ export default function Footer() {
                 </div>
               ))}
             </div>
-
-            <a
-              href="https://wa.me/254780166113"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white text-[0.75rem] tracking-widest uppercase font-bold py-4 px-6 rounded-sm hover:bg-orange hover:border-orange transition-all duration-500"
-            >
-              Chat on WhatsApp
-            </a>
           </div>
         </div>
       </div>
@@ -155,7 +146,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
             <p className="text-[0.75rem] opacity-40">
-              © {new Date().getFullYear()} Zafronix Safaris Safari Co.
+              © {new Date().getFullYear()} Zafronix Safaris and Travels Ltd.
             </p>
             <p className="text-[0.7rem] opacity-20 hidden md:block">|</p>
             <p className="text-[0.75rem] opacity-40">

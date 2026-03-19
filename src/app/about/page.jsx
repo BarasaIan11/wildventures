@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import RevealWrapper from "@/components/shared/RevealWrapper";
 import BookingCTA from "@/components/home/BookingCTA";
-import { 
-  Leaf, ShieldCheck, Compass, Heart, Award, 
-  Map, Sun, Users, Plane, Car, Sparkles 
+import {
+  Leaf, ShieldCheck, Compass, Heart, Award,
+  Map, Sun, Users, Plane, Car, Sparkles
 } from "lucide-react";
 
 export const metadata = {
@@ -96,7 +96,7 @@ export default function AboutPage() {
             </RevealWrapper>
             <RevealWrapper delay={0.2}>
               <p className="text-white/80 text-[1.1rem] leading-relaxed max-w-xl font-light">
-                A premier boutique operator offering bespoke and luxurious safari experiences. 
+                A premier boutique operator offering bespoke and luxurious safari experiences.
                 Where innovation meets timeless adventure.
               </p>
             </RevealWrapper>
@@ -114,10 +114,6 @@ export default function AboutPage() {
               fill
               className="object-cover rounded-sm shadow-2xl"
             />
-            <div className="absolute -bottom-6 -left-6 bg-green p-10 text-white shadow-card hidden xl:block border border-white/10">
-               <p className="font-serif text-5xl mb-1 italic">15+</p>
-               <p className="text-[0.65rem] uppercase tracking-[0.3em] font-bold text-beige opacity-80">Years of Excellence</p>
-            </div>
           </RevealWrapper>
 
           <RevealWrapper delay={0.15}>

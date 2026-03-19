@@ -111,7 +111,7 @@ export default function HomePage() {
       <HomeSchema />
       <HeroSection />
       <SearchBar />
-      <StatsBar />
+      {/* <StatsBar /> */}
       <FeaturedTours />
       <WhyChooseUs />
       <TopDestinations />

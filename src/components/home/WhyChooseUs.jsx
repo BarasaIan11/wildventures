@@ -49,16 +49,6 @@ export default function WhyChooseUs() {
               className="object-cover"
             />
           </div>
-
-          {/* Years badge - Styled as an 'Official Seal' */}
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 bg-orange text-white w-32 h-32 rounded-full flex flex-col items-center justify-center shadow-orange hidden lg:flex border-4 border-green">
-            <p className="font-serif text-3xl font-bold leading-none">15+</p>
-            <p className="text-[0.6rem] tracking-widest uppercase mt-1 text-center font-bold">
-              Years of
-              <br />
-              Excellence
-            </p>
-          </div>
         </RevealWrapper>
 
         {/* Content */}

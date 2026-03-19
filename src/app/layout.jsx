@@ -3,9 +3,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
-// ─────────────────────────────────────────────────────────────
-// VIEWPORT
-// ─────────────────────────────────────────────────────────────
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -74,7 +71,7 @@ export const metadata = {
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris crafted for international travellers. Expert guides, luxury camps & life-changing wildlife encounters.",
     url: "https://zafronixsafaris.com",
-    siteName: "Zafronix Safaris Safari Co.",
+    siteName: "Zafronix Safaris Co.",
     images: [
       {
         url: "/images/hero/story-main.png", // metadataBase prepends the domain
@@ -94,8 +91,8 @@ export const metadata = {
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris for international travellers. Life-changing wildlife encounters since 2009.",
     images: ["/images/hero/story-main.png"],
-    site: "@Zafronix Safaris",
-    creator: "@Zafronix Safaris",
+    site: "@ZafronixSafaris",
+    creator: "@ZafronixSafaris",
   },
 
   // ── Favicons & app icons

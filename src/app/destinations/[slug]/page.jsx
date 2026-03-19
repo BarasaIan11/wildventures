@@ -11,9 +11,7 @@ export async function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
 }
 
-// ─────────────────────────────────────────────────────────────
 // SEO METADATA
-// ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const dest = getDestinationBySlug(slug);
@@ -70,7 +68,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Zafronix Safaris Safari Co.",
+      siteName: "Zafronix Safaris Co.",
       images: [
         {
           url: imageUrl,
@@ -114,10 +112,10 @@ function DestinationSchema({ dest }) {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafaris.com",
-        name: "Zafronix Safaris Safari Co.",
+        name: "Zafronix Safaris Co.",
         url: "https://zafronixsafaris.com",
-        telephone: "+254780166113",
-        email: "hello@zafronixsafaris.co",
+        telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
+        email: "hello@zafronixsafaris.com",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
