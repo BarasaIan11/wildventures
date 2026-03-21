@@ -94,7 +94,7 @@ function ContactSchema() {
           },
           {
             "@type": "ContactPoint",
-            email: "info@zafronixsafaris.com",
+            email: "info@zafronixsafari.com",
             contactType: "sales",
             availableLanguage: ["English"],
           },

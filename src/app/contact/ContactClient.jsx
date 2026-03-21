@@ -88,7 +88,7 @@ export default function ContactClient() {
       value: "Westlands Business Park, Nairobi, Kenya",
     },
     { Icon: Phone, label: "Call Us", value: formattedPhone },
-    { Icon: Mail, label: "Email Us", value: "info@zafronixsafaris.com" },
+    { Icon: Mail, label: "Email Us", value: "info@zafronixsafari.com" },
     {
       Icon: Clock,
       label: "Office Hours",

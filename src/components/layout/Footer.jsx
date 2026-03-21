@@ -70,6 +70,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={label}
                   className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange hover:border-orange hover:text-white transition-all duration-500 group"
                 >
                   <Icon size={18} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
@@ -137,7 +138,7 @@ export default function Footer() {
               {[
                 { Icon: MapPin, text: "Nairobi, Kenya" },
                 { Icon: Phone, text: "+254 780 166 113" },
-                { Icon: Mail, text: "info@zafronixsafaris.com" },
+                { Icon: Mail, text: "info@zafronixsafari.com" },
                 { Icon: Clock, text: "Mon–Sat, 8am – 6pm EAT" },
               ].map(({ Icon, text }) => (
                 <div key={text} className="flex gap-4 items-start">
