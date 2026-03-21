@@ -15,16 +15,16 @@ export const metadata = {
     "luxury safari planning",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.com/plan",
+    canonical: "https://zafronixsafari.com/plan",
   },
   openGraph: {
     title: "Plan Your Custom Safari",
     description:
       "Design your tailor-made Kenya, Tanzania or Zanzibar safari. Tell us your vision — we'll handle every detail.",
-    url: "https://zafronixsafaris.com/plan",
+    url: "https://zafronixsafari.com/plan",
     images: [
       {
-        url: "https://zafronixsafaris.com/images/hero/plan-hero.png",
+        url: "https://zafronixsafari.com/images/hero/plan-hero.png",
         width: 1200,
         height: 630,
         alt: "Plan your dream safari with Zafronix Safaris",
@@ -36,7 +36,7 @@ export const metadata = {
     title: "Plan Your Custom Safari",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris. Tell us your dream — we'll build it.",
-    images: ["https://zafronixsafaris.com/images/hero/plan-hero.png"],
+    images: ["https://zafronixsafari.com/images/hero/plan-hero.png"],
   },
 };
 
@@ -46,17 +46,17 @@ function PlanSchema() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://zafronixsafaris.com/plan",
-        url: "https://zafronixsafaris.com/plan",
+        "@id": "https://zafronixsafari.com/plan",
+        url: "https://zafronixsafari.com/plan",
         name: "Plan Your Custom Safari — Zafronix Safaris",
         description:
           "Design a tailor-made Kenya, Tanzania or Zanzibar safari with Zafronix Safaris. Submit your safari inquiry and receive a bespoke itinerary within 24 hours.",
-        isPartOf: { "@id": "https://zafronixsafaris.com/#website" },
+        isPartOf: { "@id": "https://zafronixsafari.com/#website" },
         potentialAction: {
           "@type": "ReserveAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://zafronixsafaris.com/plan",
+            urlTemplate: "https://zafronixsafari.com/plan",
             actionPlatform: [
               "http://schema.org/DesktopWebPlatform",
               "http://schema.org/MobileWebPlatform",
@@ -75,13 +75,13 @@ function PlanSchema() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://zafronixsafaris.com",
+            item: "https://zafronixsafari.com",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Plan Your Safari",
-            item: "https://zafronixsafaris.com/plan",
+            item: "https://zafronixsafari.com/plan",
           },
         ],
       },

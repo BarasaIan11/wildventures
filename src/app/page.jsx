@@ -16,13 +16,13 @@ export const metadata = {
   description:
     "Tailor-made Kenya, Tanzania & Zanzibar safari holidays for international travellers. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
   alternates: {
-    canonical: "https://zafronixsafaris.com",
+    canonical: "https://zafronixsafari.com",
   },
   openGraph: {
     title: "Kenya & Tanzania Safari Tours",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safari holidays. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
-    url: "https://zafronixsafaris.com",
+    url: "https://zafronixsafari.com",
   },
 };
 
@@ -34,34 +34,34 @@ function HomeSchema() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://zafronixsafaris.com/#website",
-        url: "https://zafronixsafaris.com",
+        "@id": "https://zafronixsafari.com/#website",
+        url: "https://zafronixsafari.com",
         name: "Zafronix Safaris Safari Co.",
         description:
           "East Africa's premier safari company. Tailor-made Kenya, Tanzania & Zanzibar safari experiences since 2009.",
-        publisher: { "@id": "https://zafronixsafaris.com/#organization" },
+        publisher: { "@id": "https://zafronixsafari.com/#organization" },
         potentialAction: {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
             urlTemplate:
-              "https://zafronixsafaris.com/tours?destination={search_term_string}",
+              "https://zafronixsafari.com/tours?destination={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
       },
       {
         "@type": "TravelAgency",
-        "@id": "https://zafronixsafaris.com/#organization",
+        "@id": "https://zafronixsafari.com/#organization",
         name: "Zafronix Safaris Co.",
-        url: "https://zafronixsafaris.com",
+        url: "https://zafronixsafari.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://zafronixsafaris.com/icons/logo.png",
+          url: "https://zafronixsafari.com/icons/logo.png",
           width: 200,
           height: 60,
         },
-        image: "https://zafronixsafaris.com/images/hero/story-main.png",
+        image: "https://zafronixsafari.com/images/hero/story-main.png",
         description:
           "Zafronix Safaris is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2009.",
         foundingDate: "2009",
@@ -72,7 +72,7 @@ function HomeSchema() {
           addressCountry: "KE",
         },
         telephone: "+254780166113",
-        email: "hello@zafronixsafaris.com",
+        email: "info@zafronixsafari.com",
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: [

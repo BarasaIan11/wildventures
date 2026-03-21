@@ -44,7 +44,7 @@ export const metadata = {
 
   // ── Canonical base URL
   // Prevents duplicate content issues across http/https/www variants
-  metadataBase: new URL("https://zafronixsafaris.com"),
+  metadataBase: new URL("https://zafronixsafari.com"),
   alternates: {
     canonical: "/",
   },
@@ -70,7 +70,7 @@ export const metadata = {
     title: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris crafted for international travellers. Expert guides, luxury camps & life-changing wildlife encounters.",
-    url: "https://zafronixsafaris.com",
+    url: "https://zafronixsafari.com",
     siteName: "Zafronix Safaris Co.",
     images: [
       {

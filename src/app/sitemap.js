@@ -5,7 +5,7 @@ import { destinations } from "@/data/destinations";
 // SITEMAP
 // Next.js reads this file and serves it at /sitemap.xml
 // Submit the URL to Google Search Console after deploying:
-// https://zafronixsafaris.com/sitemap.xml
+// https://zafronixsafari.com/sitemap.xml
 //
 // Priority guide:
 //   1.0 = Homepage (most important)
@@ -17,7 +17,7 @@ import { destinations } from "@/data/destinations";
 // ─────────────────────────────────────────────────────────────
 
 export default function sitemap() {
-  const baseUrl = "https://zafronixsafaris.com";
+  const baseUrl = "https://zafronixsafari.com";
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
   // ── Static pages

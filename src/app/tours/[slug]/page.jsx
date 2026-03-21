@@ -22,8 +22,8 @@ export async function generateMetadata({ params }) {
 
   const description = `${tour.summary.slice(0, 140).trim()}… Private expeditions across ${tour.destination}. Enquire for bespoke rates and tailored itineraries with Zafronix Safaris.`;
 
-  const canonicalUrl = `https://zafronixsafaris.com/tours/${slug}`;
-  const imageUrl = `https://zafronixsafaris.com${tour.heroImage}`;
+  const canonicalUrl = `https://zafronixsafari.com/tours/${slug}`;
+  const imageUrl = `https://zafronixsafari.com${tour.heroImage}`;
 
   return {
     title,
@@ -70,11 +70,11 @@ function TourSchema({ tour }) {
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://zafronixsafaris.com/tours/${tour.slug}`,
+        "@id": `https://zafronixsafari.com/tours/${tour.slug}`,
         name: tour.title,
         description: tour.summary,
-        url: `https://zafronixsafaris.com/tours/${tour.slug}`,
-        image: `https://zafronixsafaris.com${tour.heroImage}`,
+        url: `https://zafronixsafari.com/tours/${tour.slug}`,
+        image: `https://zafronixsafari.com${tour.heroImage}`,
         touristType: tour.style,
         itinerary: tour.itinerary.map((day) => ({
           "@type": "TouristAttraction",
@@ -84,7 +84,7 @@ function TourSchema({ tour }) {
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
-          url: `https://zafronixsafaris.com/tours/${tour.slug}`,
+          url: `https://zafronixsafari.com/tours/${tour.slug}`,
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
@@ -94,9 +94,9 @@ function TourSchema({ tour }) {
         provider: {
           "@type": "TravelAgency",
           name: "Zafronix Safaris Co.",
-          url: "https://zafronixsafaris.com",
+          url: "https://zafronixsafari.com",
           telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
-          email: process.env.NEXT_PUBLIC_EMAIL || "hello@zafronixsafaris.com",
+          email: process.env.NEXT_PUBLIC_EMAIL || "info@zafronixsafari.com",
         },
         ...(tour.reviews.length > 0 && {
           aggregateRating: {
@@ -110,9 +110,9 @@ function TourSchema({ tour }) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://zafronixsafaris.com" },
-          { "@type": "ListItem", position: 2, name: "Tours", item: "https://zafronixsafaris.com/tours" },
-          { "@type": "ListItem", position: 3, name: tour.title, item: `https://zafronixsafaris.com/tours/${tour.slug}` },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://zafronixsafari.com" },
+          { "@type": "ListItem", position: 2, name: "Tours", item: "https://zafronixsafari.com/tours" },
+          { "@type": "ListItem", position: 3, name: tour.title, item: `https://zafronixsafari.com/tours/${tour.slug}` },
         ],
       },
     ],
