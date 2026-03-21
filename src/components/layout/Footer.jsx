@@ -172,7 +172,8 @@ export default function Footer() {
             {["Privacy", "Terms", "Cookies"].map((l) => (
               <span
                 key={l}
-                className="text-[0.65rem] opacity-30 uppercase tracking-[0.2em] hover:opacity-100 transition-opacity cursor-pointer"
+                aria-disabled="true"
+                className="text-[0.65rem] opacity-30 uppercase tracking-widest cursor-not-allowed"
               >
                 {l}
               </span>
