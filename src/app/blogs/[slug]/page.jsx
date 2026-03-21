@@ -28,7 +28,7 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <main className="bg-white">
-      {/* ── 1. HERO SECTION (Consistent 65vh with other slugs) */}
+      {/* ── 1. HERO SECTION */}
       <div className="relative h-[65vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src={post.image}
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }) {
             </div>
           </div>
 
-          {/* Sidebar (Consistent with Tour pages) */}
+          {/* Sidebar */}
           <aside className="sticky top-28 space-y-10">
             <div>
               <p className="section-label !mb-6">Related Stories</p>

@@ -45,8 +45,8 @@ export async function generateMetadata({ params }) {
     descriptionMap[slug] ||
     `Explore ${dest.name} with Zafronix Safaris — ${dest.tagline}. Expert-guided safaris crafted for international travellers.`;
 
-  const canonicalUrl = `https://zafronixsafaris.com/destinations/${slug}`;
-  const imageUrl = `https://zafronixsafaris.com${dest.heroImage}`;
+  const canonicalUrl = `https://zafronixsafari.com/destinations/${slug}`;
+  const imageUrl = `https://zafronixsafari.com${dest.heroImage}`;
 
   return {
     title,
@@ -97,11 +97,11 @@ function DestinationSchema({ dest }) {
     "@graph": [
       {
         "@type": "TouristDestination",
-        "@id": `https://zafronixsafaris.com/destinations/${dest.slug}`,
+        "@id": `https://zafronixsafari.com/destinations/${dest.slug}`,
         name: dest.name,
         description: dest.description,
-        url: `https://zafronixsafaris.com/destinations/${dest.slug}`,
-        image: `https://zafronixsafaris.com${dest.heroImage}`,
+        url: `https://zafronixsafari.com/destinations/${dest.slug}`,
+        image: `https://zafronixsafari.com${dest.heroImage}`,
         touristType: ["Safari", "Wildlife", "Adventure", "Luxury Travel"],
         includesAttraction: dest.highlights.map((h) => ({
           "@type": "TouristAttraction",
@@ -111,11 +111,11 @@ function DestinationSchema({ dest }) {
       // TravelAgency offering tours to this destination
       {
         "@type": "TravelAgency",
-        "@id": "https://zafronixsafaris.com",
+        "@id": "https://zafronixsafari.com",
         name: "Zafronix Safaris Co.",
-        url: "https://zafronixsafaris.com",
+        url: "https://zafronixsafari.com",
         telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
-        email: "hello@zafronixsafaris.com",
+        email: "info@zafronixsafari.com",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
@@ -139,19 +139,19 @@ function DestinationSchema({ dest }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://zafronixsafaris.com",
+            item: "https://zafronixsafari.com",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Destinations",
-            item: "https://zafronixsafaris.com/destinations",
+            item: "https://zafronixsafari.com/destinations",
           },
           {
             "@type": "ListItem",
             position: 3,
             name: dest.name,
-            item: `https://zafronixsafaris.com/destinations/${dest.slug}`,
+            item: `https://zafronixsafari.com/destinations/${dest.slug}`,
           },
         ],
       },

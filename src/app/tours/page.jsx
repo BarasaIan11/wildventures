@@ -21,16 +21,16 @@ export const metadata = {
     "Great Migration safari tour",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.com/tours",
+    canonical: "https://zafronixsafari.com/tours",
   },
   openGraph: {
     title: "Kenya & Tanzania Safari Tours & Packages",
     description:
       "Browse our full collection of Kenya and Tanzania safari packages. Masai Mara, Serengeti, Ngorongoro, Zanzibar & more. Expert guides, luxury camps. From $1,450/pp.",
-    url: "https://zafronixsafaris.com/tours",
+    url: "https://zafronixsafari.com/tours",
     images: [
       {
-        url: "https://zafronixsafaris.com/images/hero/lions.png",
+        url: "https://zafronixsafari.com/images/hero/lions.png",
         width: 1200,
         height: 630,
         alt: "Safari lions on the Masai Mara plains — Zafronix Safaris Tours",
@@ -42,7 +42,7 @@ export const metadata = {
     title: "Kenya & Tanzania Safari Tours",
     description:
       "Browse our full collection of East Africa safari packages. From $1,450/pp.",
-    images: ["https://zafronixsafaris.com/images/hero/lions.png"],
+    images: ["https://zafronixsafari.com/images/hero/lions.png"],
   },
 };
 
@@ -55,7 +55,7 @@ function ToursSchema() {
     name: "Zafronix Safaris Kenya & Tanzania Safari Tours",
     description:
       "Tailor-made safari packages across Kenya, Tanzania and Zanzibar.",
-    url: "https://zafronixsafaris.com/tours",
+    url: "https://zafronixsafari.com/tours",
     numberOfItems: tours.length,
     itemListElement: tours.map((tour, index) => ({
       "@type": "ListItem",
@@ -64,8 +64,8 @@ function ToursSchema() {
         "@type": "TouristTrip",
         name: tour.title,
         description: tour.summary,
-        url: `https://zafronixsafaris.com/tours/${tour.slug}`,
-        image: `https://zafronixsafaris.com${tour.image}`,
+        url: `https://zafronixsafari.com/tours/${tour.slug}`,
+        image: `https://zafronixsafari.com${tour.image}`,
         offers: {
           "@type": "Offer",
           price: tour.price,

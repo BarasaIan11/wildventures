@@ -22,16 +22,16 @@ export const metadata = {
     "Tanzania safari booking",
   ],
   alternates: {
-    canonical: "https://zafronixsafaris.com/contact",
+    canonical: "https://zafronixsafari.com/contact",
   },
   openGraph: {
     title: "Contact Zafronix Safaris — Plan Your Kenya & Tanzania Safari",
     description:
       "Speak to our safari specialists in Nairobi. Call, email or WhatsApp to start planning your tailor-made East Africa safari.",
-    url: "https://zafronixsafaris.com/contact",
+    url: "https://zafronixsafari.com/contact",
     images: [
       {
-        url: "https://zafronixsafaris.com/images/hero/contact-hero.png",
+        url: "https://zafronixsafari.com/images/hero/contact-hero.png",
         width: 1200,
         height: 630,
         alt: "Contact Zafronix Safaris safari specialists — Nairobi, Kenya",
@@ -43,7 +43,7 @@ export const metadata = {
     title: "Contact Zafronix Safaris — Plan Your Safari",
     description:
       "Speak to our Nairobi-based safari specialists. WhatsApp, call or email us.",
-    images: ["https://zafronixsafaris.com/images/hero/contact-hero.png"],
+    images: ["https://zafronixsafari.com/images/hero/contact-hero.png"],
   },
 };
 
@@ -56,20 +56,20 @@ function ContactSchema() {
     "@graph": [
       {
         "@type": "ContactPage",
-        "@id": "https://zafronixsafaris.com/contact",
-        url: "https://zafronixsafaris.com/contact",
+        "@id": "https://zafronixsafari.com/contact",
+        url: "https://zafronixsafari.com/contact",
         name: "Contact Zafronix Safaris Co.",
         description:
           "Get in touch with Zafronix Safaris to plan your Kenya, Tanzania or Zanzibar safari.",
-        isPartOf: { "@id": "https://zafronixsafaris.com/#website" },
+        isPartOf: { "@id": "https://zafronixsafari.com/#website" },
       },
       {
         "@type": "TravelAgency",
-        "@id": "https://zafronixsafaris.com/#organization",
+        "@id": "https://zafronixsafari.com/#organization",
         name: "Zafronix Safaris Co.",
-        url: "https://zafronixsafaris.com",
+        url: "https://zafronixsafari.com",
         ...(contactPhone ? { telephone: contactPhone } : {}),
-        email: "hello@zafronixsafaris.com",
+        email: "info@zafronixsafari.com",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Westlands Business Park",
@@ -94,7 +94,7 @@ function ContactSchema() {
           },
           {
             "@type": "ContactPoint",
-            email: "hello@zafronixsafaris.com",
+            email: "info@zafronixsafaris.com",
             contactType: "sales",
             availableLanguage: ["English"],
           },
@@ -107,13 +107,13 @@ function ContactSchema() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://zafronixsafaris.com",
+            item: "https://zafronixsafari.com",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Contact",
-            item: "https://zafronixsafaris.com/contact",
+            item: "https://zafronixsafari.com/contact",
           },
         ],
       },
