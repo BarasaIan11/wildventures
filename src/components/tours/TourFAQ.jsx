@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Plus, Minus, MessageCircle } from 'lucide-react'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 export default function TourFAQ({ tour }) {
   const [openIndex, setOpenIndex] = useState(null)
@@ -60,7 +61,7 @@ export default function TourFAQ({ tour }) {
 
             <div className={clsx(
               "grid transition-all duration-500 ease-in-out",
-              openIndex === i ? "grid-rows-[1fr] opacity-100 mt-6" : "grid-rows-[0fr] opacity-0 mt-0"
+              openIndex === i ? "grid-rows-[1fr] mt-6" : "grid-rows-[0fr] mt-0"
             )}>
               <div className="overflow-hidden">
                 <p className="text-[0.95rem] text-gray-500 leading-relaxed font-light pr-10">
@@ -85,13 +86,13 @@ export default function TourFAQ({ tour }) {
         </div>
 
         <div className="flex flex-col items-center md:items-end shrink-0">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link
+            href="/contact"
             className="group flex items-center gap-3 text-[0.8rem] tracking-[0.2em] uppercase font-bold text-orange hover:text-green-dark transition-all"
           >
             <span>Consult an Expert</span>
             <MessageCircle size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
           <div className="w-full h-px bg-orange/20 mt-2 group-hover:bg-green/20" />
         </div>
       </div>

@@ -12,7 +12,7 @@ import ContactClient from "./ContactClient";
 export const metadata = {
   title: "Contact Zafronix Safaris — Plan Your Kenya & Tanzania Safari",
   description:
-    "Get in touch with Zafronix Safaris' safari specialists. Based in Nairobi, Kenya. Call, email or WhatsApp us to start planning your East Africa safari today.",
+    "Get in touch with Zafronix Safaris' safari specialists. Based in Hamza House Along Jogoo Road, Nairobi, Kenya. Call, email or WhatsApp us to start planning your East Africa safari today.",
   keywords: [
     "contact Zafronix Safaris",
     "safari inquiry Kenya",
@@ -34,7 +34,7 @@ export const metadata = {
         url: "https://zafronixsafari.com/images/hero/contact-hero.png",
         width: 1200,
         height: 630,
-        alt: "Contact Zafronix Safaris safari specialists — Nairobi, Kenya",
+        alt: "Contact Zafronix Safaris specialists — Hamza House Along Jogoo Road, Nairobi, Kenya",
       },
     ],
   },
@@ -58,7 +58,7 @@ function ContactSchema() {
         "@type": "ContactPage",
         "@id": "https://zafronixsafari.com/contact",
         url: "https://zafronixsafari.com/contact",
-        name: "Contact Zafronix Safaris Co.",
+        name: "Contact Zafronix Safaris And Travels Limited.",
         description:
           "Get in touch with Zafronix Safaris to plan your Kenya, Tanzania or Zanzibar safari.",
         isPartOf: { "@id": "https://zafronixsafari.com/#website" },
@@ -66,13 +66,13 @@ function ContactSchema() {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafari.com/#organization",
-        name: "Zafronix Safaris Co.",
+        name: "Zafronix Safaris And Travels Limited.",
         url: "https://zafronixsafari.com",
         ...(contactPhone ? { telephone: contactPhone } : {}),
         email: "info@zafronixsafari.com",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Westlands Business Park",
+          streetAddress: "Hamza House Along Jogoo Road",
           addressLocality: "Nairobi",
           addressCountry: "KE",
         },

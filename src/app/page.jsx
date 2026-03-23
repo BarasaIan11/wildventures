@@ -14,17 +14,19 @@ import BookingCTA from "@/components/home/BookingCTA";
 export const metadata = {
   title: "Kenya & Tanzania Safari Tours — East Africa's Safari Specialists",
   description:
-    "Tailor-made Kenya, Tanzania & Zanzibar safari holidays for international travellers. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
+    "Tailor-made Kenya, Tanzania & Zanzibar safari holidays for international travellers. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps.",
   alternates: {
     canonical: "https://zafronixsafari.com",
   },
   openGraph: {
     title: "Kenya & Tanzania Safari Tours",
     description:
-      "Tailor-made Kenya, Tanzania & Zanzibar safari holidays. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps. From $1,450/pp.",
+      "Tailor-made Kenya, Tanzania & Zanzibar safari holidays. Masai Mara, Serengeti, Ngorongoro & more. Expert guides, luxury camps.",
     url: "https://zafronixsafari.com",
   },
 };
+
+const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565";
 
 // JSON-LD — WebSite schema enables Google Sitelinks search box
 // This can show a search bar directly in Google results
@@ -36,9 +38,9 @@ function HomeSchema() {
         "@type": "WebSite",
         "@id": "https://zafronixsafari.com/#website",
         url: "https://zafronixsafari.com",
-        name: "Zafronix Safaris Safari Co.",
+        name: "Zafronix Safaris And Travels Limited.",
         description:
-          "East Africa's premier safari company. Tailor-made Kenya, Tanzania & Zanzibar safari experiences since 2009.",
+          "East Africa's premier safari company. Tailor-made Kenya, Tanzania & Zanzibar safari experiences since 2023.",
         publisher: { "@id": "https://zafronixsafari.com/#organization" },
         potentialAction: {
           "@type": "SearchAction",
@@ -53,7 +55,7 @@ function HomeSchema() {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafari.com/#organization",
-        name: "Zafronix Safaris Co.",
+        name: "Zafronix Safaris And Travels Limited.",
         url: "https://zafronixsafari.com",
         logo: {
           "@type": "ImageObject",
@@ -63,15 +65,15 @@ function HomeSchema() {
         },
         image: "https://zafronixsafari.com/images/hero/story-main.png",
         description:
-          "Zafronix Safaris is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2009.",
-        foundingDate: "2009",
+          "Zafronix Safaris is East Africa's premier safari company, specialising in tailor-made Kenya, Tanzania and Zanzibar safari experiences since 2023.",
+        foundingDate: "2023",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Westlands Business Park",
+          streetAddress: "Hamza House Along Jogoo Road",
           addressLocality: "Nairobi",
           addressCountry: "KE",
         },
-        telephone: "+254780166113",
+        telephone: `+${phoneNumber}`,
         email: "info@zafronixsafari.com",
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
@@ -91,7 +93,7 @@ function HomeSchema() {
           bestRating: "5",
           worstRating: "1",
         },
-        sameAs: ["https://wa.me/254780166113"],
+        sameAs: [`https://wa.me/${phoneNumber}`],
       },
     ],
   };

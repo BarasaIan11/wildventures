@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Zafronix Safaris Co.",
+      siteName: "Zafronix Safaris And Travels Limited",
       images: [
         {
           url: imageUrl,
@@ -88,14 +88,14 @@ function TourSchema({ tour }) {
           priceCurrency: "USD",
           seller: {
             "@type": "TravelAgency",
-            name: "Zafronix Safaris Co.",
+            name: "Zafronix Safaris And Travels Limited",
           },
         },
         provider: {
           "@type": "TravelAgency",
-          name: "Zafronix Safaris Co.",
+          name: "Zafronix Safaris And Travels Limited",
           url: "https://zafronixsafari.com",
-          telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
+          telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565"}`,
           email: process.env.NEXT_PUBLIC_EMAIL || "info@zafronixsafari.com",
         },
         ...(tour.reviews.length > 0 && {
@@ -240,7 +240,7 @@ export default async function TourDetailPage({ params }) {
               </div>
             </div>
 
-            {/* Included / Not Included (Logic simplified for minimalist look) */}
+            {/* Included / Not Included */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-gray-100">
               <div>
                 <p className="section-label !mb-6">What to Expect</p>

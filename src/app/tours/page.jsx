@@ -8,7 +8,7 @@ import { tours } from "@/data/tours";
 export const metadata = {
   title: "Kenya & Tanzania Safari Tours & Packages 2025/2026",
   description:
-    "Browse Zafronix Safaris' full collection of Kenya and Tanzania safari packages — from 5-day Masai Mara classics to 14-day Tanzania & Zanzibar grand tours. From $1,450/pp.",
+    "Browse Zafronix Safaris' full collection of Kenya and Tanzania safari packages — from 5-day Masai Mara classics to 14-day Tanzania & Zanzibar grand tours.",
   keywords: [
     "Kenya safari packages 2025",
     "Tanzania safari tours",
@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     title: "Kenya & Tanzania Safari Tours & Packages",
     description:
-      "Browse our full collection of Kenya and Tanzania safari packages. Masai Mara, Serengeti, Ngorongoro, Zanzibar & more. Expert guides, luxury camps. From $1,450/pp.",
+      "Browse our full collection of Kenya and Tanzania safari packages. Masai Mara, Serengeti, Ngorongoro, Zanzibar & more. Expert guides, luxury camps.",
     url: "https://zafronixsafari.com/tours",
     images: [
       {
@@ -41,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Kenya & Tanzania Safari Tours",
     description:
-      "Browse our full collection of East Africa safari packages. From $1,450/pp.",
+      "Browse our full collection of East Africa safari packages.",
     images: ["https://zafronixsafari.com/images/hero/lions.png"],
   },
 };

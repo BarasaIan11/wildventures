@@ -24,7 +24,7 @@ export const metadata = {
 
   // Default meta description 
   description:
-    "Zafronix Safaris crafts tailor-made Kenya, Tanzania & Zanzibar safari experiences for international travellers. Expert guides, luxury camps & unforgettable wildlife encounters since 2009.",
+    "Zafronix Safaris crafts tailor-made Kenya, Tanzania & Zanzibar safari experiences for international travellers. Expert guides, luxury camps & unforgettable wildlife encounters since 2023.",
 
   // Keywords 
   keywords: [
@@ -71,7 +71,7 @@ export const metadata = {
     description:
       "Tailor-made Kenya, Tanzania & Zanzibar safaris crafted for international travellers. Expert guides, luxury camps & life-changing wildlife encounters.",
     url: "https://zafronixsafari.com",
-    siteName: "Zafronix Safaris Co.",
+    siteName: "Zafronix Safaris And Travels Limited.",
     images: [
       {
         url: "/images/hero/story-main.png", // metadataBase prepends the domain
@@ -89,7 +89,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Zafronix Safaris — Kenya & Tanzania Safari Specialists",
     description:
-      "Tailor-made Kenya, Tanzania & Zanzibar safaris for international travellers. Life-changing wildlife encounters since 2009.",
+      "Tailor-made Kenya, Tanzania & Zanzibar safaris for international travellers. Life-changing wildlife encounters since 2023.",
     images: ["/images/hero/story-main.png"],
     site: "@ZafronixSafaris",
     creator: "@ZafronixSafaris",

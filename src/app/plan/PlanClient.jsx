@@ -1,12 +1,10 @@
 "use client";
-// src/app/plan/PlanClient.jsx
-// Extracted from page.jsx so the server wrapper can export metadata.
-// All form logic is identical — only the file was split.
 import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import SuccessToast from "@/components/shared/SuccessToast";
-import { Calendar, Users, DollarSign, Heart, Send } from "lucide-react";
+import { Calendar, Users, Heart, Send, User } from "lucide-react";
+import RevealWrapper from "@/components/shared/RevealWrapper";
 
 export default function PlanClient() {
   const phoneNumber =
@@ -16,9 +14,14 @@ export default function PlanClient() {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      adults: "1",
+      children: "0",
+      message: ""
+    }
+  });
 
   const [showToast, setShowToast] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,71 +33,72 @@ export default function PlanClient() {
     try {
       const {
         firstName, lastName, email, phone,
-        startDate, duration, travelers, budget,
+        startDate, adults, children,
         destinations, interests, message,
       } = data;
 
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
+      const adultsNum = adults === "10+" ? "10+" : parseInt(adults);
+      const childrenNum = children === "10+" ? "10+" : parseInt(children);
+      const totalPax = (adults === "10+" || children === "10+")
+        ? `${adultsNum} + ${childrenNum}`
+        : parseInt(adults) + parseInt(children);
+      const timestamp = new Date().toLocaleString("en-KE", {
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
 
-      let nonPiiText = `*New Safari Inquiry — Zafronix Safaris*\n`;
-      nonPiiText += `Ref: #${refId}\n`;
-      nonPiiText += `\n*Trip Details*\n`;
-      nonPiiText += `*Travel Date:* ${startDate}\n`;
-      if (duration) nonPiiText += `*Duration:* ${duration}\n`;
-      if (travelers) nonPiiText += `*Travelers:* ${travelers}\n`;
-      if (budget) nonPiiText += `*Budget (per person):* ${budget}\n`;
-      if (destinations?.length > 0)
-        nonPiiText += `*Destinations:* ${destinations.join(", ")}\n`;
-      if (interests?.length > 0)
-        nonPiiText += `*Interests:* ${interests.join(", ")}\n`;
+      let whatsappText = `*SAFARI INQUIRY — ZAFRONIX SAFARIS*\n`;
+      whatsappText += `*Ref:* #${refId}\n`;
+      whatsappText += `*Date:* ${timestamp}\n\n`;
 
-      let text = `*New Safari Inquiry — Zafronix Safaris*\n`;
-      text += `Ref: #${refId}\n`;
-      text += `*Name:* ${firstName} ${lastName}\n`;
-      text += `*Email:* ${email}\n`;
-      if (phone) text += `*Phone:* ${phone}\n`;
-      text += `\n*Trip Details*\n`;
-      text += `*Travel Date:* ${startDate}\n`;
-      if (duration) text += `*Duration:* ${duration}\n`;
-      if (travelers) text += `*Travelers:* ${travelers}\n`;
-      if (budget) text += `*Budget (per person):* ${budget}\n`;
+      // 1. Client Info
+      whatsappText += `*CLIENT INFORMATION*\n`;
+      whatsappText += `*Name:* ${firstName} ${lastName}\n`;
+      whatsappText += `*Email:* ${email}\n`;
+      if (phone) whatsappText += `*Phone:* ${phone}\n\n`;
+
+      // 2. Trip Details
+      whatsappText += `*TRIP DETAILS*\n`;
+      whatsappText += `*Travel Date:* ${startDate}\n`;
+      whatsappText += `*Travelers:* ${totalPax} Total (${adults} Adults, ${children} Children)\n`;
+
       if (destinations?.length > 0)
-        text += `*Destinations:* ${destinations.join(", ")}\n`;
+        whatsappText += `*Destinations:* ${destinations.join(", ")}\n`;
+
       if (interests?.length > 0)
-        text += `*Interests:* ${interests.join(", ")}\n`;
-      if (message) text += `\n*Additional Notes:*\n${message}\n`;
-      text += `Submitted via Zafronix Safaris website.`;
+        whatsappText += `*Interests:* ${interests.join(", ")}\n`;
+
+      // 3. Vision & Notes
+      if (message) {
+        whatsappText += `\n*VISION & NOTES*\n`;
+        whatsappText += `${message}\n`;
+      }
+
+      whatsappText += `_Sent via Zafronix Safaris official website_`;
 
       if (!phoneNumber) {
-        setSubmitError(
-          "WhatsApp is currently unavailable. Please try again later."
-        );
+        setSubmitError("WhatsApp configuration is missing.");
         return;
       }
 
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (err) {
-        console.warn("Clipboard mapping failed:", err);
-      }
-
-      const encodedMessage = encodeURIComponent(nonPiiText);
+      // Open WhatsApp with the FULL professionally formatted message
+      const encodedMessage = encodeURIComponent(whatsappText);
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-      const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-      if (!popup || popup.closed || typeof popup.closed === "undefined") {
-        setSubmitError("Popup blocked. Please allow popups and try again.");
-        return;
-      }
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      reset();
       setShowToast(true);
+
     } catch (error) {
-      setSubmitError("Failed to submit inquiry. Please try again.");
+      setSubmitError("Failed to open WhatsApp. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const inputClass = `w-full bg-ivory/50 border border-gray-100 rounded-sm px-5 py-4 text-[1rem]
-    text-charcoal focus:outline-none focus:border-orange focus:bg-white transition-all duration-300 placeholder:text-gray-300`;
+    text-charcoal focus:outline-none focus:border-orange focus:bg-white transition-all duration-300 placeholder:text-gray-300 appearance-none`;
   const labelClass = `block text-[0.65rem] tracking-[0.2em] uppercase text-orange font-bold mb-2`;
   const errorClass = "text-red-500 text-[0.75rem] mt-1";
 
@@ -102,264 +106,135 @@ export default function PlanClient() {
     <>
       <SuccessToast
         visible={showToast}
-        title="WhatsApp Draft Opened"
-        message="Your inquiry details are pre-filled in WhatsApp. Just tap Send to submit to our team."
-        duration={5000}
+        title="Inquiry Drafted!"
+        message="The form has been reset. Please remember to tap 'Send' in WhatsApp to complete your submission."
+        duration={6000}
         onClose={() => setShowToast(false)}
       />
 
       <main className="bg-ivory">
-        {/* ── Hero */}
-        <div className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
+        {/* Hero Section */}
+        <div className="relative h-[65vh] min-h-[550px] flex items-center overflow-hidden bg-charcoal">
           <Image
             src="/images/hero/plan-hero.png"
-            alt="Plan your tailor-made Kenya or Tanzania safari with Zafronix Safaris"
+            alt="Plan your safari"
             fill
             priority
-            sizes="100vw"
             className="object-cover animate-hero-zoom opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
           <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
-            <nav
-              aria-label="Breadcrumb"
-              className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6"
-            >
-              <a href="/" className="hover:text-beige transition-colors">
-                Home
-              </a>
-              <span className="w-1 h-1 rounded-full bg-white/30" />
-              <span className="text-beige">Plan Your Safari</span>
-            </nav>
-
-            <p className="section-label light">Bespoke Journeys</p>
-            <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-2xl">
-              Design Your <br />
-              <em className="italic text-beige">Dream Safari</em>
-            </h1>
-            <p className="text-white/70 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
-              Every traveler is unique. Tell us your vision, and we will bring
-              the magic of East Africa to life.
-            </p>
+            <RevealWrapper>
+              <p className="section-label light">Bespoke Journeys</p>
+            </RevealWrapper>
+            <RevealWrapper delay={0.1}>
+              <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-2xl">
+                Design Your <br />
+                <em className="italic text-beige">Dream Safari</em>
+              </h1>
+            </RevealWrapper>
+            <RevealWrapper delay={0.2}>
+              <p className="text-white/70 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
+                Every traveler is unique. Tell us your vision, and we will bring the magic of East Africa to life.
+              </p>
+            </RevealWrapper>
           </div>
         </div>
 
-        {/* ── Form */}
-        <section className="pb-28 px-[5%] -mt-16 relative z-20">
+        {/* Form Section */}
+        <section className="pb-28 px-[5%] mt-16 relative z-20">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white shadow-2xl rounded-sm p-8 md:p-16 border border-gray-100">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
-                {/* Personal info */}
+
+                {/* 1. Contact Info */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="firstName" className={labelClass}>First Name</label>
-                    <input
-                      id="firstName"
-                      {...register("firstName", { required: true })}
-                      placeholder="Jane"
-                      className={inputClass}
-                    />
-                    {errors.firstName && (
-                      <p className={errorClass}>Required</p>
-                    )}
+                    <label className={labelClass}>First Name</label>
+                    <input {...register("firstName", { required: true })} placeholder="Jane" className={inputClass} />
+                    {errors.firstName && <p className={errorClass}>Required</p>}
                   </div>
                   <div>
-                    <label htmlFor="lastName" className={labelClass}>Last Name</label>
-                    <input
-                      id="lastName"
-                      {...register("lastName", { required: true })}
-                      placeholder="Smith"
-                      className={inputClass}
-                    />
-                    {errors.lastName && (
-                      <p className={errorClass}>Required</p>
-                    )}
+                    <label className={labelClass}>Last Name</label>
+                    <input {...register("lastName", { required: true })} placeholder="Smith" className={inputClass} />
+                    {errors.lastName && <p className={errorClass}>Required</p>}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="email" className={labelClass}>Email Address</label>
-                    <input
-                      id="email"
-                      {...register("email", {
-                        required: true,
-                        pattern: /^\S+@\S+$/i,
-                      })}
-                      type="email"
-                      placeholder="jane@example.com"
-                      className={inputClass}
-                    />
-                    {errors.email && (
-                      <p className={errorClass}>Valid email required</p>
-                    )}
+                    <label className={labelClass}>Email Address</label>
+                    <input {...register("email", { required: true, pattern: /^\S+@\S+$/i })} type="email" placeholder="jane@example.com" className={inputClass} />
+                    {errors.email && <p className={errorClass}>Valid email required</p>}
                   </div>
                   <div>
-                    <label htmlFor="phone" className={labelClass}>Phone / WhatsApp</label>
-                    <input
-                      id="phone"
-                      {...register("phone")}
-                      type="tel"
-                      placeholder="+1 234 567 8900"
-                      className={inputClass}
-                    />
+                    <label className={labelClass}>Phone / WhatsApp</label>
+                    <input {...register("phone")} type="tel" placeholder="+1 234 567 8900" className={inputClass} />
                   </div>
                 </div>
 
                 <hr className="border-gray-100" />
 
-                {/* Trip details */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="startDate" className={labelClass}>
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3 h-3" /> Travel Dates
-                      </span>
-                    </label>
-                    <input
-                      id="startDate"
-                      {...register("startDate", { required: true })}
-                      type="date"
-                      className={inputClass}
-                      min={new Date().toISOString().split("T")[0]}
-                    />
-                    {errors.startDate && (
-                      <p className={errorClass}>Required</p>
-                    )}
-                  </div>
-                  <div>
-                    <label htmlFor="duration" className={labelClass}>Trip Duration</label>
-                    <select id="duration" {...register("duration")} className={inputClass}>
-                      {[
-                        "3–5 days",
-                        "6–8 days",
-                        "9–12 days",
-                        "13–16 days",
-                        "17+ days",
-                      ].map((d) => (
-                        <option key={d}>{d}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="travelers" className={labelClass}>
-                      <span className="flex items-center gap-1.5">
-                        <Users className="w-3 h-3" /> Travelers
-                      </span>
-                    </label>
-                    <select id="travelers" {...register("travelers")} className={inputClass}>
-                      {["1", "2", "3–4", "5–8", "9–12", "13+"].map((n) => (
-                        <option key={n}>
-                          {n} {n === "1" ? "Traveler" : "Travelers"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="budget" className={labelClass}>
-                      <span className="flex items-center gap-1.5">
-                        <DollarSign className="w-3 h-3" /> Budget (per person)
-                      </span>
-                    </label>
-                    <select id="budget" {...register("budget")} className={inputClass}>
-                      {[
-                        "Under $1,500",
-                        "$1,500 – $3,000",
-                        "$3,000 – $5,000",
-                        "$5,000 – $10,000",
-                        "$10,000+",
-                      ].map((b) => (
-                        <option key={b}>{b}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Destinations */}
-                <div>
+                {/* 2. Trip Details */}
+                <div className="w-full">
                   <label className={labelClass}>
-                    Preferred Destinations (select all that interest you)
+                    <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3" /> Preferred Travel Date</span>
                   </label>
+                  <input {...register("startDate", { required: true })} type="date" className={inputClass} min={new Date().toISOString().split("T")[0]} />
+                  {errors.startDate && <p className={errorClass}>Required</p>}
+                </div>
+
+                {/* 3. Travelers */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className={labelClass}><User className="w-3 h-3" /> Adults (18+)</label>
+                    <select {...register("adults")} className={inputClass}>
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"].map((n) => (<option key={n} value={n}>{n}</option>))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass}><Users className="w-3 h-3" /> Children</label>
+                    <select {...register("children")} className={inputClass}>
+                      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"].map((n) => (<option key={n} value={n}>{n}</option>))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* 4. Destinations */}
+                <div>
+                  <label className={labelClass}>Preferred Destinations</label>
                   <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
-                    {[
-                      "Kenya",
-                      "Tanzania",
-                      "Rwanda",
-                      "Uganda",
-                      "Zanzibar (Beach Extension)",
-                      "Open to Suggestions",
-                    ].map((d) => (
-                      <label
-                        key={d}
-                        htmlFor={`destination-${d}`}
-                        className="flex items-center gap-2 p-3 border border-gray-200 rounded-sm cursor-pointer hover:border-green transition-colors text-[0.88rem]"
-                      >
-                        <input
-                          id={`destination-${d}`}
-                          type="checkbox"
-                          {...register("destinations")}
-                          value={d}
-                          className="accent-green w-4 h-4"
-                        />
+                    {["Kenya", "Tanzania", "Rwanda", "Uganda", "Zanzibar", "Open to Suggestions"].map((d) => (
+                      <label key={d} className="flex items-center gap-2 p-3 border border-gray-100 rounded-sm cursor-pointer hover:border-orange transition-colors text-[0.88rem]">
+                        <input type="checkbox" {...register("destinations")} value={d} className="accent-orange w-4 h-4" />
                         {d}
                       </label>
                     ))}
                   </div>
                 </div>
 
-                {/* Interests */}
+                {/* 5. Interests */}
                 <div>
-                  <label className={labelClass}>
-                    <span className="flex items-center gap-1.5">
-                      <Heart className="w-3 h-3" /> Travel Interests
-                    </span>
-                  </label>
+                  <label className={labelClass}><span className="flex items-center gap-1.5">Travel Interests</span></label>
                   <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
-                    {[
-                      "Big Five Game Drives",
-                      "Gorilla Trekking",
-                      "Bird Watching",
-                      "Photography",
-                      "Honeymoon/Romance",
-                      "Family-Friendly",
-                      "Cultural Experiences",
-                      "Beach Extension",
-                      "Luxury Lodges",
-                      "Budget Camping",
-                    ].map((i) => (
-                      <label
-                        key={i}
-                        htmlFor={`interest-${i}`}
-                        className="flex items-center gap-2 p-3 border border-gray-200 rounded-sm cursor-pointer hover:border-green transition-colors text-[0.88rem]"
-                      >
-                        <input
-                          id={`interest-${i}`}
-                          type="checkbox"
-                          {...register("interests")}
-                          value={i}
-                          className="accent-green w-4 h-4"
-                        />
+                    {["Big Five", "Gorilla Trekking", "Photography", "Honeymoon", "Family-Friendly", "Luxury Lodges"].map((i) => (
+                      <label key={i} className="flex items-center gap-2 p-3 border border-gray-100 rounded-sm cursor-pointer hover:border-orange transition-colors text-[0.88rem]">
+                        <input type="checkbox" {...register("interests")} value={i} className="accent-orange w-4 h-4" />
                         {i}
                       </label>
                     ))}
                   </div>
                 </div>
 
-                {/* Message */}
+                {/* 6. Message */}
                 <div>
-                  <label htmlFor="message" className={labelClass}>
-                    Tell Us More About Your Dream Safari
-                  </label>
+                  <label className={labelClass}>Tell Us More About Your Vision</label>
                   <textarea
-                    id="message"
                     {...register("message")}
                     rows={4}
-                    placeholder="Any special occasions, mobility considerations, dietary requirements, specific wildlife you'd love to see..."
+                    placeholder="Celebrations, dietary needs, or specific wildlife you want to see..."
                     className={`${inputClass} resize-none`}
                   />
                 </div>
@@ -367,19 +242,14 @@ export default function PlanClient() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn btn-primary w-full flex items-center justify-center gap-2.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="btn btn-primary w-full flex items-center justify-center gap-2.5 disabled:opacity-70 shadow-xl"
                 >
                   <Send className="w-4 h-4" />
-                  {isSubmitting ? "Sending..." : "Send My Safari Inquiry"}
+                  {isSubmitting ? "Opening WhatsApp..." : "Send My Safari Inquiry"}
                 </button>
 
-                {submitError && (
-                  <p className="text-red-500 text-center text-sm">
-                    {submitError}
-                  </p>
-                )}
-
-                <p className="text-center text-[0.78rem] text-gray-400">
+                {submitError && <p className="text-red-500 text-center text-sm">{submitError}</p>}
+                <p className="text-center text-[0.78rem] text-gray-400 italic">
                   We'll respond within 24 hours · No commitment required
                 </p>
               </form>

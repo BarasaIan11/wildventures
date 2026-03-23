@@ -72,35 +72,34 @@ export default function AboutPage() {
   return (
     <main className="bg-white">
       {/* ── 1. HERO SECTION */}
-      <div className="relative h-[75vh] min-h-[600px] flex items-center overflow-hidden bg-charcoal">
+      <div className="relative h-[65vh] min-h-[520px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src="/images/hero/about-hero.png"
           alt="Zafronix Safaris Heritage"
           fill
           priority
-          className="object-cover scale-105 animate-hero-zoom opacity-80"
+          sizes="100vw"
+          className="object-cover animate-hero-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
-          <div className="max-w-4xl">
-            <RevealWrapper>
-              <p className="section-label light">Our Story</p>
-            </RevealWrapper>
-            <RevealWrapper delay={0.1}>
-              <h1 className="font-serif text-[clamp(2.8rem,6vw,5rem)] font-light text-white leading-[1.05] mb-6">
-                Experience Africa <br />
-                <span className="italic font-normal text-beige">Beyond Travel</span>
-              </h1>
-            </RevealWrapper>
-            <RevealWrapper delay={0.2}>
-              <p className="text-white/80 text-[1.1rem] leading-relaxed max-w-xl font-light">
-                A premier boutique operator offering bespoke and luxurious safari experiences.
-                Where innovation meets timeless adventure.
-              </p>
-            </RevealWrapper>
-          </div>
+          <RevealWrapper>
+            <p className="section-label light">Our Story</p>
+          </RevealWrapper>
+          <RevealWrapper delay={0.1}>
+            <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-3xl">
+              Experience Africa <br />
+              <span className="italic font-normal text-beige">Beyond Travel</span>
+            </h1>
+          </RevealWrapper>
+          <RevealWrapper delay={0.2}>
+            <p className="text-white/80 mt-6 text-[1.1rem] leading-relaxed max-w-xl font-light">
+              A premier boutique operator offering bespoke and luxurious safari experiences.
+              Where innovation meets timeless adventure.
+            </p>
+          </RevealWrapper>
         </div>
       </div>
 
