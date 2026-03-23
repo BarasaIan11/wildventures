@@ -38,13 +38,16 @@ export default function PlanClient() {
       } = data;
 
       const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
-      const totalPax = parseInt(adults) + parseInt(children);
+      const adultsNum = adults === "10+" ? "10+" : parseInt(adults);
+      const childrenNum = children === "10+" ? "10+" : parseInt(children);
+      const totalPax = (adults === "10+" || children === "10+")
+        ? `${adultsNum} + ${childrenNum}`
+        : parseInt(adults) + parseInt(children);
       const timestamp = new Date().toLocaleString("en-KE", {
         dateStyle: "medium",
         timeStyle: "short",
       });
 
-      // --- UPDATED PROFESSIONAL FORMATTING (Consistent with Contact Form) ---
       let whatsappText = `*SAFARI INQUIRY — ZAFRONIX SAFARIS*\n`;
       whatsappText += `*Ref:* #${refId}\n`;
       whatsappText += `*Date:* ${timestamp}\n\n`;

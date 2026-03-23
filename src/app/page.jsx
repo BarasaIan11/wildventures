@@ -26,6 +26,8 @@ export const metadata = {
   },
 };
 
+const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565";
+
 // JSON-LD — WebSite schema enables Google Sitelinks search box
 // This can show a search bar directly in Google results
 function HomeSchema() {
@@ -71,7 +73,7 @@ function HomeSchema() {
           addressLocality: "Nairobi",
           addressCountry: "KE",
         },
-        telephone: "+254722319565",
+        telephone: `+${phoneNumber}`,
         email: "info@zafronixsafari.com",
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
@@ -91,7 +93,7 @@ function HomeSchema() {
           bestRating: "5",
           worstRating: "1",
         },
-        sameAs: ["https://wa.me/254722319565"],
+        sameAs: [`https://wa.me/${phoneNumber}`],
       },
     ],
   };
