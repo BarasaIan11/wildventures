@@ -86,7 +86,6 @@ export default function TourFAQ({ tour }) {
         </div>
 
         <div className="flex flex-col items-center md:items-end shrink-0">
-          {/* Changed from <button> to <Link> */}
           <Link
             href="/contact"
             className="group flex items-center gap-3 text-[0.8rem] tracking-[0.2em] uppercase font-bold text-orange hover:text-green-dark transition-all"

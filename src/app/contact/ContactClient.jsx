@@ -51,6 +51,10 @@ export default function ContactClient() {
       text += `_Sent via Zafronix Safaris official website_`;
 
       const encodedMessage = encodeURIComponent(text);
+      if (!phoneNumber) {
+        setSubmitError("WhatsApp configuration is missing.");
+        return;
+      }
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -76,7 +80,7 @@ export default function ContactClient() {
       value: "Hamza House Along Jogoo Road, Nairobi, Kenya",
       href: "https://maps.google.com/?q=Hamza+House+Jogoo+Road+Nairobi",
     },
-    { Icon: Phone, label: "Call Us", value: formattedPhone, href: `tel:${phoneNumber}` },
+    { Icon: Phone, label: "Call Us", value: formattedPhone, href: phoneNumber ? `tel:${phoneNumber}` : null },
     { Icon: Mail, label: "Email Us", value: "info@zafronixsafari.com", href: "mailto:info@zafronixsafari.com" },
     {
       Icon: Clock,

@@ -47,7 +47,7 @@ export default function sitemap() {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/reviews`,
+      url: `${baseUrl}/blogs`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.6,
