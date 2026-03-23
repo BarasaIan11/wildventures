@@ -13,9 +13,17 @@ export default function BookingWidget({ tourTitle = '' }) {
   const submit = (e) => {
     e.preventDefault()
     const { name, email, date, adults, children } = form;
-    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113";
+    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+    if (!phoneNumber) {
+      console.error("NEXT_PUBLIC_WHATSAPP_NUMBER is not configured");
+      return;
+    }
 
-    const totalPax = parseInt(adults) + parseInt(children);
+    const adultsNum = adults === "10+" ? "10+" : parseInt(adults);
+    const childrenNum = children === "10+" ? "10+" : parseInt(children);
+    const totalPax = (adults === "10+" || children === "10+")
+      ? `${adultsNum} + ${childrenNum}`
+      : parseInt(adults) + parseInt(children);
     const refId = Math.random().toString(36).substring(2, 8).toUpperCase();
     const timestamp = new Date().toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" });
 
@@ -33,7 +41,7 @@ export default function BookingWidget({ tourTitle = '' }) {
 
     text += `*TRIP DETAILS*\n`;
     text += `*Date:* ${date}\n`;
-    text += `*Guests:* ${totalPax} Total (${adults} Adults, ${children} Children)\n\n`;
+    text += `*Guests:* ${totalPax} Total (${adultsNum} Adults, ${childrenNum} Children)\n\n`;
 
     text += `_Sent via Zafronix Safaris official website_`;
 
