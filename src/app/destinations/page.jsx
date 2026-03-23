@@ -2,6 +2,7 @@ import Image from "next/image";
 import DestinationCard from "@/components/destinations/DestinationCard";
 import BookingCTA from "@/components/home/BookingCTA";
 import { destinations } from "@/data/destinations";
+import RevealWrapper from "@/components/shared/RevealWrapper";
 
 // ─────────────────────────────────────────────────────────────
 // SEO METADATA
@@ -103,27 +104,21 @@ export default function DestinationsPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
         <div className="relative z-10 px-[5%] w-full max-w-7xl mx-auto">
-          {/* Breadcrumb */}
-          <nav
-            aria-label="Breadcrumb"
-            className="flex items-center gap-2 text-white/60 text-[0.75rem] uppercase tracking-widest mb-6"
-          >
-            <a href="/" className="hover:text-beige transition-colors">
-              Home
-            </a>
-            <span className="w-1 h-1 rounded-full bg-white/30" />
-            <span className="text-beige">Destinations</span>
-          </nav>
-
-          <p className="section-label light">Explore Africa</p>
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-3xl">
-            Discover Legendary <br />
-            <em className="italic text-beige">Destinations</em>
-          </h1>
-          <p className="text-white/80 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
-            From the endless plains of the Serengeti to Zanzibar's
-            white-sand shores. Discover the soul of East Africa.
-          </p>
+          <RevealWrapper>
+            <p className="section-label light">Explore Africa</p>
+          </RevealWrapper>
+          <RevealWrapper delay={0.1}>
+            <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-light text-white leading-[1.1] max-w-3xl">
+              Discover Legendary <br />
+              <em className="italic text-beige">Destinations</em>
+            </h1>
+          </RevealWrapper>
+          <RevealWrapper delay={0.2}>
+            <p className="text-white/80 mt-6 text-[1.1rem] font-light max-w-md leading-relaxed">
+              From the endless plains of the Serengeti to Zanzibar's
+              white-sand shores. Discover the soul of East Africa.
+            </p>
+          </RevealWrapper>
         </div>
       </div>
 
@@ -145,8 +140,8 @@ export default function DestinationsPage() {
           ))}
         </div>
 
-      {/* ── Secondary destinations: Rwanda, Uganda */}
-      {/* {secondary.length > 0 && (
+        {/* ── Secondary destinations: Rwanda, Uganda */}
+        {/* {secondary.length > 0 && (
         <section className="pb-24 max-w-7xl mx-auto px-[5%]">
           <div className="mb-12 pt-8 border-t border-beige/60">
             <p className="section-label">Also Available</p>
@@ -167,11 +162,11 @@ export default function DestinationsPage() {
         </section>
       )} */}
 
-      <div className="mt-24 pt-12 border-t border-beige/60 text-center">
-            <p className="text-[0.8rem] text-gray-400 tracking-[0.3em] uppercase font-medium mb-2">
-          Specialising in East Africa
-        </p>
-      </div>
+        <div className="mt-24 pt-12 border-t border-beige/60 text-center">
+          <p className="text-[0.8rem] text-gray-400 tracking-[0.3em] uppercase font-medium mb-2">
+            Specialising in East Africa
+          </p>
+        </div>
       </section>
 
       <BookingCTA />

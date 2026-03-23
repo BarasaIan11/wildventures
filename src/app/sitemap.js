@@ -12,7 +12,7 @@ import { destinations } from "@/data/destinations";
 //   0.9 = Key landing pages (tours, destinations)
 //   0.8 = Individual tour pages (these drive bookings)
 //   0.7 = Destination pages
-//   0.6 = Supporting pages (about, reviews, plan)
+//   0.6 = Supporting pages (about, blogs, plan)
 //   0.4 = Contact (important but not a ranking page)
 // ─────────────────────────────────────────────────────────────
 

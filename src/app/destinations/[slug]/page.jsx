@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
 
   const descriptionMap = {
     kenya:
-      "Explore Kenya's iconic Masai Mara, Amboseli & Samburu on a tailor-made safari. Expert guides, luxury camps & the Great Migration. Book from $1,450/pp.",
+      "Explore Kenya's iconic Masai Mara, Amboseli & Samburu on a tailor-made safari. Expert guides, luxury camps & the Great Migration.",
     tanzania:
       "Discover the Serengeti, Ngorongoro Crater & Zanzibar with Zafronix Safaris. Tanzania's greatest safari experiences crafted for international travellers.",
     zanzibar:
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Zafronix Safaris Co.",
+      siteName: "Zafronix Safaris And Travels Limited.",
       images: [
         {
           url: imageUrl,
@@ -112,14 +112,14 @@ function DestinationSchema({ dest }) {
       {
         "@type": "TravelAgency",
         "@id": "https://zafronixsafari.com",
-        name: "Zafronix Safaris Co.",
+        name: "Zafronix Safaris And Travels Limited.",
         url: "https://zafronixsafari.com",
-        telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254780166113"}`,
+        telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565"}`,
         email: "info@zafronixsafari.com",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Westlands Business Park",
+          streetAddress: "Hamza House Along Jogoo Road",
           addressLocality: "Nairobi",
           addressCountry: "KE",
         },
@@ -180,7 +180,7 @@ export default async function DestinationDetailPage({ params }) {
       <DestinationSchema dest={dest} />
 
       {/* ── Hero */}
-      <div className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden bg-charcoal">
+      <div className="relative h-[65vh] min-h-[500px] flex items-center overflow-hidden bg-charcoal">
         <Image
           src={dest.heroImage}
           alt={`${dest.name} safari landscape — Zafronix Safaris`}
@@ -210,7 +210,7 @@ export default async function DestinationDetailPage({ params }) {
           <p className="text-orange text-[0.8rem] tracking-[0.2em] uppercase font-semibold mb-3">
             {dest.tagline}
           </p>
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-tight">
+          <h1 className="font-serif text-[clamp(2.2rem,5vw,4rem)] font-light text-white leading-[1.1] max-w-4xl mb-8">
             {dest.flag} {dest.name}
           </h1>
         </div>

@@ -136,8 +136,8 @@ export default function Footer() {
             </p>
             <div className="space-y-6">
               {[
-                { Icon: MapPin, text: "Nairobi, Kenya" },
-                { Icon: Phone, text: "+254 780 166 113" },
+                { Icon: MapPin, text: "Hamza House Along Jogoo Road, Nairobi, Kenya" },
+                { Icon: Phone, text: "+254 722 319 565" },
                 { Icon: Mail, text: "info@zafronixsafari.com" },
                 { Icon: Clock, text: "Mon–Sat, 8am – 6pm EAT" },
               ].map(({ Icon, text }) => (
