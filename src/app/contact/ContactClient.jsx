@@ -34,7 +34,6 @@ export default function ContactClient() {
         timeStyle: "short",
       });
 
-      // --- NEW PROFESSIONAL FORMATTING ---
       let text = `*CONTACT INQUIRY — ZAFRONIX SAFARIS*\n`;
 
       text += `*Ref:* #${refId}\n`;
@@ -76,7 +75,7 @@ export default function ContactClient() {
       value: "Hamza House Along Jogoo Road, Nairobi, Kenya",
       href: "https://maps.google.com/?q=Hamza+House+Jogoo+Road+Nairobi",
     },
-    { Icon: Phone, label: "Call Us", value: formattedPhone, href: phoneNumber ? `tel:${phoneNumber}` : null },
+    { Icon: Phone, label: "Call Us", value: formattedPhone, href: phoneNumber ? `tel:+${phoneNumber}` : null },
     { Icon: Mail, label: "Email Us", value: "info@zafronixsafari.com", href: "mailto:info@zafronixsafari.com" },
     {
       Icon: Clock,
