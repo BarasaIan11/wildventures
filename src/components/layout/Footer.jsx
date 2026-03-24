@@ -63,8 +63,8 @@ export default function Footer() {
             <div className="flex gap-4 pt-2">
               {[
                 { Icon: Instagram, label: "Instagram", href: "https://instagram.com/zafronix_safari" },
-                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/zafronixsafari" },
-                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/@zafronixsafaris" },
+                { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61577677294064&mibextid=ZbWKwL" },
+                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/zafronixsafaris" },
               ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
@@ -72,7 +72,6 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  onClick={(e) => { e.preventDefault(); window.open(href, "_blank", "noopener,noreferrer"); }}
                   className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange hover:border-orange hover:text-white transition-all duration-500 group"
                 >
                   <Icon size={18} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />

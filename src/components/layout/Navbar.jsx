@@ -211,7 +211,7 @@ export default function Navbar() {
             <a href="https://instagram.com/zafronix_safari" target="_blank" rel="noopener noreferrer" aria-label="Instagram" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="https://facebook.com/zafronixsafari" target="_blank" rel="noopener noreferrer" aria-label="Facebook" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://www.facebook.com/profile.php?id=61577677294064&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
             <a href="https://youtube.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="YouTube" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
