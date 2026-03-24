@@ -2,26 +2,33 @@
 import React from "react";
 
 export default function WhatsAppButton() {
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+  const phoneNumber = "254722319565";
   const message = "Hello Zafronix Safaris, I'm interested in planning a safari.";
 
-  if (!phoneNumber) return null;
-  
   return (
     <a
       href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-[99] group"
+      className="fixed bottom-6 right-6 z-[99] group flex items-center"
       aria-label="Chat on WhatsApp"
     >
-      {/* Tooltip - appears on hover */}
-      <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-charcoal text-white text-[0.7rem] tracking-widest uppercase font-bold py-2 px-4 rounded-sm opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-white/10">
+      <span className="
+        absolute right-full mr-3
+        bg-[#25D366] text-white text-[0.7rem] tracking-[0.15em] uppercase font-bold 
+        py-2.5 px-6 rounded-full 
+        shadow-[0_10px_25px_rgba(37,211,102,0.3)]
+        opacity-0 translate-x-4
+        group-hover:opacity-100 group-hover:translate-x-0 
+        transition-all duration-500 ease-out
+        pointer-events-none whitespace-nowrap
+      ">
         Plan Your Tour With Us
       </span>
 
       {/* The Button */}
       <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#25D366] rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:shadow-[0_15px_40px_rgba(37,211,102,0.6)] transition-all duration-500 hover:-translate-y-1 active:scale-90">
+
         {/* Subtle Pulse Effect */}
         <div className="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20 group-hover:hidden" />
 

@@ -26,7 +26,7 @@ export const metadata = {
   },
 };
 
-const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565";
+const phoneNumber = "254722319565";
 
 // JSON-LD — WebSite schema enables Google Sitelinks search box
 // This can show a search bar directly in Google results

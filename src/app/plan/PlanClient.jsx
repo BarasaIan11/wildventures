@@ -7,8 +7,7 @@ import { Calendar, Users, Heart, Send, User } from "lucide-react";
 import RevealWrapper from "@/components/shared/RevealWrapper";
 
 export default function PlanClient() {
-  const phoneNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
+  const phoneNumber = "254722319565";
 
   const {
     register,
@@ -77,10 +76,6 @@ export default function PlanClient() {
 
       whatsappText += `_Sent via Zafronix Safaris official website_`;
 
-      if (!phoneNumber) {
-        setSubmitError("WhatsApp configuration is missing.");
-        return;
-      }
 
       // Open WhatsApp with the FULL professionally formatted message
       const encodedMessage = encodeURIComponent(whatsappText);

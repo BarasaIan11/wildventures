@@ -7,7 +7,7 @@ import SuccessToast from "@/components/shared/SuccessToast";
 import RevealWrapper from "@/components/shared/RevealWrapper";
 
 export default function ContactClient() {
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "";
+  const phoneNumber = "254722319565";
   const formattedPhone = phoneNumber
     ? `+${phoneNumber.slice(0, 3)} ${phoneNumber.slice(3, 6)} ${phoneNumber.slice(6, 9)} ${phoneNumber.slice(9)}`
     : "+254 722 319 565";
@@ -51,10 +51,6 @@ export default function ContactClient() {
       text += `_Sent via Zafronix Safaris official website_`;
 
       const encodedMessage = encodeURIComponent(text);
-      if (!phoneNumber) {
-        setSubmitError("WhatsApp configuration is missing.");
-        return;
-      }
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");

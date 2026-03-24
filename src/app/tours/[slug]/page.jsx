@@ -95,8 +95,8 @@ function TourSchema({ tour }) {
           "@type": "TravelAgency",
           name: "Zafronix Safaris And Travels Limited",
           url: "https://zafronixsafari.com",
-          telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565"}`,
-          email: process.env.NEXT_PUBLIC_EMAIL || "info@zafronixsafari.com",
+          telephone: "+254722319565",
+          email: "info@zafronixsafari.com",
         },
         ...(tour.reviews.length > 0 && {
           aggregateRating: {
@@ -196,8 +196,8 @@ export default async function TourDetailPage({ params }) {
       </div>
 
       {/* ── Main content */}
-      <div className="section-pad">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16 items-start max-w-7xl mx-auto">
+      <div className=" max-w-7xl mx-auto px-[5%] py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16 items-start">
           <div className="space-y-16">
             {/* Overview */}
             <div>
@@ -205,18 +205,6 @@ export default async function TourDetailPage({ params }) {
               <p className="text-[1.15rem] text-gray-600 leading-[1.8] font-light">
                 {tour.summary}
               </p>
-            </div>
-
-            {/* Highlights */}
-            <div>
-              <p className="section-label">Signature Highlights</p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {tour.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-3 text-[1rem] text-gray-600">
-                    <span className="text-orange mt-1">✦</span> {h}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Itinerary */}
@@ -227,59 +215,82 @@ export default async function TourDetailPage({ params }) {
               </h2>
               <ItineraryAccordion itinerary={tour.itinerary} />
             </div>
+          </div>
 
-            {/* Wildlife */}
+          <aside className="sticky top-28 hidden lg:block">
+            <BookingWidget tourTitle={tour.title} />
+          </aside>
+
+          {/* Mobile Widget (shows only on small screens at the bottom of this section) */}
+          <div className="lg:hidden">
+            <BookingWidget tourTitle={tour.title} />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-ivory/20 border-y border-gray-100 py-20">
+        <div className="max-w-7xl mx-auto px-[5%] space-y-24">
+
+          {/* Highlights & Sightings */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <p className="section-label">Signature Highlights</p>
+              <ul className="grid grid-cols-1 gap-4 mt-6">
+                {tour.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-[1rem] text-gray-600">
+                    <span className="text-orange mt-1">✦</span> {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div>
               <p className="section-label">Common Sightings</p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mt-6">
                 {tour.wildlife.map((w) => (
-                  <span key={w} className="bg-ivory border border-beige text-green text-[0.85rem] px-5 py-2.5 rounded-sm font-medium">
+                  <span key={w} className="bg-white border border-beige text-green text-[0.85rem] px-5 py-2.5 rounded-sm font-medium shadow-sm">
                     🐾 {w}
                   </span>
                 ))}
               </div>
             </div>
-
-            {/* Included / Not Included */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-gray-100">
-              <div>
-                <p className="section-label !mb-6">What to Expect</p>
-                <ul className="space-y-4">
-                  {tour.included.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[0.95rem] text-gray-500 font-light leading-snug">
-                      <CheckCircle className="w-5 h-5 text-green-light shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="section-label !mb-6">Not Included</p>
-                <ul className="space-y-4">
-                  {tour.excluded.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[0.95rem] text-gray-500 font-light leading-snug">
-                      <XCircle className="w-5 h-5 text-red-300 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* FAQ Section */}
-            <TourFAQ tour={tour} />
           </div>
 
-          {/* Right sidebar */}
-          <aside className="sticky top-28">
-            <BookingWidget tourTitle={tour.title} />
-          </aside>
+          {/* Logistics (Included / Not Included) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 pt-12 border-t border-beige/40">
+            <div>
+              <p className="section-label !mb-6">What to Expect</p>
+              <ul className="space-y-4">
+                {tour.included.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[0.95rem] text-gray-500 font-light leading-snug">
+                    <CheckCircle className="w-5 h-5 text-green-light shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="section-label !mb-6">Not Included</p>
+              <ul className="space-y-4">
+                {tour.excluded.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[0.95rem] text-gray-500 font-light leading-snug">
+                    <XCircle className="w-5 h-5 text-red-300 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div className="pt-12 border-t border-beige/40">
+            <TourFAQ tour={tour} />
+          </div>
         </div>
       </div>
 
       {/* Related tours */}
       {related.length > 0 && (
-        <div className="section-pad bg-ivory/30 border-t border-gray-100">
+        <div className="section-pad bg-white">
           <div className="max-w-7xl mx-auto">
             <p className="section-label">Continue Exploring</p>
             <h2 className="font-serif text-[2.5rem] text-green-dark mb-12">Similar <span className="italic">Experiences</span></h2>

@@ -114,7 +114,7 @@ function DestinationSchema({ dest }) {
         "@id": "https://zafronixsafari.com",
         name: "Zafronix Safaris And Travels Limited.",
         url: "https://zafronixsafari.com",
-        telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "254722319565"}`,
+        telephone: "+254722319565",
         email: "info@zafronixsafari.com",
         priceRange: "$$$",
         address: {
