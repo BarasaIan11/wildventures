@@ -208,13 +208,13 @@ export default function Navbar() {
             Follow the Journey
           </span>
           <div className="flex gap-6">
-            <a href="https://instagram.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://instagram.com/zafronix_safari" target="_blank" rel="noopener noreferrer" aria-label="Instagram" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="https://facebook.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://www.facebook.com/profile.php?id=61577677294064&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="https://youtube.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+            <a href="https://youtube.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="YouTube" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Youtube className="w-5 h-5" />
             </a>
           </div>

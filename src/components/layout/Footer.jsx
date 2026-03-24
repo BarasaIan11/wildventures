@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -61,9 +62,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-4 pt-2">
               {[
-                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/zafronixsafari" },
-                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/zafronixsafari" },
-                { Icon: Youtube, label: "YouTube", href: "#" },
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/zafronix_safari" },
+                { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61577677294064&mibextid=ZbWKwL" },
+                { Icon: Youtube, label: "YouTube", href: "https://youtube.com/zafronixsafaris" },
               ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
