@@ -50,7 +50,7 @@ export const metadata = {
 // ── JSON-LD Schema
 function ContactSchema() {
   const rawWhatsapp = "254722319565";
-  const contactPhone = rawWhatsapp ? `+${rawWhatsapp}` : undefined;
+  const contactPhone = `+${rawWhatsapp}`;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [

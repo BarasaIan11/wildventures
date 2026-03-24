@@ -51,10 +51,6 @@ export default function ContactClient() {
       text += `_Sent via Zafronix Safaris official website_`;
 
       const encodedMessage = encodeURIComponent(text);
-      if (!phoneNumber) {
-        setSubmitError("WhatsApp configuration is missing.");
-        return;
-      }
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
