@@ -13,11 +13,7 @@ export default function BookingWidget({ tourTitle = '' }) {
   const submit = (e) => {
     e.preventDefault()
     const { name, email, date, adults, children } = form;
-    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
-    if (!phoneNumber) {
-      console.error("NEXT_PUBLIC_WHATSAPP_NUMBER is not configured");
-      return;
-    }
+    const phoneNumber = "254722319565";
 
     const adultsNum = adults === "10+" ? "10+" : parseInt(adults);
     const childrenNum = children === "10+" ? "10+" : parseInt(children);

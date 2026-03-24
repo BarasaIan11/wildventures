@@ -2,11 +2,11 @@
 import React from "react";
 
 export default function WhatsAppButton() {
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+  const phoneNumber = "254722319565";
   const message = "Hello Zafronix Safaris, I'm interested in planning a safari.";
 
   if (!phoneNumber) return null;
-  
+
   return (
     <a
       href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
