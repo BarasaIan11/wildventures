@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, Instagram, Facebook, Youtube } from "lucide-react";
+import { Menu, X, Instagram, Facebook } from "lucide-react";
 import clsx from "clsx";
 
 const links = [
@@ -214,8 +214,10 @@ export default function Navbar() {
             <a href="https://www.facebook.com/profile.php?id=61577677294064&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="https://youtube.com/zafronixsafaris" target="_blank" rel="noopener noreferrer" aria-label="YouTube" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
-              <Youtube className="w-5 h-5" />
+            <a href="https://www.tiktok.com/@zafronix_safari" target="_blank" rel="noopener noreferrer" aria-label="TikTok" onClick={() => setMobileOpen(false)} className="hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-orange rounded-full transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+              </svg>
             </a>
           </div>
         </div>
