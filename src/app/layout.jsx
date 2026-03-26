@@ -102,14 +102,7 @@ export const metadata = {
       { url: "/favicon.ico?v=2", sizes: "any" },
     ],
     apple: [
-      { url: "/favicon.ico?v=2", sizes: "180x180" },
-    ],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/favicon.ico?v=2",
-        color: "#1B3A2D",
-      },
+      { url: "/logo.png?v=2", sizes: "180x180" },
     ],
   },
 
