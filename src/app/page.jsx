@@ -59,7 +59,7 @@ function HomeSchema() {
         url: "https://zafronixsafari.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://zafronixsafari.com/icons/logo.png",
+          url: "https://zafronixsafari.com/logo.png",
           width: 200,
           height: 60,
         },
