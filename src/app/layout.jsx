@@ -99,13 +99,11 @@ export const metadata = {
   // Place these files in your /public folder
   icons: {
     icon: [
-      { url: "/favicon.ico?v=3", sizes: "any" },
-      { url: "/icon.png?v=3", sizes: "32x32", type: "image/png" },
-      { url: "/icon-192.png?v=3", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png?v=3", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=4", sizes: "any" },
+      { url: "/icon.png?v=4", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-icon.png?v=3", sizes: "180x180", type: "image/png" },
+      { url: "/apple-icon.png?v=4", sizes: "180x180", type: "image/png" },
     ],
   },
 
